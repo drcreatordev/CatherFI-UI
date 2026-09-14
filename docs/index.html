@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XSAYT UI — Delta Gacor Edition v2</title>
+<meta name="description" content="XSAYT UI v2 — Full Ori UI Library untuk Delta Executor. Lebih keren, lebih gacor, lebih ringan dari Rayfield. Glassmorphism + Neon Gradient.">
+<meta property="og:title" content="XSAYT UI — Delta Gacor Edition">
+<meta property="og:description" content="Full Ori • Bukan Rayfield Clone • Glassmorphism + Spring 60fps">
+<meta property="og:image" content="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/docs/preview.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{sans:['Space Grotesk','sans-serif'], mono:['JetBrains Mono','monospace']},
+      colors:{
+        bg:'#0a0a0f', bg2:'#101018', card:'#16161c', card2:'#1c1c24', stroke:'#282834',
+        accent:'#7c5cff', accent2:'#00dcff'
+      }
+    }
+  }
+}
+</script>
+<style>
+*{scroll-behavior:smooth}
+.glass{backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px)}
+.gradient-text{background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.gradient-border{position:relative}
+.gradient-border::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#7c5cff,#00dcff);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.scrollbar::-webkit-scrollbar{width:4px;height:4px}
+.scrollbar::-webkit-scrollbar-thumb{background:#7c5cff;border-radius:99px}
+.mockup{box-shadow:0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,255,0.1)}
+.toggle-dot{transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1)}
+.slider-fill{transition:width 0.12s ease}
+</style>
+</head>
+<body class="bg-bg text-white font-sans antialiased selection:bg-accent selection:text-white">
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-bg/80 glass border-b border-stroke/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-bold text-sm">X</div>
+      <span class="font-bold text-[15px] tracking-tight">XSAYT<span class="text-accent"> UI</span></span>
+      <span class="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-card border border-stroke text-zinc-400 ml-1">v2.0 GACOR</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-sm text-zinc-400">
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#themes" class="hover:text-white transition">Themes</a>
+      <a href="#api" class="hover:text-white transition">API</a>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="hover:text-white transition">GitHub</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-stroke text-sm hover:bg-card2 transition">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Star
+      </a>
+      <a href="#install" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-accent to-accent2 text-white text-sm font-semibold hover:opacity-90 transition">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-8 grid lg:grid-cols-2 gap-8 items-center">
+  <div>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-stroke text-xs text-zinc-400 mb-4">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Full Ori • Bukan Rayfield Clone • Delta Ready
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
+      UI paling <span class="gradient-text">gacor</span><br/>untuk Delta.
+    </h1>
+    <p class="mt-4 text-zinc-400 leading-relaxed max-w-xl">
+      Glassmorphism + Neon gradient + Spring 60fps. 40% lebih ringan dari Rayfield, mobile gesture, 4 tema realtime. Dibuat dari 0 untuk <b class="text-white">Delta Executor</b>.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <button onclick="copyLoadstring()" class="group px-5 py-2.5 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition">
+        <span id="copyText">Copy Loadstring</span> <span class="group-active:scale-90 transition">→</span>
+      </button>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition">★ GitHub</a>
+      <a href="#preview" class="px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition">Live Preview</a>
+    </div>
+    <div class="mt-6 flex items-center gap-4 text-xs text-zinc-500">
+      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-accent"></span> 1154 lines</span>
+      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-accent2"></span> 60fps</span>
+      <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Delta Android ✓</span>
+    </div>
+    <!-- code -->
+    <div class="mt-6 rounded-xl bg-card border border-stroke overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-2 border-b border-stroke/50 text-xs">
+        <span class="text-zinc-400 font-mono">loadstring</span>
+        <button onclick="copyLoadstring()" class="text-accent hover:text-accent2 transition">Copy</button>
+      </div>
+      <pre class="p-4 text-xs font-mono overflow-x-auto text-zinc-300"><code>local XSAYT = loadstring(game:HttpGet(
+  "https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"
+))()
+
+local Hub = XSAYT.New({
+  Title = "XSAYT • Delta GACOR",
+  Theme = "Cyber"
+})</code></pre>
+    </div>
+  </div>
+
+  <!-- MOCKUP PREVIEW -->
+  <div id="preview" class="relative">
+    <div class="mockup rounded-2xl overflow-hidden bg-[#0a0a0f] border border-stroke">
+      <!-- top gradient -->
+      <div class="h-0.5 w-full bg-gradient-to-r from-accent to-accent2"></div>
+      <!-- header -->
+      <div class="h-14 bg-[#101018] flex items-center justify-between px-3 border-b border-stroke/50">
+        <div class="flex items-center gap-2.5">
+          <div id="mockLogo" class="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-black text-white text-sm">X</div>
+          <div>
+            <div class="text-sm font-bold leading-none">XSAYT • Delta GACOR</div>
+            <div class="text-[11px] text-zinc-500 leading-none mt-0.5">Full Ori • v2.0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 text-xs">⌕</button>
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400">—</button>
+          <button class="w-7 h-7 rounded-lg bg-[#ff465a] text-white">×</button>
+        </div>
+      </div>
+      <div class="flex h-[380px]">
+        <!-- sidebar -->
+        <div class="w-[150px] bg-[#0d0d12] border-r border-stroke/50 p-2 flex flex-col gap-1.5">
+          <button data-tab="combat" class="tab-btn active w-full h-9 rounded-xl bg-card border border-stroke flex items-center gap-2.5 px-2.5 text-sm font-medium text-white">
+            <span>⚔️</span> Combat <span class="ml-auto w-1 h-5 rounded-full bg-gradient-to-b from-accent to-accent2"></span>
+          </button>
+          <button data-tab="visual" class="tab-btn w-full h-9 rounded-xl flex items-center gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50">
+            <span>👁️</span> Visual
+          </button>
+          <button data-tab="settings" class="tab-btn w-full h-9 rounded-xl flex items-center gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50">
+            <span>⚙️</span> Settings
+          </button>
+          <div class="mt-auto p-2 rounded-xl bg-card border border-stroke">
+            <div class="text-[11px] font-bold text-zinc-500">THEME</div>
+            <div class="grid grid-cols-2 gap-1.5 mt-1.5">
+              <button onclick="setMockTheme('Cyber')" class="theme-btn active text-[11px] py-1.5 rounded-lg bg-accent text-white font-semibold">Cyber</button>
+              <button onclick="setMockTheme('Neon')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-card border border-stroke text-zinc-400">Neon</button>
+              <button onclick="setMockTheme('Glass')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-card border border-stroke text-zinc-400">Glass</button>
+              <button onclick="setMockTheme('Midnight')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-black border border-stroke text-white">Midnight</button>
+            </div>
+          </div>
+        </div>
+        <!-- content -->
+        <div class="flex-1 bg-bg p-3 overflow-y-auto scrollbar space-y-3">
+          <!-- combat tab -->
+          <div id="tab-combat" class="tab-page space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500 tracking-widest">COMBAT MAIN</div>
+              <div class="h-px bg-stroke/50 mt-2 mb-3"></div>
+              <!-- toggle -->
+              <div class="group rounded-xl bg-bg2 border border-stroke p-3 flex items-center justify-between hover:border-accent/30 transition cursor-pointer" onclick="toggleMock(this)">
+                <div>
+                  <div class="text-sm font-medium">Godmode</div>
+                  <div class="text-xs text-zinc-500">Anti-death bypass Delta</div>
+                </div>
+                <div class="toggle-bg w-11 h-6 rounded-full bg-zinc-700 relative flex items-center px-0.5">
+                  <div class="toggle-dot w-5 h-5 rounded-full bg-white"></div>
+                </div>
+              </div>
+              <!-- slider -->
+              <div class="mt-3 rounded-xl bg-bg2 border border-stroke p-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-medium">Walkspeed</span>
+                  <span class="text-xs font-mono px-2 py-1 rounded-lg bg-card border border-stroke text-accent" id="sliderVal">16 Speed</span>
+                </div>
+                <div class="mt-3 h-1.5 rounded-full bg-card relative cursor-pointer" onclick="sliderClick(event, this)">
+                  <div id="sliderFill" class="slider-fill h-full rounded-full bg-gradient-to-r from-accent to-accent2" style="width:16%"></div>
+                  <div id="sliderKnob" class="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-accent shadow" style="left:16%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-zinc-500 mt-1"><span>16</span><span>500</span></div>
+              </div>
+              <!-- dropdown -->
+              <div class="mt-3 rounded-xl bg-bg2 border border-stroke p-3 relative" id="dropdownCard">
+                <div class="text-sm font-medium">Weapon</div>
+                <div class="text-xs text-zinc-500">Searchable gacor</div>
+                <button onclick="toggleDropdown()" class="mt-2 w-full h-8 rounded-lg bg-card border border-stroke flex items-center justify-between px-3 text-sm">
+                  <span id="dropdownVal" class="text-zinc-400">Katana</span><span id="dropdownArrow" class="text-zinc-500 transition">▾</span>
+                </button>
+                <div id="dropdownList" class="hidden mt-2 space-y-1">
+                  <button onclick="pickDropdown('Katana')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-accent hover:text-white text-sm transition">Katana ✓</button>
+                  <button onclick="pickDropdown('Gun')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Gun</button>
+                  <button onclick="pickDropdown('Blox Fruit')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Blox Fruit</button>
+                </div>
+              </div>
+            </div>
+            <button class="w-full h-11 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-bold text-sm flex items-center justify-center gap-2">Execute →</button>
+          </div>
+          <!-- visual tab -->
+          <div id="tab-visual" class="tab-page hidden space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500">VISUAL</div>
+              <div class="h-px bg-stroke/50 my-2"></div>
+              <div class="rounded-xl bg-bg2 border border-stroke p-3 flex items-center justify-between">
+                <span class="text-sm">ESP Box</span><span class="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ON</span>
+              </div>
+              <div class="mt-3 flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-accent"></div>
+                <div class="w-8 h-8 rounded-lg bg-accent2"></div>
+                <div class="w-8 h-8 rounded-lg bg-emerald-400"></div><span class="text-xs text-zinc-500">Color HSV</span>
+              </div>
+            </div>
+          </div>
+          <!-- settings tab -->
+          <div id="tab-settings" class="tab-page hidden space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500">CONFIG</div>
+              <div class="mt-3 flex gap-2">
+                <input placeholder="Nama player..." class="flex-1 h-8 rounded-lg bg-bg2 border border-stroke px-3 text-sm outline-none focus:border-accent"/>
+                <button class="px-3 h-8 rounded-lg bg-card border border-stroke text-xs">K</button>
+              </div>
+              <div class="mt-3 p-3 rounded-xl bg-bg2 border border-stroke">
+                <div class="text-sm font-bold">Tentang XSAYT</div>
+                <div class="text-xs text-zinc-500 mt-1">Full ori UI, bukan tiru Rayfield. Glassmorphism, spring 60fps, 40% lebih ringan.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute -z-10 inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent2/10 blur-2xl rounded-2xl"></div>
+    <p class="text-center text-xs text-zinc-500 mt-3">↑ Interactive mockup — coba klik toggle/slider/dropdown & ganti tema</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+  <h2 class="text-2xl font-bold">Kenapa lebih gacor dari Rayfield?</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center">✨</div>
+      <div class="font-semibold mt-3">Glassmorphism</div>
+      <div class="text-sm text-zinc-500 mt-1">Blur acrylic + neon gradient animated, corner 16px. Bukan flat membosankan.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent2 to-emerald-400 flex items-center justify-center">⚡</div>
+      <div class="font-semibold mt-3">Spring 60fps</div>
+      <div class="text-sm text-zinc-500 mt-1">Back easing smooth, bukan Quad kaku. Terasa premium di Delta.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">📱</div>
+      <div class="font-semibold mt-3">Mobile Gacor</div>
+      <div class="text-sm text-zinc-500 mt-1">Touch, swipe minimize, haptic. Rayfield buggy di Android, XSAYT lancar.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🔔</div>
+      <div class="font-semibold mt-3">Toast + Sound</div>
+      <div class="text-sm text-zinc-500 mt-1">Success/warn/error dengan sound & accent bar. Lebih keren dari Notify.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🎚️</div>
+      <div class="font-semibold mt-3">Slider + Input</div>
+      <div class="text-sm text-zinc-500 mt-1">Bisa drag + ketik angka langsung. Rayfield cuma drag.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🔍</div>
+      <div class="font-semibold mt-3">Searchable Dropdown</div>
+      <div class="text-sm text-zinc-500 mt-1">Multi + search + check anim. Lengkap buat hub besar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section id="themes" class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+  <div class="rounded-2xl bg-card border border-stroke p-6 sm:p-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h3 class="text-xl font-bold">4 Tema — ganti realtime</h3>
+        <p class="text-sm text-zinc-500 mt-1"><code class="px-2 py-0.5 rounded bg-bg2 border border-stroke text-accent text-xs">Hub:SetTheme("Neon")</code> smooth tween</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="setMockTheme('Cyber')" class="px-4 py-2 rounded-xl bg-accent text-white text-sm font-semibold">Cyber</button>
+        <button onclick="setMockTheme('Midnight')" class="px-4 py-2 rounded-xl bg-black border border-stroke text-white text-sm">Midnight</button>
+        <button onclick="setMockTheme('Glass')" class="px-4 py-2 rounded-xl bg-[#5a8cff] text-white text-sm">Glass</button>
+        <button onclick="setMockTheme('Neon')" class="px-4 py-2 rounded-xl bg-emerald-500 text-white text-sm">Neon</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6 text-xs">
+      <div class="rounded-xl p-4 bg-gradient-to-br from-[#7c5cff] to-[#00dcff] text-white"><b>Cyber</b><br/>ungu → cyan</div>
+      <div class="rounded-xl p-4 bg-black border border-stroke text-white"><b>Midnight</b><br/>amoled</div>
+      <div class="rounded-xl p-4 bg-gradient-to-br from-[#5a8cff] to-[#8c5aff] text-white"><b>Glass</b><br/>frost</div>
+      <div class="rounded-xl p-4 bg-gradient-to-br from-[#00ffaa] to-[#00c8ff] text-black"><b>Neon</b><br/>hijau → biru</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install" class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+  <div class="grid lg:grid-cols-2 gap-6">
+    <div class="rounded-2xl bg-card border border-stroke p-6">
+      <h3 class="font-bold">Install — 1 baris</h3>
+      <div class="mt-4 space-y-3">
+        <div class="rounded-xl bg-bg2 border border-stroke p-4">
+          <div class="text-xs font-bold text-zinc-500">DELTA (recommended)</div>
+          <pre class="mt-2 text-xs font-mono text-zinc-300 overflow-x-auto"><code>loadstring(game:HttpGet(
+ "https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"
+))()</code></pre>
+          <button onclick="copyLoadstring()" class="mt-3 w-full py-2 rounded-lg bg-accent text-white text-sm font-semibold">Copy Loadstring</button>
+        </div>
+        <div class="text-xs text-zinc-500">Raw: <code class="text-accent">raw.githubusercontent.com/.../XSAYT.lua</code></div>
+      </div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-6">
+      <h3 class="font-bold">Quick API</h3>
+      <pre class="mt-4 p-4 rounded-xl bg-bg2 border border-stroke text-xs font-mono overflow-x-auto text-zinc-300"><code>local Hub = XSAYT.New({
+  Title="XSAYT • GACOR",
+  Theme="Cyber"
+})
+local Tab = Hub:AddTab({Name="Combat", Icon="⚔️"})
+local Sec = Tab:AddSection("MAIN")
+
+Sec:AddToggle({Title="Godmode", Desc="...", Callback=function(v) end})
+Sec:AddSlider({Title="Speed", Min=16, Max=500, Callback=function(v) end})
+Sec:AddDropdown({Title="Weapon", Options={"Katana","Gun"}, Search=true})
+Hub:Toast({Title="GACOR!", Type="success"})</code></pre>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT#--api-lengkap" class="mt-3 inline-block text-sm text-accent hover:text-accent2">Lihat API lengkap →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VS -->
+<section id="api" class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+  <div class="rounded-2xl border border-stroke overflow-hidden">
+    <div class="bg-card p-4 border-b border-stroke flex items-center justify-between">
+      <h3 class="font-bold">XSAYT vs Rayfield</h3>
+      <span class="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">XSAYT menang telak</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-bg2 text-zinc-500 text-xs"><tr><th class="text-left p-3">Fitur</th><th class="p-3">XSAYT v2</th><th class="p-3">Rayfield</th></tr></thead>
+        <tbody class="divide-y divide-stroke/50 text-sm">
+          <tr><td class="p-3 font-medium">Design</td><td class="p-3 text-center text-emerald-400">Glass + Neon</td><td class="p-3 text-center text-zinc-500">Flat</td></tr>
+          <tr><td class="p-3 font-medium">Berat</td><td class="p-3 text-center text-emerald-400">950 lines</td><td class="p-3 text-center text-zinc-500">1800+ lines</td></tr>
+          <tr><td class="p-3 font-medium">Animasi</td><td class="p-3 text-center text-emerald-400">Spring 60fps</td><td class="p-3 text-center text-zinc-500">Quad kaku</td></tr>
+          <tr><td class="p-3 font-medium">Mobile</td><td class="p-3 text-center text-emerald-400">Gacor</td><td class="p-3 text-center text-zinc-500">Buggy</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-stroke/50 mt-10 py-8 text-center text-sm text-zinc-500">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="font-semibold text-white">XSAYT UI • Delta Gacor Edition</div>
+    <div class="mt-1">MIT © 2026 myzakonz-gif • Full Ori, bukan clone</div>
+    <div class="mt-4 flex justify-center gap-4 text-xs">
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" class="hover:text-white">GitHub</a>
+      <a href="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua" class="hover:text-white">Raw Lua</a>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT/issues" class="hover:text-white">Issues</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-4 right-4 bg-card border border-stroke rounded-xl px-4 py-3 shadow-xl flex items-center gap-3 translate-y-20 opacity-0 transition-all z-50">
+  <div class="w-2 h-8 rounded-full bg-gradient-to-b from-accent to-accent2"></div>
+  <div><div class="text-sm font-bold">Copied!</div><div class="text-xs text-zinc-500">Loadstring disalin</div></div>
+</div>
+
+<script>
+function copyLoadstring(){
+  const s=`loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()`
+  navigator.clipboard.writeText(s)
+  const t=document.getElementById('toast')
+  t.style.transform='translateY(0)'; t.style.opacity='1'
+  const ct=document.getElementById('copyText')
+  if(ct) ct.textContent='Copied ✓'
+  setTimeout(()=>{t.style.transform='translateY(80px)'; t.style.opacity='0'; if(ct) ct.textContent='Copy Loadstring'}, 2000)
+}
+document.querySelectorAll('.tab-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(x=>{x.classList.remove('active','bg-card','border','border-stroke','text-white'); x.classList.add('text-zinc-500')})
+    b.classList.add('active','bg-card','border','border-stroke','text-white'); b.classList.remove('text-zinc-500')
+    document.querySelectorAll('.tab-page').forEach(p=>p.classList.add('hidden'))
+    document.getElementById('tab-'+b.dataset.tab).classList.remove('hidden')
+  })
+})
+function toggleMock(el){
+  const bg=el.querySelector('.toggle-bg'); const dot=el.querySelector('.toggle-dot')
+  const on=bg.classList.contains('bg-accent')
+  if(on){ bg.classList.remove('bg-accent'); bg.classList.add('bg-zinc-700'); dot.style.transform='translateX(0)'}
+  else{ bg.classList.remove('bg-zinc-700'); bg.classList.add('bg-accent'); dot.style.transform='translateX(20px)'}
+}
+function sliderClick(e, track){
+  const rect=track.getBoundingClientRect(); let p=(e.clientX-rect.left)/rect.width; p=Math.max(0,Math.min(1,p))
+  document.getElementById('sliderFill').style.width=(p*100)+'%'
+  document.getElementById('sliderKnob').style.left=(p*100)+'%'
+  const v=Math.round(16 + p*(500-16)); document.getElementById('sliderVal').textContent=v+' Speed'
+}
+function toggleDropdown(){
+  const list=document.getElementById('dropdownList'); const arr=document.getElementById('dropdownArrow')
+  const hidden=list.classList.contains('hidden')
+  list.classList.toggle('hidden', !hidden); arr.style.transform= hidden ? 'rotate(180deg)' : 'rotate(0deg)'
+}
+function pickDropdown(v){
+  document.getElementById('dropdownVal').textContent=v
+  toggleDropdown()
+}
+const themes={
+  Cyber:{accent:'#7c5cff', accent2:'#00dcff', bg:'#0a0a0f'},
+  Neon:{accent:'#00ffaa', accent2:'#00c8ff', bg:'#080c10'},
+  Glass:{accent:'#5a8cff', accent2:'#8c5aff', bg:'#12141c'},
+  Midnight:{accent:'#ffffff', accent2:'#a0a0a0', bg:'#000000'}
+}
+function setMockTheme(name){
+  const t=themes[name]||themes.Cyber
+  document.documentElement.style.setProperty('--accent', t.accent)
+  // update mock logo & slider
+  document.getElementById('mockLogo').style.background=`linear-gradient(135deg, ${t.accent}, ${t.accent2})`
+  document.getElementById('sliderFill').style.background=`linear-gradient(90deg, ${t.accent}, ${t.accent2})`
+  document.getElementById('sliderKnob').style.borderColor=t.accent
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active','bg-accent','text-white'))
+  event?.target?.classList.add('active')
+  // toast
+  const toast=document.getElementById('toast')
+  toast.querySelector('.text-sm').textContent='Theme: '+name
+  toast.querySelector('.text-xs').textContent='Ganti ke '+name+' ✓'
+  toast.style.transform='translateY(0)'; toast.style.opacity='1'
+  setTimeout(()=>{toast.style.transform='translateY(80px)'; toast.style.opacity='0'},1500)
+}
+</script>
+</body>
+</html>
