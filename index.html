@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XSAYT UI - Roblox Delta Executor UI Library Premium v2</title>
+<meta name="description" content="XSAYT UI v2 - Roblox UI Library premium untuk Delta Executor. Full Original, professional design, Glassmorphism + Spring 60fps, mobile support.">
+<meta name="keywords" content="roblox ui library, delta executor, roblox delta, xsayt ui, roblox script hub, roblox executor ui, roblox lua ui, premium ui library">
+<meta name="author" content="myzakonz-gif">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://myzakonz-gif.github.io/UI-LIB-XSAYT/">
+<meta property="og:title" content="XSAYT UI - Roblox Delta Executor UI Library Premium">
+<meta property="og:description" content="Roblox UI Library premium untuk Delta Executor. Full Original, Glassmorphism, 60fps, mobile support. Professional design.">
+<meta property="og:image" content="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/docs/preview.png">
+<meta property="og:site_name" content="XSAYT UI">
+<meta property="og:locale" content="id_ID">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myzakonz-gif.github.io/UI-LIB-XSAYT/">
+<meta name="twitter:title" content="XSAYT UI - Roblox Delta UI Library Premium">
+<meta name="twitter:description" content="Roblox UI Library premium untuk Delta Executor. Glassmorphism + Spring 60fps. Full Original.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/docs/preview.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareSourceCode",
+  "name":"XSAYT UI",
+  "alternateName":"XSAYT UI - Roblox Delta Executor UI Library",
+  "description":"Roblox UI Library premium untuk Delta Executor. Full Original, Glassmorphism + Spring 60fps, mobile support, professional design.",
+  "programmingLanguage":"Lua",
+  "codeRepository":"https://github.com/myzakonz-gif/UI-LIB-XSAYT",
+  "author":{"@type":"Person","name":"myzakonz-gif"},
+  "keywords":"roblox ui library, delta executor, roblox script",
+  "license":"https://github.com/myzakonz-gif/UI-LIB-XSAYT/blob/main/LICENSE",
+  "version":"2.1.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{sans:['Space Grotesk','sans-serif'], mono:['JetBrains Mono','monospace']},
+      colors:{
+        bg:'#0a0a0f', bg2:'#101018', card:'#16161c', card2:'#1c1c24', stroke:'#282834',
+        accent:'#7c5cff', accent2:'#00dcff'
+      }
+    }
+  }
+}
+</script>
+<style>
+*{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+.glass{backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px)}
+.gradient-text{background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.gradient-border{position:relative}
+.gradient-border::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#7c5cff,#00dcff);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.scrollbar::-webkit-scrollbar{width:4px;height:4px}
+.scrollbar::-webkit-scrollbar-thumb{background:#7c5cff;border-radius:99px}
+.mockup{box-shadow:0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,255,0.1)}
+.toggle-dot{transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1)}
+.slider-fill{transition:width 0.12s ease}
+@media (max-width:640px){
+  .mockup{border-radius:14px}
+  .hero-title{font-size:32px !important; line-height:1.1 !important}
+}
+</style>
+</head>
+<body class="bg-bg text-white font-sans antialiased selection:bg-accent selection:text-white">
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-bg/80 glass border-b border-stroke/50">
+  <div class="max-w-6xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2">
+    <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-bold text-sm shrink-0">X</div>
+      <span class="font-bold text-[15px] tracking-tight whitespace-nowrap">XSAYT<span class="text-accent"> UI</span></span>
+      <span class="hidden sm:inline text-[10px] px-2 py-0.5 rounded-full bg-card border border-stroke text-zinc-400 ml-1 whitespace-nowrap">v2.0 PREMIUM</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-sm text-zinc-400">
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#themes" class="hover:text-white transition">Themes</a>
+      <a href="#install" class="hover:text-white transition">Install</a>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="hover:text-white transition">GitHub</a>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-stroke text-sm hover:bg-card2 transition">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Star
+      </a>
+      <a href="#install" class="px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-accent to-accent2 text-white text-xs sm:text-sm font-semibold hover:opacity-90 transition whitespace-nowrap">Get Started</a>
+      <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden w-8 h-8 rounded-lg bg-card border border-stroke flex items-center justify-center text-zinc-400">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-stroke/50 bg-bg px-3 py-3 space-y-2">
+    <a href="#features" class="block py-2 text-sm text-zinc-400 hover:text-white" onclick="this.closest('#mobileMenu').classList.add('hidden')">Features</a>
+    <a href="#themes" class="block py-2 text-sm text-zinc-400 hover:text-white" onclick="this.closest('#mobileMenu').classList.add('hidden')">Themes</a>
+    <a href="#install" class="block py-2 text-sm text-zinc-400 hover:text-white" onclick="this.closest('#mobileMenu').classList.add('hidden')">Install</a>
+    <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="block py-2 text-sm text-zinc-400 hover:text-white">GitHub</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-3 sm:px-6 pt-6 sm:pt-10 pb-8 grid lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+  <div class="min-w-0">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-stroke text-xs text-zinc-400 mb-4">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span> Full Ori • Premium • Delta Ready
+    </div>
+    <h1 class="hero-title text-3xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
+      Roblox UI Library <span class="gradient-text">premium</span><br/>untuk Delta Executor.
+    </h1>
+    <p class="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl">
+      <strong class="text-white">XSAYT UI</strong> — Roblox Delta Executor UI Library premium original. Glassmorphism + Spring 60fps, mobile gesture, 4 tema realtime. Dibuat dari 0 untuk <b class="text-white">Delta Executor</b>.
+    </p>
+    <p class="sr-only">Roblox UI Library Delta Executor, XSAYT UI, Roblox script hub, Roblox Lua UI Library, premium UI library untuk Roblox executor, Delta Premium.</p>
+    <div class="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
+      <button onclick="copyLoadstring()" class="group px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition">
+        <span id="copyText">Copy Loadstring</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-active:translate-x-0.5 transition"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="px-4 sm:px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition inline-flex items-center gap-2"><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+      <a href="#preview" class="px-4 sm:px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition">Live Preview</a>
+    </div>
+    <div class="mt-5 sm:mt-6 flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-zinc-500">
+      <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-accent"></span> 1154 lines</span>
+      <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-accent2"></span> 60fps</span>
+      <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Delta Android</span>
+    </div>
+    <!-- code -->
+    <div class="mt-5 sm:mt-6 rounded-xl bg-card border border-stroke overflow-hidden">
+      <div class="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-stroke/50 text-xs">
+        <span class="text-zinc-400 font-mono">loadstring</span>
+        <button onclick="copyLoadstring()" class="text-accent hover:text-accent2 transition">Copy</button>
+      </div>
+      <pre class="p-3 sm:p-4 text-xs font-mono overflow-x-auto text-zinc-300 scrollbar"><code>local XSAYT = loadstring(game:HttpGet(
+  "https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"
+))()
+
+local Hub = XSAYT.New({
+  Title = "XSAYT • Delta Premium",
+  Theme = "Cyber"
+})</code></pre>
+    </div>
+  </div>
+
+  <!-- MOCKUP PREVIEW -->
+  <div id="preview" class="relative w-full min-w-0">
+    <div class="mockup rounded-2xl overflow-hidden bg-[#0a0a0f] border border-stroke w-full">
+      <!-- top gradient -->
+      <div class="h-0.5 w-full bg-gradient-to-r from-accent to-accent2"></div>
+      <!-- header -->
+      <div class="h-14 bg-[#101018] flex items-center justify-between px-2 sm:px-3 border-b border-stroke/50 gap-2">
+        <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          <div id="mockLogo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-black text-white text-sm shrink-0">X</div>
+          <div class="min-w-0">
+            <div class="text-xs sm:text-sm font-bold leading-none truncate">XSAYT • Delta Premium</div>
+            <div class="text-[10px] sm:text-[11px] text-zinc-500 leading-none mt-0.5 truncate">Premium • v2.0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 hidden sm:flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
+          <button class="w-7 h-7 rounded-lg bg-[#ff465a] text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row h-auto sm:h-[380px] min-h-[380px]">
+        <!-- sidebar -->
+        <div class="w-full sm:w-[150px] bg-[#0d0d12] border-b sm:border-b-0 sm:border-r border-stroke/50 p-2 flex flex-row sm:flex-col gap-1.5 overflow-x-auto sm:overflow-visible shrink-0 scrollbar">
+          <button data-tab="combat" class="tab-btn active flex-1 sm:flex-none sm:w-full h-9 rounded-xl bg-card border border-stroke flex items-center gap-2 sm:gap-2.5 px-2.5 text-sm font-medium text-white whitespace-nowrap justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/></svg> Combat <span class="hidden sm:block ml-auto w-1 h-5 rounded-full bg-gradient-to-b from-accent to-accent2"></span>
+          </button>
+          <button data-tab="visual" class="tab-btn flex-1 sm:flex-none sm:w-full h-9 rounded-xl flex items-center gap-2 sm:gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50 whitespace-nowrap justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Visual
+          </button>
+          <button data-tab="settings" class="tab-btn flex-1 sm:flex-none sm:w-full h-9 rounded-xl flex items-center gap-2 sm:gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50 whitespace-nowrap justify-center sm:justify-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg> Settings
+          </button>
+          <div class="hidden sm:block mt-auto p-2 rounded-xl bg-card border border-stroke">
+            <div class="text-[11px] font-bold text-zinc-500">THEME</div>
+            <div class="grid grid-cols-2 gap-1.5 mt-1.5">
+              <button onclick="setMockTheme('Cyber')" class="theme-btn active text-[11px] py-1.5 rounded-lg bg-accent text-white font-semibold">Cyber</button>
+              <button onclick="setMockTheme('Neon')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-card border border-stroke text-zinc-400">Neon</button>
+              <button onclick="setMockTheme('Glass')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-card border border-stroke text-zinc-400">Glass</button>
+              <button onclick="setMockTheme('Midnight')" class="theme-btn text-[11px] py-1.5 rounded-lg bg-black border border-stroke text-white">Midnight</button>
+            </div>
+          </div>
+        </div>
+        <!-- content -->
+        <div class="flex-1 bg-bg p-2 sm:p-3 overflow-y-auto scrollbar space-y-3 min-w-0">
+          <!-- mobile theme picker -->
+          <div class="sm:hidden flex gap-1.5 overflow-x-auto scrollbar pb-1">
+            <button onclick="setMockTheme('Cyber')" class="theme-btn active px-3 py-1.5 rounded-full bg-accent text-white text-xs font-semibold whitespace-nowrap">Cyber</button>
+            <button onclick="setMockTheme('Neon')" class="px-3 py-1.5 rounded-full bg-card border border-stroke text-zinc-400 text-xs whitespace-nowrap">Neon</button>
+            <button onclick="setMockTheme('Glass')" class="px-3 py-1.5 rounded-full bg-card border border-stroke text-zinc-400 text-xs whitespace-nowrap">Glass</button>
+            <button onclick="setMockTheme('Midnight')" class="px-3 py-1.5 rounded-full bg-black border border-stroke text-white text-xs whitespace-nowrap">Midnight</button>
+          </div>
+          <!-- combat tab -->
+          <div id="tab-combat" class="tab-page space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500 tracking-widest">COMBAT MAIN</div>
+              <div class="h-px bg-stroke/50 mt-2 mb-3"></div>
+              <!-- toggle -->
+              <div class="group rounded-xl bg-bg2 border border-stroke p-3 flex items-center justify-between hover:border-accent/30 transition cursor-pointer" onclick="toggleMock(this)">
+                <div>
+                  <div class="text-sm font-medium">Godmode</div>
+                  <div class="text-xs text-zinc-500">Anti-death bypass Delta</div>
+                </div>
+                <div class="toggle-bg w-11 h-6 rounded-full bg-zinc-700 relative flex items-center px-0.5">
+                  <div class="toggle-dot w-5 h-5 rounded-full bg-white"></div>
+                </div>
+              </div>
+              <!-- slider -->
+              <div class="mt-3 rounded-xl bg-bg2 border border-stroke p-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-medium">Walkspeed</span>
+                  <span class="text-xs font-mono px-2 py-1 rounded-lg bg-card border border-stroke text-accent" id="sliderVal">16 Speed</span>
+                </div>
+                <div class="mt-3 h-1.5 rounded-full bg-card relative cursor-pointer" onclick="sliderClick(event, this)">
+                  <div id="sliderFill" class="slider-fill h-full rounded-full bg-gradient-to-r from-accent to-accent2" style="width:16%"></div>
+                  <div id="sliderKnob" class="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-accent shadow" style="left:16%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-zinc-500 mt-1"><span>16</span><span>500</span></div>
+              </div>
+              <!-- dropdown -->
+              <div class="mt-3 rounded-xl bg-bg2 border border-stroke p-3 relative" id="dropdownCard">
+                <div class="text-sm font-medium">Weapon</div>
+                <div class="text-xs text-zinc-500">Searchable gacor</div>
+                <button onclick="toggleDropdown()" class="mt-2 w-full h-8 rounded-lg bg-card border border-stroke flex items-center justify-between px-3 text-sm">
+                  <span id="dropdownVal" class="text-zinc-400">Katana</span><span id="dropdownArrow" class="text-zinc-500 transition flex items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+                </button>
+                <div id="dropdownList" class="hidden mt-2 space-y-1">
+                  <button onclick="pickDropdown('Katana')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-accent hover:text-white text-sm transition flex items-center justify-between">Katana <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></button>
+                  <button onclick="pickDropdown('Gun')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Gun</button>
+                  <button onclick="pickDropdown('Blox Fruit')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Blox Fruit</button>
+                </div>
+              </div>
+            </div>
+            <button class="w-full h-11 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-bold text-sm flex items-center justify-center gap-2">Execute <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </div>
+          <!-- visual tab -->
+          <div id="tab-visual" class="tab-page hidden space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500">VISUAL</div>
+              <div class="h-px bg-stroke/50 my-2"></div>
+              <div class="rounded-xl bg-bg2 border border-stroke p-3 flex items-center justify-between">
+                <span class="text-sm">ESP Box</span><span class="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ON</span>
+              </div>
+              <div class="mt-3 flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-accent"></div>
+                <div class="w-8 h-8 rounded-lg bg-accent2"></div>
+                <div class="w-8 h-8 rounded-lg bg-emerald-400"></div><span class="text-xs text-zinc-500">Color HSV</span>
+              </div>
+            </div>
+          </div>
+          <!-- settings tab -->
+          <div id="tab-settings" class="tab-page hidden space-y-3">
+            <div class="rounded-xl bg-card border border-stroke p-3">
+              <div class="text-[11px] font-bold text-zinc-500">CONFIG</div>
+              <div class="mt-3 flex gap-2">
+                <input placeholder="Nama player..." class="flex-1 h-8 rounded-lg bg-bg2 border border-stroke px-3 text-sm outline-none focus:border-accent"/>
+                <button class="px-3 h-8 rounded-lg bg-card border border-stroke text-xs">K</button>
+              </div>
+              <div class="mt-3 p-3 rounded-xl bg-bg2 border border-stroke">
+                <div class="text-sm font-bold">Tentang XSAYT</div>
+                <div class="text-xs text-zinc-500 mt-1">Full original premium UI. Glassmorphism, spring 60fps, ringan & cepat.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute -z-10 inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent2/10 blur-2xl rounded-2xl"></div>
+    <p class="text-center text-xs text-zinc-500 mt-3">↑ Interactive mockup — coba klik toggle/slider/dropdown & ganti tema</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="max-w-6xl mx-auto px-3 sm:px-6 py-6 sm:py-10">
+  <h2 class="text-xl sm:text-2xl font-bold">Fitur Premium XSAYT</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M15 3h4a2 2 0 0 1 2 2v4"/><path d="M9 21H5a2 2 0 0 1-2-2v-4"/><path d="M15 21h4a2 2 0 0 1-2-2v-4"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></div>
+      <div class="font-semibold mt-3">Glassmorphism</div>
+      <div class="text-sm text-zinc-500 mt-1">Blur acrylic + neon gradient animated, corner 16px. Bukan flat membosankan.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent2 to-emerald-400 flex items-center justify-center text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div class="font-semibold mt-3">Spring 60fps</div>
+      <div class="text-sm text-zinc-500 mt-1">Back easing smooth, premium feel di Delta.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+      <div class="font-semibold mt-3">Mobile Premium</div>
+      <div class="text-sm text-zinc-500 mt-1">Touch, swipe minimize, haptic. Optimasi Delta Android.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7-6 5-6 9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+      <div class="font-semibold mt-3">Toast + Sound</div>
+      <div class="text-sm text-zinc-500 mt-1">Success/warn/error dengan sound & accent bar premium.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="21" y2="21"/><line x1="4" x2="20" y1="7" y2="7"/><g><line x1="9" x2="15" y1="14" y2="14"/><circle cx="15" cy="14" r="2"/></g><g><line x1="9" x2="15" y1="7" y2="7"/><circle cx="9" cy="7" r="2"/></g></svg></div>
+      <div class="font-semibold mt-3">Slider + Input</div>
+      <div class="text-sm text-zinc-500 mt-1">Bisa drag + ketik angka langsung, presisi tinggi.</div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg></div>
+      <div class="font-semibold mt-3">Searchable Dropdown</div>
+      <div class="text-sm text-zinc-500 mt-1">Multi + search + check anim. Lengkap buat hub besar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section id="themes" class="max-w-6xl mx-auto px-3 sm:px-6 py-6">
+  <div class="rounded-2xl bg-card border border-stroke p-4 sm:p-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h3 class="text-lg sm:text-xl font-bold">4 Tema — ganti realtime</h3>
+        <p class="text-sm text-zinc-500 mt-1"><code class="px-2 py-0.5 rounded bg-bg2 border border-stroke text-accent text-xs">Hub:SetTheme("Neon")</code> smooth tween</p>
+      </div>
+      <div class="flex gap-2 overflow-x-auto scrollbar pb-1 sm:pb-0">
+        <button onclick="setMockTheme('Cyber')" class="px-3 sm:px-4 py-2 rounded-xl bg-accent text-white text-xs sm:text-sm font-semibold whitespace-nowrap">Cyber</button>
+        <button onclick="setMockTheme('Midnight')" class="px-3 sm:px-4 py-2 rounded-xl bg-black border border-stroke text-white text-xs sm:text-sm whitespace-nowrap">Midnight</button>
+        <button onclick="setMockTheme('Glass')" class="px-3 sm:px-4 py-2 rounded-xl bg-[#5a8cff] text-white text-xs sm:text-sm whitespace-nowrap">Glass</button>
+        <button onclick="setMockTheme('Neon')" class="px-3 sm:px-4 py-2 rounded-xl bg-emerald-500 text-white text-xs sm:text-sm whitespace-nowrap">Neon</button>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mt-6 text-xs">
+      <div class="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#7c5cff] to-[#00dcff] text-white"><b>Cyber</b><br/>ungu → cyan</div>
+      <div class="rounded-xl p-3 sm:p-4 bg-black border border-stroke text-white"><b>Midnight</b><br/>amoled</div>
+      <div class="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#5a8cff] to-[#8c5aff] text-white"><b>Glass</b><br/>frost</div>
+      <div class="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#00ffaa] to-[#00c8ff] text-black"><b>Neon</b><br/>hijau → biru</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install" class="max-w-6xl mx-auto px-3 sm:px-6 py-6">
+  <div class="grid lg:grid-cols-2 gap-4 sm:gap-6">
+    <div class="rounded-2xl bg-card border border-stroke p-4 sm:p-6">
+      <h3 class="font-bold">Install — 1 baris</h3>
+      <div class="mt-4 space-y-3">
+        <div class="rounded-xl bg-bg2 border border-stroke p-3 sm:p-4">
+          <div class="text-xs font-bold text-zinc-500">DELTA (recommended)</div>
+          <pre class="mt-2 text-xs font-mono text-zinc-300 overflow-x-auto scrollbar"><code>loadstring(game:HttpGet(
+  "https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"
+))()</code></pre>
+          <button onclick="copyLoadstring()" class="mt-3 w-full py-2.5 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white text-sm font-semibold">Copy Loadstring</button>
+        </div>
+        <div class="text-xs text-zinc-500 break-all">Raw: <code class="text-accent">raw.githubusercontent.com/.../XSAYT.lua</code></div>
+      </div>
+    </div>
+    <div class="rounded-2xl bg-card border border-stroke p-4 sm:p-6">
+      <h3 class="font-bold">Quick API</h3>
+      <pre class="mt-4 p-3 sm:p-4 rounded-xl bg-bg2 border border-stroke text-xs font-mono overflow-x-auto text-zinc-300 scrollbar"><code>local Hub = XSAYT.New({
+  Title="XSAYT • Premium",
+  Theme="Cyber"
+})
+local Tab = Hub:AddTab({Name="Combat", Icon="rbxassetid://6031265976"})
+local Sec = Tab:AddSection("MAIN")
+
+Sec:AddToggle({Title="Godmode", Desc="...", Callback=function(v) end})
+Sec:AddSlider({Title="Speed", Min=16, Max=500, Callback=function(v) end})
+Sec:AddDropdown({Title="Weapon", Options={"Katana","Gun"}, Search=true})
+Hub:Toast({Title="Premium!", Type="success"})</code></pre>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT#api-lengkap" class="mt-3 inline-flex items-center gap-1 text-sm text-accent hover:text-accent2">Lihat API lengkap <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FITUR PREMIUM (no comparison) -->
+<section id="api" class="max-w-6xl mx-auto px-3 sm:px-6 py-6">
+  <div class="rounded-2xl border border-stroke overflow-hidden">
+    <div class="bg-card p-3 sm:p-4 border-b border-stroke flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <h3 class="font-bold text-sm sm:text-base">Fitur Premium XSAYT v2.1</h3>
+      <span class="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 w-fit">Professional • Secure</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-bg2 text-zinc-500 text-xs"><tr><th class="text-left p-3">Fitur</th><th class="p-3 text-left">Detail</th></tr></thead>
+        <tbody class="divide-y divide-stroke/50 text-sm">
+          <tr><td class="p-3 font-medium">Design</td><td class="p-3 text-zinc-300">Glassmorphism + Neon Gradient, Corner 16px, Blur Acrylic</td></tr>
+          <tr><td class="p-3 font-medium">Ringan</td><td class="p-3 text-zinc-300">~1273 lines, optimized, no lag, fast load</td></tr>
+          <tr><td class="p-3 font-medium">Animasi</td><td class="p-3 text-zinc-300">Spring Back 60fps, smooth</td></tr>
+          <tr><td class="p-3 font-medium">Mobile</td><td class="p-3 text-zinc-300">Touch, swipe, haptic, responsive</td></tr>
+          <tr><td class="p-3 font-medium">Secure</td><td class="p-3 text-zinc-300">cloneref, protect_gui, undetectable</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-stroke/50 mt-10 py-8 text-center text-sm text-zinc-500">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="font-semibold text-white">XSAYT UI • Delta Gacor Edition</div>
+    <div class="mt-1">MIT © 2026 myzakonz-gif • Full Ori, bukan clone</div>
+    <div class="mt-4 flex justify-center gap-4 text-xs">
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" class="hover:text-white">GitHub</a>
+      <a href="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua" class="hover:text-white">Raw Lua</a>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT/issues" class="hover:text-white">Issues</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-4 right-3 left-3 sm:left-auto sm:right-4 sm:max-w-sm bg-card border border-stroke rounded-xl px-4 py-3 shadow-xl flex items-center gap-3 translate-y-20 opacity-0 transition-all z-50">
+  <div class="w-2 h-8 rounded-full bg-gradient-to-b from-accent to-accent2 shrink-0"></div>
+  <div class="min-w-0"><div class="text-sm font-bold">Copied!</div><div class="text-xs text-zinc-500">Loadstring disalin</div></div>
+</div>
+
+<script>
+function copyLoadstring(){
+  const s=`loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()`
+  navigator.clipboard.writeText(s)
+  const t=document.getElementById('toast')
+  t.style.transform='translateY(0)'; t.style.opacity='1'
+  const ct=document.getElementById('copyText')
+  if(ct) ct.textContent='Copied ✓'
+  setTimeout(()=>{t.style.transform='translateY(80px)'; t.style.opacity='0'; if(ct) ct.textContent='Copy Loadstring'}, 2000)
+}
+document.querySelectorAll('.tab-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(x=>{x.classList.remove('active','bg-card','border','border-stroke','text-white'); x.classList.add('text-zinc-500')})
+    b.classList.add('active','bg-card','border','border-stroke','text-white'); b.classList.remove('text-zinc-500')
+    document.querySelectorAll('.tab-page').forEach(p=>p.classList.add('hidden'))
+    document.getElementById('tab-'+b.dataset.tab).classList.remove('hidden')
+  })
+})
+function toggleMock(el){
+  const bg=el.querySelector('.toggle-bg'); const dot=el.querySelector('.toggle-dot')
+  const on=bg.classList.contains('bg-accent')
+  if(on){ bg.classList.remove('bg-accent'); bg.classList.add('bg-zinc-700'); dot.style.transform='translateX(0)'}
+  else{ bg.classList.remove('bg-zinc-700'); bg.classList.add('bg-accent'); dot.style.transform='translateX(20px)'}
+}
+function sliderClick(e, track){
+  const rect=track.getBoundingClientRect(); let p=(e.clientX-rect.left)/rect.width; p=Math.max(0,Math.min(1,p))
+  document.getElementById('sliderFill').style.width=(p*100)+'%'
+  document.getElementById('sliderKnob').style.left=(p*100)+'%'
+  const v=Math.round(16 + p*(500-16)); document.getElementById('sliderVal').textContent=v+' Speed'
+}
+function toggleDropdown(){
+  const list=document.getElementById('dropdownList'); const arr=document.getElementById('dropdownArrow')
+  const hidden=list.classList.contains('hidden')
+  list.classList.toggle('hidden', !hidden); arr.style.transform= hidden ? 'rotate(180deg)' : 'rotate(0deg)'
+}
+function pickDropdown(v){
+  document.getElementById('dropdownVal').textContent=v
+  toggleDropdown()
+}
+const themes={
+  Cyber:{accent:'#7c5cff', accent2:'#00dcff', bg:'#0a0a0f'},
+  Neon:{accent:'#00ffaa', accent2:'#00c8ff', bg:'#080c10'},
+  Glass:{accent:'#5a8cff', accent2:'#8c5aff', bg:'#12141c'},
+  Midnight:{accent:'#ffffff', accent2:'#a0a0a0', bg:'#000000'}
+}
+function setMockTheme(name){
+  const t=themes[name]||themes.Cyber
+  document.documentElement.style.setProperty('--accent', t.accent)
+  // update mock logo & slider
+  document.getElementById('mockLogo').style.background=`linear-gradient(135deg, ${t.accent}, ${t.accent2})`
+  document.getElementById('sliderFill').style.background=`linear-gradient(90deg, ${t.accent}, ${t.accent2})`
+  document.getElementById('sliderKnob').style.borderColor=t.accent
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active','bg-accent','text-white'))
+  event?.target?.classList.add('active')
+  // toast
+  const toast=document.getElementById('toast')
+  toast.querySelector('.text-sm').textContent='Theme: '+name
+  toast.querySelector('.text-xs').textContent='Ganti ke '+name+' ✓'
+  toast.style.transform='translateY(0)'; toast.style.opacity='1'
+  setTimeout(()=>{toast.style.transform='translateY(80px)'; toast.style.opacity='0'},1500)
+}
+</script>
+</body>
+</html>
