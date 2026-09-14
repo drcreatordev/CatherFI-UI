@@ -1,10 +1,10 @@
--- CatherFI UI - Example Legacy untuk Delta Executor
+-- CatherFI UI - Example Legacy untuk Roblox Platform
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
 local CatherFIUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
 local Window = CatherFIUI:CreateWindow({
-   Name = "CatherFI Hub | Delta 🔥",
+   Name = "CatherFI Hub | Roblox 🔥",
    LoadingTitle = "CatherFI Library",
    LoadingSubtitle = "by myzakonz",
    ConfigurationSaving = {
@@ -120,7 +120,7 @@ SettingsTab:CreateKeybind({
    end,
 })
 
-SettingsTab:CreateLabel("CatherFI UI v1.0 - Delta Edition")
+SettingsTab:CreateLabel("CatherFI UI v1.0 - Roblox Edition")
 SettingsTab:CreateParagraph({Title = "Info", Content = "UI Library legacy v1, gunakan CatherFI.lua v2 untuk fitur premium."})
 
 SettingsTab:CreateButton({
@@ -132,7 +132,7 @@ SettingsTab:CreateButton({
 
 CatherFIUI:Notify({
    Title = "CatherFI Loaded!",
-   Content = "UI berhasil dimuat untuk Delta",
+   Content = "UI berhasil dimuat untuk Roblox",
    Duration = 5,
    Image = 4483345998,
 })

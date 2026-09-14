@@ -1,4 +1,4 @@
--- CatherFI UI Library | Delta Edition | Legacy v1 API
+-- CatherFI UI Library | Roblox Edition | Legacy v1 API
 -- Github: https://github.com/myzakonz-gif/CatherFI-UI
 -- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 -- Version: 1.0.0 Deprecated
@@ -158,7 +158,7 @@ function CatherFIUI:Notify(cfg)
     end
 end
 
--- Config Saving (Delta file system)
+-- Config Saving (Roblox file system)
 local function SaveConfig(folder, file, flags)
     if not (writefile and makefolder and isfolder) then return end
     pcall(function()

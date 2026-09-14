@@ -1,9 +1,9 @@
--- CatherFI UI v2 | Full Original | Delta Premium Edition
+-- CatherFI UI v2 | Full Original | Roblox Premium Edition
 -- Original Design by myzakonz-gif - Professional UI Library
 -- Cyber Neon + Glassmorphism + Spring Animations
 -- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 -- Docs: https://github.com/myzakonz-gif/CatherFI-UI
--- Size: ~1273 lines, 60fps, Delta Android Optimized
+-- Size: ~1273 lines, 60fps, Roblox Android Optimized
 
 local CatherFI = {}
 CatherFI.Version = "2.1.0-gacor-secure"
@@ -330,13 +330,13 @@ function CatherFI.New(a, b)
     if typeof(cfg) ~= "table" then cfg = {} end
     cfg=cfg or {}
     local title=cfg.Title or "CatherFI • Premium"
-    local subtitle=cfg.Subtitle or "Delta Edition • v2.1"
+    local subtitle=cfg.Subtitle or "Roblox Edition • v2.1"
     local themeName=cfg.Theme or "Cyber"
     local theme=CatherFI.Themes[themeName] or CatherFI.Themes.Cyber
     local blurEnabled=cfg.Blur ~= false
     local size=cfg.Size or UDim2.new(0,640,0,460)
 
-    -- Parent (Gen2-grade: cloneref + protect_gui + customAsset) - robust untuk Delta
+    -- Parent (Gen2-grade: cloneref + protect_gui + customAsset) - robust untuk Roblox
     local parent
     pcall(function()
         if gethui then parent=gethui()
@@ -623,7 +623,7 @@ function CatherFI.New(a, b)
         Main.Visible=true
         Main.Size=UDim2.new(0,620,0,430)
         Spring(Main, {Size=size})
-        CatherFI:Toast({Title="CatherFI GACOR", Desc="Loaded in 0.9s • Delta Ready", Type="success", Duration=3})
+        CatherFI:Toast({Title="CatherFI GACOR", Desc="Loaded in 0.9s • Roblox Ready", Type="success", Duration=3})
     end)
 
     -- Controls (premium, no text symbols)

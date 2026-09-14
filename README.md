@@ -1,19 +1,19 @@
 <p align="center">
   <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:28px;border:1px solid #282834">
     <div style="font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">CatherFI UI</div>
-    <div style="color:#8c8c9b;font-size:13px;margin-top:4px">Delta Premium Edition • Glassmorphism • Spring 60fps • Full Original</div>
+    <div style="color:#8c8c9b;font-size:13px;margin-top:4px">Roblox Premium Edition • Glassmorphism • Spring 60fps • Full Original</div>
   </div>
 </p>
 
-<h1 align="center">CatherFI UI — Roblox Delta Executor UI Library v2</h1>
-<p align="center"><b>Roblox UI Library Premium untuk Delta Executor • Full Original • Professional • Ringan & Cepat</b></p>
-<p align="center"><i>Delta Executor • Roblox UI Library • Roblox Script Hub • Premium Design</i></p>
+<h1 align="center">CatherFI UI — Roblox Platform UI Library v2</h1>
+<p align="center"><b>Roblox UI Library Premium untuk Roblox Platform • Full Original • Professional • Ringan & Cepat</b></p>
+<p align="center"><i>Roblox Platform • Roblox UI Library • Roblox Script Hub • Premium Design</i></p>
 
 <p align="center">
   <a href="https://github.com/myzakonz-gif/CatherFI-UI"><img src="https://img.shields.io/github/stars/myzakonz-gif/CatherFI-UI?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
   <a href="https://myzakonz-gif.github.io/CatherFI-UI/"><img src="https://img.shields.io/badge/docs-website-00dcff?style=for-the-badge&logo=googlechrome" alt="Docs"/></a>
   <img src="https://img.shields.io/badge/version-2.1.0_premium-7c5cff?style=for-the-badge" alt="Version"/>
-  <img src="https://img.shields.io/badge/platform-Delta-00e682?style=for-the-badge&logo=roblox" alt="Delta"/>
+  <img src="https://img.shields.io/badge/platform-Roblox-00e682?style=for-the-badge&logo=roblox" alt="Roblox"/>
   <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="MIT"/>
 </p>
 
@@ -24,7 +24,7 @@
   <a href="#themes--ganti-realtime">Themes</a>
 </p>
 
-> **Roblox Delta Executor UI Library — Loadstring 1 baris** — Delta Android & PC
+> **Roblox Platform UI Library — Loadstring 1 baris** — Roblox Android & PC
 > ```lua
 > loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 > ```
@@ -77,7 +77,7 @@ Hub:SetTheme("Neon") -- ganti kapan aja, smooth tween
 
 ### Install
 
-**1. Delta Executor (recommended)**
+**1. Roblox Platform (recommended)**
 ```lua
 local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 ```
@@ -101,7 +101,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI
 local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
 local Hub = CatherFI.New({
-    Title = "CatherFI • Delta Premium",
+    Title = "CatherFI • Roblox Premium",
     Subtitle = "Full Original • by myzakonz • v2.1",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
@@ -114,7 +114,7 @@ local Main = Combat:AddSection("COMBAT MAIN", {Collapsible=true})
 
 Main:AddToggle({
     Title="Godmode",
-    Desc="Anti-death bypass Delta",
+    Desc="Anti-death bypass Roblox",
     Default=false,
     Flag="Godmode",
     Callback=function(v) print("Godmode:",v) end
@@ -228,7 +228,7 @@ CatherFI-UI/
 ```
 > **Clean:** Root cuma 1 lib (`CatherFI.lua`), no duplikat, legacy dipisah.
 
-### Delta Support
+### Roblox Support
 
 - Auto parent: `gethui() > get_hidden_gui() > CoreGui > PlayerGui` — anti kick, cloneref
 - `syn.protect_gui` jika ada, secure mode
@@ -249,13 +249,13 @@ PR welcome! Fork → branch `feat/...` → PR ke `main`.
 
 ### License
 
-MIT © 2026 myzakonz-gif — CatherFI UI. Boleh pakai untuk script Delta kamu, credit appreciated.
+MIT © 2026 myzakonz-gif — CatherFI UI. Boleh pakai untuk script Roblox kamu, credit appreciated.
 
 ---
 
 ### SEO — Biar Gampang Ketemu di Google
 
-CatherFI UI adalah **Roblox UI Library untuk Delta Executor** premium original. Cocok untuk `roblox script hub`, `delta executor script`, `roblox lua ui`. Cari di Google: `catherfi ui`, `roblox delta ui library`, `delta executor ui`.
+CatherFI UI adalah **Modern UI Framework untuk Roblox** yang ringan, premium, dan open source.
 
 Cek live demo: https://myzakonz-gif.github.io/CatherFI-UI/ — terindeks Google via sitemap & robots.txt.
 

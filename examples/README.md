@@ -7,4 +7,4 @@ Load:
 loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/examples/demo.lua"))()
 ```
 
-Copy dan tempel di Delta.
+Copy dan tempel di Roblox.

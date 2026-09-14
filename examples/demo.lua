@@ -1,10 +1,10 @@
--- CatherFI v2 Full Ori - Example Premium untuk Delta
+-- CatherFI v2 Full Ori - Example Premium untuk Roblox
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
 local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
 local Hub = CatherFI.New({
-    Title = "CatherFI • Delta Premium",
+    Title = "CatherFI • Roblox Premium",
     Subtitle = "Full Ori • Premium Icons",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
@@ -17,7 +17,7 @@ local MainSec = Combat:AddSection("COMBAT MAIN", {Collapsible=false})
 
 MainSec:AddToggle({
     Title="Godmode",
-    Desc="Bypass Delta anti-death",
+    Desc="Bypass Roblox anti-death",
     Default=false,
     Flag="Godmode",
     Callback=function(v) print("Godmode",v) end
@@ -91,12 +91,12 @@ CfgSec:AddDropdown({
     Default="Cyber",
     Callback=function(v) Hub:SetTheme(v) end
 })
-CfgSec:AddLabel("CatherFI v2.0 • Delta Premium Edition")
+CfgSec:AddLabel("CatherFI v2.0 • Roblox Premium Edition")
 CfgSec:AddParagraph({Title="Tentang CatherFI", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan myzakonz-gif."})
 CfgSec:AddDivider()
 CfgSec:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 
 -- Toast demo
-Hub:Toast({Title="CatherFI Premium", Desc="Delta ready • 0.9s load", Type="success", Duration=4})
+Hub:Toast({Title="CatherFI Premium", Desc="Roblox ready • 0.9s load", Type="success", Duration=4})
 task.wait(1)
 Hub:Toast({Title="Tips", Desc="Tekan K untuk toggle UI • search di header", Type="info"})
