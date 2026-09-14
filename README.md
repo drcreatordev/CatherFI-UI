@@ -102,7 +102,7 @@ local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/drcr
 
 local Hub = CatherFI.New({
     Title = "CatherFI • Roblox Premium",
-    Subtitle = "Full Original • by myzakonz • v2.1",
+    Subtitle = "CatherFI • Premium • v2.1",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
     Size = UDim2.new(0,640,0,460)

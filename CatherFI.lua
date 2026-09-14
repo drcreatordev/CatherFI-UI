@@ -330,7 +330,7 @@ function CatherFI.New(a, b)
     if typeof(cfg) ~= "table" then cfg = {} end
     cfg=cfg or {}
     local title=cfg.Title or "CatherFI • Premium"
-    local subtitle=cfg.Subtitle or "Roblox Edition • v2.1"
+    local subtitle=cfg.Subtitle or "CatherFI Edition • v2.1"
     local themeName=cfg.Theme or "Cyber"
     local theme=CatherFI.Themes[themeName] or CatherFI.Themes.Cyber
     local blurEnabled=cfg.Blur ~= false
