@@ -1,2 +1,11 @@
+# Delta config (local)
 config.json
 *.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+*.bak

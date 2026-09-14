@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/docs/banner.png" width="100%" alt="XSAYT Banner" onerror="this.style.display='none'"/>
+  <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:28px;border:1px solid #282834">
+    <div style="font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">XSAYT UI</div>
+    <div style="color:#8c8c9b;font-size:13px;margin-top:4px">Delta Gacor Edition • Glassmorphism • Spring 60fps • Full Ori</div>
+  </div>
 </p>
 
 <h1 align="center">XSAYT UI — Delta Gacor Edition v2</h1>
@@ -31,7 +34,10 @@
 ### ✨ Preview — Glassmorphism + Neon Gradient
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/docs/preview.png" width="85%" alt="XSAYT Preview" onerror="this.outerHTML='<div style=\'background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:32px;color:#7c5cff;border:1px solid #282834;margin:16px 0\'><b>⚡ XSAYT Preview</b><br/><span style=\'color:#8c8c9b\'>Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href=\'https://myzakonz-gif.github.io/UI-LIB-XSAYT/\' style=\'color:#00dcff\'>myzakonz-gif.github.io/UI-LIB-XSAYT</a></span></div>'"/>
+  <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:32px;color:#7c5cff;border:1px solid #282834;margin:16px 0">
+    <b>⚡ XSAYT Preview</b><br/>
+    <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/" style="color:#00dcff">myzakonz-gif.github.io/UI-LIB-XSAYT</a></span>
+  </div>
 </p>
 <p align="center"><i>Spring 60fps • Blur Acrylic • Animated Gradient Border • Touch Gesture</i></p>
 
@@ -79,10 +85,10 @@ local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakon
 https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua
 ```
 
-**3. Legacy Rayfield-compatible (jika script lama)**
+**3. Legacy Rayfield-compatible (deprecated)**
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()
--- API: CreateWindow, CreateTab (Rayfield style)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
+-- API lama: CreateWindow, CreateTab (pindah ke legacy/)
 ```
 
 ---
@@ -148,7 +154,7 @@ S2:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 Hub:Toast({Title="GACOR!", Desc="XSAYT loaded 0.9s", Type="success", Duration=3})
 ```
 
-> Contoh lengkap: [`example-ori.lua`](./example-ori.lua)
+> Contoh lengkap: [`examples/demo.lua`](./examples/demo.lua) • Legacy di [`legacy/`](./legacy/)
 
 ---
 
@@ -193,25 +199,30 @@ Website berisi:
 - Copy loadstring 1-klik
 - Perbandingan vs Rayfield
 
-File website ada di [`/docs`](./docs) & [`index.html`](./index.html) — auto deploy via GitHub Pages (branch `main` / `docs`).
+File website ada di [`/docs`](./docs) — auto deploy via GitHub Pages (branch `main` / `docs`).
 
 ---
 
-### 📁 Struktur Repo
+### 📁 Struktur Repo — Rapi, No Duplikat
 
 ```
 UI-LIB-XSAYT/
-├── XSAYT.lua          # Full ori v2 (1154 lines, utama)
-├── XsaytUI.lua        # Legacy Rayfield-compatible (976 lines)
-├── example-ori.lua    # Contoh full ori gacor
-├── example.lua        # Contoh legacy
-├── README.md          # Docs ini
-├── index.html         # Website root (Pages)
-└── docs/
-    ├── index.html     # Website Pages (/docs)
-    ├── banner.png     # Banner (optional)
-    └── preview.png    # Preview (optional)
+├── XSAYT.lua              # Full ori v2 (1154 lines, utama) — 1 source of truth
+├── README.md              # Docs ini
+├── LICENSE                # MIT
+├── .gitignore
+├── docs/
+│   ├── index.html         # Website GitHub Pages (1 file, no duplikat)
+│   └── .nojekyll
+├── examples/
+│   ├── demo.lua           # Contoh full ori gacor
+│   └── README.md
+└── legacy/                # Deprecated, biar root tidak berantakan
+    ├── XsaytUI.lua        # Rayfield-like lama (976 lines, jangan pakai baru)
+    ├── example-legacy.lua
+    └── README.md
 ```
+> **Clean:** Root cuma 1 lib (`XSAYT.lua`), no duplikat `index.html`, legacy dipisah.
 
 ### 🔧 Delta Support
 
