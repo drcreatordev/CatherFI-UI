@@ -5,8 +5,9 @@
   </div>
 </p>
 
-<h1 align="center">XSAYT UI — Delta Gacor Edition v2</h1>
-<p align="center"><b>Full Ori • Bukan Rayfield Clone • Lebih Keren, Lebih Gacor, Lebih Ringan</b></p>
+<h1 align="center">XSAYT UI — Roblox Delta Executor UI Library v2</h1>
+<p align="center"><b>Roblox UI Library Premium untuk Delta Executor • Full Ori • Rayfield Alternative • Lebih Ringan 40%</b></p>
+<p align="center"><i>Delta Executor • Roblox UI Library • Rayfield Alternative • Roblox Script Hub</i></p>
 
 <p align="center">
   <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT"><img src="https://img.shields.io/github/stars/myzakonz-gif/UI-LIB-XSAYT?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
@@ -24,10 +25,11 @@
   <a href="#-vs-rayfield">vs Rayfield</a>
 </p>
 
-> **Loadstring 1 baris** — Delta Android & PC
+> **Roblox Delta Executor UI Library — Loadstring 1 baris** — Delta Android & PC • Rayfield Alternative
 > ```lua
 > loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 > ```
+> *Keywords: roblox ui library, delta executor, rayfield alternative, xsayt ui, roblox script hub*
 
 ---
 
@@ -246,5 +248,13 @@ PR welcome! Fork → branch `feat/...` → PR ke `main`.
 ### License
 
 MIT © 2026 myzakonz-gif — XSAYT UI. Boleh pakai untuk script Delta kamu, credit appreciated.
+
+---
+
+### SEO — Biar Gampang Ketemu di Google
+
+XSAYT UI adalah **Roblox UI Library untuk Delta Executor** terbaik sebagai **Rayfield alternative**. Cocok untuk `roblox script hub`, `delta executor script`, `roblox lua ui`. Cari di Google: `xsayt ui`, `roblox delta ui library`, `rayfield alternative`, `delta executor ui`.
+
+Cek live demo: https://myzakonz-gif.github.io/UI-LIB-XSAYT/ — terindeks Google via sitemap & robots.txt.
 
 <p align="center"><b>⭐ Star repo kalau gacor!</b> • <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT/issues">Report Issue</a></p>
