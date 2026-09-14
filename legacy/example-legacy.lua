@@ -1,16 +1,16 @@
--- XSAYT UI - Example Legacy untuk Delta Executor
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
+-- CatherFI UI - Example Legacy untuk Delta Executor
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
-local XsaytUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
+local CatherFIUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
-local Window = XsaytUI:CreateWindow({
-   Name = "XSAYT Hub | Delta 🔥",
-   LoadingTitle = "XSAYT Library",
+local Window = CatherFIUI:CreateWindow({
+   Name = "CatherFI Hub | Delta 🔥",
+   LoadingTitle = "CatherFI Library",
    LoadingSubtitle = "by myzakonz",
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = "XsaytUI",
-      FileName = "XsaytHub"
+      FolderName = "CatherFIUI",
+      FileName = "CatherFIHub"
    },
    Discord = {
       Enabled = false,
@@ -19,13 +19,13 @@ local Window = XsaytUI:CreateWindow({
    },
    KeySystem = false,
    KeySettings = {
-      Title = "XSAYT Key System",
+      Title = "CatherFI Key System",
       Subtitle = "Key System",
       Note = "Join discord untuk key",
-      FileName = "XsaytKey",
+      FileName = "CatherFIKey",
       SaveKey = true,
       GrabKeyFromSite = false,
-      Key = {"XSAYT-123"}
+      Key = {"CatherFI-123"}
    }
 })
 
@@ -120,18 +120,18 @@ SettingsTab:CreateKeybind({
    end,
 })
 
-SettingsTab:CreateLabel("XSAYT UI v1.0 - Delta Edition")
-SettingsTab:CreateParagraph({Title = "Info", Content = "UI Library legacy v1, gunakan XSAYT.lua v2 untuk fitur premium."})
+SettingsTab:CreateLabel("CatherFI UI v1.0 - Delta Edition")
+SettingsTab:CreateParagraph({Title = "Info", Content = "UI Library legacy v1, gunakan CatherFI.lua v2 untuk fitur premium."})
 
 SettingsTab:CreateButton({
    Name = "Destroy UI",
    Callback = function()
-       XsaytUI:Destroy()
+       CatherFIUI:Destroy()
    end,
 })
 
-XsaytUI:Notify({
-   Title = "XSAYT Loaded!",
+CatherFIUI:Notify({
+   Title = "CatherFI Loaded!",
    Content = "UI berhasil dimuat untuk Delta",
    Duration = 5,
    Image = 4483345998,

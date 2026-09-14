@@ -1,13 +1,13 @@
--- XSAYT UI v2 | Full Original | Delta Premium Edition
+-- CatherFI UI v2 | Full Original | Delta Premium Edition
 -- Original Design by myzakonz-gif - Professional UI Library
 -- Cyber Neon + Glassmorphism + Spring Animations
--- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
--- Docs: https://github.com/myzakonz-gif/UI-LIB-XSAYT
+-- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+-- Docs: https://github.com/myzakonz-gif/CatherFI-UI
 -- Size: ~1273 lines, 60fps, Delta Android Optimized
 
-local XSAYT = {}
-XSAYT.Version = "2.1.0-gacor-secure"
-XSAYT.Flags = {}
+local CatherFI = {}
+CatherFI.Version = "2.1.0-gacor-secure"
+CatherFI.Flags = {}
 -- Fallback untuk executor yang tidak punya typeof/table.find
 local typeof = typeof or type
 local tableFind = (rawget(table, "find")) or function(t, v)
@@ -15,8 +15,8 @@ local tableFind = (rawget(table, "find")) or function(t, v)
     return nil
 end
 
--- Themes - Original XSAYT Premium
-XSAYT.Themes = {
+-- Themes - Original CatherFI Premium
+CatherFI.Themes = {
     Cyber = {
         Bg = Color3.fromRGB(10,10,15),
         Bg2 = Color3.fromRGB(16,16,22),
@@ -80,7 +80,7 @@ XSAYT.Themes = {
 }
 
 -- Premium Icon Assets (no cheap emoji, all ImageLabel)
-XSAYT.Icons = {
+CatherFI.Icons = {
     Search      = "rbxassetid://6031158108", -- magnify
     Minimize    = "rbxassetid://6031091003", -- minus
     Close       = "rbxassetid://6031090997", -- x
@@ -98,13 +98,13 @@ local requestsDisabled = false
 local customAssetId = nil
 local secureMode = false
 if getgenv then
-    local ok, v = pcall(function() return getgenv().DISABLE_XSAYT_REQUESTS end)
+    local ok, v = pcall(function() return getgenv().DISABLE_CATHERFI_REQUESTS end)
     if ok and v then requestsDisabled = true end
-    local ok2, v2 = pcall(function() return getgenv().XSAYT_ASSET_ID end)
+    local ok2, v2 = pcall(function() return getgenv().CATHERFI_ASSET_ID end)
     if ok2 and typeof(v2)=="number" then customAssetId = v2 end
-    local ok3, v3 = pcall(function() return getgenv().XSAYT_SECURE end)
+    local ok3, v3 = pcall(function() return getgenv().CATHERFI_SECURE end)
     if ok3 and v3 then secureMode = true end
-    local ok4, v4 = pcall(function() return getgenv().XSAYT_SECURE_LEGACY end)
+    local ok4, v4 = pcall(function() return getgenv().CATHERFI_SECURE_LEGACY end)
     if ok4 and v4 then secureMode = true end
 end
 if secureMode then
@@ -129,7 +129,7 @@ local function loadWithTimeout(url, timeout)
         ok,res = s2,r2; done=true
     end)
     local to = task.delay(timeout, function()
-        if not done then warn("[XSAYT] Timeout "..url); task.cancel(th); res="Timeout"; done=true end
+        if not done then warn("[CatherFI] Timeout "..url); task.cancel(th); res="Timeout"; done=true end
     end)
     while not done do task.wait() end
     if to and coroutine.status(to) ~= "dead" then pcall(function() task.cancel(to) end) end
@@ -218,23 +218,23 @@ local function GetToastGui()
     if not pg then pg=LocalPlayer:WaitForChild("PlayerGui") end
     if pg and cloneref then pcall(function() pg = cloneref(pg) end) end
     ToastGui=Instance.new("ScreenGui")
-    ToastGui.Name="XSAYT_Toast"
+    ToastGui.Name="CatherFI_Toast"
     ToastGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
     ToastGui.ResetOnSpawn=false
     ToastGui.IgnoreGuiInset = true
     ToastGui.DisplayOrder = 999
     pcall(function()
-        if customAssetId and ToastGui then ToastGui.Name = "XSAYT_"..tostring(customAssetId) end
+        if customAssetId and ToastGui then ToastGui.Name = "CatherFI_"..tostring(customAssetId) end
     end)
     ToastGui.Parent=pg
     if syn and syn.protect_gui then pcall(function() syn.protect_gui(ToastGui) end) end
     return ToastGui
 end
 
-function XSAYT:Toast(cfg)
+function CatherFI:Toast(cfg)
     cfg=cfg or {}
     local gui=GetToastGui()
-    local theme = XSAYT.Themes[cfg.Theme or "Cyber"] or XSAYT.Themes.Cyber
+    local theme = CatherFI.Themes[cfg.Theme or "Cyber"] or CatherFI.Themes.Cyber
     local typeColors = {success=theme.Success, warn=theme.Warn, error=theme.Error, info=theme.Accent}
     local col = typeColors[cfg.Type or "info"] or theme.Accent
 
@@ -254,7 +254,7 @@ function XSAYT:Toast(cfg)
     Corner(bar,99)
 
     local title=Instance.new("TextLabel", holder)
-    title.Text=cfg.Title or "XSAYT"
+    title.Text=cfg.Title or "CatherFI"
     title.Font=Enum.Font.GothamBold
     title.TextSize=14
     title.TextColor3=theme.Text
@@ -292,7 +292,7 @@ function XSAYT:Toast(cfg)
 end
 
 -- Compatibility alias
-XSAYT.Notify = XSAYT.Toast
+CatherFI.Notify = CatherFI.Toast
 
 -- Config helpers (robust, with HttpService, timeout, cloneref safe)
 local function SaveConfig(folder, file, flags)
@@ -315,24 +315,24 @@ local function LoadConfig(folder, file)
     if ok then return data end
     return nil
 end
-function XSAYT:LoadConfiguration(folder, file)
+function CatherFI:LoadConfiguration(folder, file)
     if not folder then return nil end
     return LoadConfig(folder, file or "config")
 end
-function XSAYT:SaveConfiguration(folder, file, flags)
-    SaveConfig(folder or "XSAYT", file or "config", flags or XSAYT.Flags)
+function CatherFI:SaveConfiguration(folder, file, flags)
+    SaveConfig(folder or "CatherFI", file or "config", flags or CatherFI.Flags)
 end
 
-function XSAYT.New(a, b)
-    -- support both XSAYT.New(cfg) and XSAYT:New(cfg)
+function CatherFI.New(a, b)
+    -- support both CatherFI.New(cfg) and CatherFI:New(cfg)
     local cfg = b or a
-    if a == XSAYT and b then cfg = b end
+    if a == CatherFI and b then cfg = b end
     if typeof(cfg) ~= "table" then cfg = {} end
     cfg=cfg or {}
-    local title=cfg.Title or "XSAYT • Premium"
+    local title=cfg.Title or "CatherFI • Premium"
     local subtitle=cfg.Subtitle or "Delta Edition • v2.1"
     local themeName=cfg.Theme or "Cyber"
-    local theme=XSAYT.Themes[themeName] or XSAYT.Themes.Cyber
+    local theme=CatherFI.Themes[themeName] or CatherFI.Themes.Cyber
     local blurEnabled=cfg.Blur ~= false
     local size=cfg.Size or UDim2.new(0,640,0,460)
 
@@ -357,14 +357,14 @@ function XSAYT.New(a, b)
     end
     if parent and cloneref then pcall(function() parent = cloneref(parent) end) end
     if not parent then
-        warn("[XSAYT] Parent tidak ditemukan, fallback ke PlayerGui")
+        warn("[CatherFI] Parent tidak ditemukan, fallback ke PlayerGui")
         local lp2 = GetLocalPlayer()
         if lp2 then parent = lp2:FindFirstChildOfClass("PlayerGui") or lp2 end
     end
 
     local Gui=Instance.new("ScreenGui")
-    Gui.Name="XSAYT_"..tostring(math.random(10000,99999))
-    if customAssetId then Gui.Name = "XSAYT_"..tostring(customAssetId) end
+    Gui.Name="CatherFI_"..tostring(math.random(10000,99999))
+    if customAssetId then Gui.Name = "CatherFI_"..tostring(customAssetId) end
     Gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
     Gui.ResetOnSpawn=false
     Gui.IgnoreGuiInset = true
@@ -421,7 +421,7 @@ function XSAYT.New(a, b)
     Tween(bar,{Size=UDim2.new(1,0,1,0)},0.9, Enum.EasingStyle.Quad)
 
     local loadInfo=Instance.new("TextLabel", Loading)
-    loadInfo.Text="Loading XSAYT engine..."
+    loadInfo.Text="Loading CatherFI engine..."
     loadInfo.Font=Enum.Font.Gotham
     loadInfo.TextSize=11
     loadInfo.TextColor3=theme.Sub
@@ -430,7 +430,7 @@ function XSAYT.New(a, b)
     loadInfo.Position=UDim2.new(0,0,0,135)
     task.spawn(function()
         local dots={"...", "..", ".", "..", "..."}
-        for i=1,6 do loadInfo.Text="Loading XSAYT engine"..dots[(i%#dots)+1]; task.wait(0.15) end
+        for i=1,6 do loadInfo.Text="Loading CatherFI engine"..dots[(i%#dots)+1]; task.wait(0.15) end
         loadInfo.Text="GACOR ready!"
         loadInfo.TextColor3=theme.Success
     end)
@@ -527,7 +527,7 @@ function XSAYT.New(a, b)
     SearchBtn.Text=""
     Corner(SearchBtn,8); Stroke(SearchBtn, theme.Stroke,1)
     SearchBtn.AutoButtonColor=false
-    CreateIcon(SearchBtn, XSAYT.Icons.Search, UDim2.new(0,16,0,16), theme.Sub).Position = UDim2.new(0.5,-8,0.5,-8)
+    CreateIcon(SearchBtn, CatherFI.Icons.Search, UDim2.new(0,16,0,16), theme.Sub).Position = UDim2.new(0.5,-8,0.5,-8)
 
     local MinBtn=Instance.new("TextButton", Header)
     MinBtn.Size=UDim2.new(0,32,0,32)
@@ -536,7 +536,7 @@ function XSAYT.New(a, b)
     MinBtn.Text=""
     Corner(MinBtn,8); Stroke(MinBtn, theme.Stroke,1)
     MinBtn.AutoButtonColor=false
-    CreateIcon(MinBtn, XSAYT.Icons.Minimize, UDim2.new(0,14,0,14), theme.Text).Position = UDim2.new(0.5,-7,0.5,-7)
+    CreateIcon(MinBtn, CatherFI.Icons.Minimize, UDim2.new(0,14,0,14), theme.Text).Position = UDim2.new(0.5,-7,0.5,-7)
 
     local CloseBtn=Instance.new("TextButton", Header)
     CloseBtn.Size=UDim2.new(0,32,0,32)
@@ -545,7 +545,7 @@ function XSAYT.New(a, b)
     CloseBtn.Text=""
     Corner(CloseBtn,8)
     CloseBtn.AutoButtonColor=false
-    CreateIcon(CloseBtn, XSAYT.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
+    CreateIcon(CloseBtn, CatherFI.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
 
     -- Body
     local Sidebar=Instance.new("Frame", Main)
@@ -591,7 +591,7 @@ function XSAYT.New(a, b)
     Hub.Current=nil
 
     function Hub:SetTheme(name)
-        local t=XSAYT.Themes[name]
+        local t=CatherFI.Themes[name]
         if not t then return end
         Hub.Theme=t; Hub.ThemeName=name
         Main.BackgroundColor3=t.Bg
@@ -608,12 +608,12 @@ function XSAYT.New(a, b)
                 end
             end
         end
-        XSAYT:Toast({Title="Theme", Desc="Ganti ke "..name, Type="success", Duration=2})
+        CatherFI:Toast({Title="Theme", Desc="Ganti ke "..name, Type="success", Duration=2})
     end
 
-    function Hub:Toast(cfg2) XSAYT:Toast(cfg2) end
+    function Hub:Toast(cfg2) CatherFI:Toast(cfg2) end
     function Hub:Destroy() Gui:Destroy() end
-    XSAYT.Destroy = function() Gui:Destroy() end
+    CatherFI.Destroy = function() Gui:Destroy() end
 
     -- Show after loading
     task.delay(1.05, function()
@@ -623,7 +623,7 @@ function XSAYT.New(a, b)
         Main.Visible=true
         Main.Size=UDim2.new(0,620,0,430)
         Spring(Main, {Size=size})
-        XSAYT:Toast({Title="XSAYT GACOR", Desc="Loaded in 0.9s • Delta Ready", Type="success", Duration=3})
+        CatherFI:Toast({Title="CatherFI GACOR", Desc="Loaded in 0.9s • Delta Ready", Type="success", Duration=3})
     end)
 
     -- Controls (premium, no text symbols)
@@ -640,7 +640,7 @@ function XSAYT.New(a, b)
     end)
     CloseBtn.MouseButton1Click:Connect(function() Gui:Destroy() end)
     SearchBtn.MouseButton1Click:Connect(function()
-        XSAYT:Toast({Title="Search", Desc="Command palette soon! (Ctrl+K)", Type="info"})
+        CatherFI:Toast({Title="Search", Desc="Command palette soon! (Ctrl+K)", Type="info"})
     end)
     -- hover effects
     for _,b in ipairs({SearchBtn,MinBtn}) do
@@ -661,19 +661,19 @@ function XSAYT.New(a, b)
     function Hub:AddTab(cfg2)
         cfg2=cfg2 or {}
         local name=cfg2.Name or "Tab"
-        local icon=cfg2.Icon or XSAYT.Icons.DefaultTab
+        local icon=cfg2.Icon or CatherFI.Icons.DefaultTab
         -- normalize icon to rbxassetid
         local iconAsset = icon
         if typeof(icon)=="number" then iconAsset = "rbxassetid://"..tostring(icon) end
         if typeof(icon)=="string" and not string.find(icon, "rbxassetid://") then
             -- map friendly names to premium assets (no emoji) - robust
-            local map = {combat=XSAYT.Icons.Combat, visual=XSAYT.Icons.Visual, settings=XSAYT.Icons.Settings}
+            local map = {combat=CatherFI.Icons.Combat, visual=CatherFI.Icons.Visual, settings=CatherFI.Icons.Settings}
             local lower = ""
             local ok, res = pcall(function() return string.lower(icon) end)
             if ok and typeof(res)=="string" then lower = res end
             if map[lower] then iconAsset = map[lower]
             elseif string.len(icon) <= 4 then -- emoji fallback, replace with default premium
-                iconAsset = XSAYT.Icons.DefaultTab
+                iconAsset = CatherFI.Icons.DefaultTab
             else
                 iconAsset = icon
             end
@@ -790,7 +790,7 @@ function XSAYT.New(a, b)
                 CollapseBtn.Position=UDim2.new(1,-24,0,0)
                 CollapseBtn.BackgroundTransparency=1
                 CollapseBtn.Text=""
-                local colIcon = CreateIcon(CollapseBtn, XSAYT.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
+                local colIcon = CreateIcon(CollapseBtn, CatherFI.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
                 colIcon.Position = UDim2.new(0.5,-8,0.5,-8)
                 colIcon.Name = "Icon"
             end
@@ -834,7 +834,7 @@ function XSAYT.New(a, b)
                 cfg3=cfg3 or {}
                 local flag=cfg3.Flag
                 local val=cfg3.Default or cfg3.Enabled or false
-                if flag then XSAYT.Flags[flag]=val end
+                if flag then CatherFI.Flags[flag]=val end
                 local F=Card(52)
                 local T=Instance.new("TextLabel", F)
                 T.Text=cfg3.Title or "Toggle"
@@ -870,7 +870,7 @@ function XSAYT.New(a, b)
                 Hit.BackgroundTransparency=1
                 Hit.Text=""
                 local function Set(v, silent)
-                    val=v; if flag then XSAYT.Flags[flag]=v end
+                    val=v; if flag then CatherFI.Flags[flag]=v end
                     Tween(BG,{BackgroundColor3= v and theme.Accent or Color3.fromRGB(45,45,55)},0.22)
                     Spring(Dot,{Position= v and UDim2.new(1,-22,0.5,-10) or UDim2.new(0,3,0.5,-10)})
                     if not silent then pcall(function() cfg3.Callback(v) end) end
@@ -903,7 +903,7 @@ function XSAYT.New(a, b)
                 Lb.Size=UDim2.new(1,-40,1,0)
                 Lb.Position=UDim2.new(0,14,0,0)
                 Lb.TextXAlignment=Enum.TextXAlignment.Left
-                local Ico2=CreateIcon(F, XSAYT.Icons.ArrowRight, UDim2.new(0,18,0,18), Color3.new(1,1,1))
+                local Ico2=CreateIcon(F, CatherFI.Icons.ArrowRight, UDim2.new(0,18,0,18), Color3.new(1,1,1))
                 Ico2.Position=UDim2.new(1,-28,0.5,-9)
                 F.MouseEnter:Connect(function() Tween(F,{BackgroundTransparency=0.1},0.15) Spring(Ico2,{Position=UDim2.new(1,-24,0.5,-9)}) end)
                 F.MouseLeave:Connect(function() Tween(F,{BackgroundTransparency=0},0.15) Tween(Ico2,{Position=UDim2.new(1,-28,0.5,-9)},0.15) end)
@@ -922,7 +922,7 @@ function XSAYT.New(a, b)
                 local step=cfg3.Step or cfg3.Increment or 1
                 local val=cfg3.Default or cfg3.Value or min
                 local flag=cfg3.Flag
-                if flag then XSAYT.Flags[flag]=val end
+                if flag then CatherFI.Flags[flag]=val end
                 local F=Card(64)
                 local T=Instance.new("TextLabel", F)
                 T.Text=cfg3.Title or "Slider"
@@ -963,7 +963,7 @@ function XSAYT.New(a, b)
                 local dragging=false
                 local function Set(v, silent)
                     v=math.clamp(math.floor(v/step+0.5)*step, min, max)
-                    val=v; if flag then XSAYT.Flags[flag]=v end
+                    val=v; if flag then CatherFI.Flags[flag]=v end
                     VBox.Text=tostring(v)..(suffix~="" and " "..suffix or "")
                     Tween(Fill,{Size=UDim2.new((v-min)/(max-min),0,1,0)},0.12)
                     Tween(Knob,{Position=UDim2.new((v-min)/(max-min),-7,0.5,-7)},0.12)
@@ -998,7 +998,7 @@ function XSAYT.New(a, b)
                 local cur = cfg3.Default or (multi and {} or opts[1])
                 if typeof(cur)=="string" then cur={cur} end
                 if not cur or #cur==0 then cur={opts[1]} end
-                if flag then XSAYT.Flags[flag]= multi and cur or cur[1] end
+                if flag then CatherFI.Flags[flag]= multi and cur or cur[1] end
                 local F=Instance.new("Frame", Body)
                 F.Size=UDim2.new(1,0,0,50)
                 F.BackgroundColor3=theme.Bg2
@@ -1034,7 +1034,7 @@ function XSAYT.New(a, b)
                 Disp.Position=UDim2.new(0,12,0, cfg3.Desc and 38 or 24)
                 Disp.TextXAlignment=Enum.TextXAlignment.Left
                 Disp.TextTruncate=Enum.TextTruncate.AtEnd
-                local Arrow=CreateIcon(F, XSAYT.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
+                local Arrow=CreateIcon(F, CatherFI.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
                 Arrow.Position=UDim2.new(1,-28,0.5,-8)
                 Arrow.Name="ArrowIcon"
                 local Hit=Instance.new("TextButton", F)
@@ -1112,7 +1112,7 @@ function XSAYT.New(a, b)
                             cur={opt}; open=false; Tween(F,{Size=UDim2.new(1,0,0,50)},0.22); Tween(Arrow,{Rotation=0},0.2)
                         end
                         Refresh()
-                        if flag then XSAYT.Flags[flag]= multi and cur or cur[1] end
+                        if flag then CatherFI.Flags[flag]= multi and cur or cur[1] end
                         pcall(function() cfg3.Callback(multi and cur or cur[1], cur) end)
                         for _,b in ipairs(buttons) do
                             local sel=tableFind(cur, b.Opt) ~= nil
@@ -1170,7 +1170,7 @@ function XSAYT.New(a, b)
                 cfg3=cfg3 or {}
                 local col=cfg3.Default or cfg3.Color or Color3.fromRGB(124,92,255)
                 local flag=cfg3.Flag
-                if flag then XSAYT.Flags[flag]=col end
+                if flag then CatherFI.Flags[flag]=col end
                 local F=Card(48)
                 local T=Instance.new("TextLabel", F)
                 T.Text=cfg3.Title or "Color"
@@ -1197,7 +1197,7 @@ function XSAYT.New(a, b)
                     h = (h + 0.15) % 1
                     col = Color3.fromHSV(h,s,v)
                     Tween(Prev,{BackgroundColor3=col},0.22)
-                    if flag then XSAYT.Flags[flag]=col end
+                    if flag then CatherFI.Flags[flag]=col end
                     pcall(function() cfg3.Callback(col) end)
                     -- long press opens full palette (future)
                 end)
@@ -1209,7 +1209,7 @@ function XSAYT.New(a, b)
                 cfg3=cfg3 or {}
                 local cur=cfg3.Default or "K"
                 local flag=cfg3.Flag
-                if flag then XSAYT.Flags[flag]=cur end
+                if flag then CatherFI.Flags[flag]=cur end
                 local F=Card(48)
                 local T=Instance.new("TextLabel", F)
                 T.Text=cfg3.Title or "Keybind"
@@ -1234,7 +1234,7 @@ function XSAYT.New(a, b)
                 UserInputService.InputBegan:Connect(function(input,gp)
                     if listening and not gp then
                         local key=input.KeyCode.Name~="Unknown" and input.KeyCode.Name or input.UserInputType.Name
-                        cur=key; KeyBtn.Text=cur; if flag then XSAYT.Flags[flag]=cur end
+                        cur=key; KeyBtn.Text=cur; if flag then CatherFI.Flags[flag]=cur end
                         listening=false; Tween(KeyBtn,{BackgroundColor3=theme.Card},0.15)
                         pcall(function() cfg3.Callback(cur) end)
                     end
@@ -1313,4 +1313,5 @@ function XSAYT.New(a, b)
     return Hub
 end
 
-return XSAYT
+if getgenv then getgenv().XSAYT = CatherFI; getgenv().CatherFI = CatherFI end
+return CatherFI

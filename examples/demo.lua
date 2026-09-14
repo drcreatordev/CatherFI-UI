@@ -1,10 +1,10 @@
--- XSAYT v2 Full Ori - Example Premium untuk Delta
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
+-- CatherFI v2 Full Ori - Example Premium untuk Delta
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
-local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
-local Hub = XSAYT.New({
-    Title = "XSAYT • Delta Premium",
+local Hub = CatherFI.New({
+    Title = "CatherFI • Delta Premium",
     Subtitle = "Full Ori • Premium Icons",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
@@ -54,7 +54,7 @@ MainSec:AddDropdown({
     Options={"Katana","Gun","Sword","Blox Fruit","Dragon","Yoru"},
     Default="Katana",
     Search=true,
-    Callback=function(v) XSAYT:Toast({Title="Weapon", Desc="Pilih: "..v, Type="info"}) end
+    Callback=function(v) CatherFI:Toast({Title="Weapon", Desc="Pilih: "..v, Type="info"}) end
 })
 
 MainSec:AddButton({
@@ -91,12 +91,12 @@ CfgSec:AddDropdown({
     Default="Cyber",
     Callback=function(v) Hub:SetTheme(v) end
 })
-CfgSec:AddLabel("XSAYT v2.0 • Delta Premium Edition")
-CfgSec:AddParagraph({Title="Tentang XSAYT", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan myzakonz-gif."})
+CfgSec:AddLabel("CatherFI v2.0 • Delta Premium Edition")
+CfgSec:AddParagraph({Title="Tentang CatherFI", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan myzakonz-gif."})
 CfgSec:AddDivider()
 CfgSec:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 
 -- Toast demo
-Hub:Toast({Title="XSAYT Premium", Desc="Delta ready • 0.9s load", Type="success", Duration=4})
+Hub:Toast({Title="CatherFI Premium", Desc="Delta ready • 0.9s load", Type="success", Duration=4})
 task.wait(1)
 Hub:Toast({Title="Tips", Desc="Tekan K untuk toggle UI • search di header", Type="info"})

@@ -1,17 +1,17 @@
 <p align="center">
   <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:28px;border:1px solid #282834">
-    <div style="font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">XSAYT UI</div>
+    <div style="font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#7c5cff 0%,#00dcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">CatherFI UI</div>
     <div style="color:#8c8c9b;font-size:13px;margin-top:4px">Delta Premium Edition • Glassmorphism • Spring 60fps • Full Original</div>
   </div>
 </p>
 
-<h1 align="center">XSAYT UI — Roblox Delta Executor UI Library v2</h1>
+<h1 align="center">CatherFI UI — Roblox Delta Executor UI Library v2</h1>
 <p align="center"><b>Roblox UI Library Premium untuk Delta Executor • Full Original • Professional • Ringan & Cepat</b></p>
 <p align="center"><i>Delta Executor • Roblox UI Library • Roblox Script Hub • Premium Design</i></p>
 
 <p align="center">
-  <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT"><img src="https://img.shields.io/github/stars/myzakonz-gif/UI-LIB-XSAYT?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
-  <a href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/"><img src="https://img.shields.io/badge/docs-website-00dcff?style=for-the-badge&logo=googlechrome" alt="Docs"/></a>
+  <a href="https://github.com/myzakonz-gif/CatherFI-UI"><img src="https://img.shields.io/github/stars/myzakonz-gif/CatherFI-UI?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
+  <a href="https://myzakonz-gif.github.io/CatherFI-UI/"><img src="https://img.shields.io/badge/docs-website-00dcff?style=for-the-badge&logo=googlechrome" alt="Docs"/></a>
   <img src="https://img.shields.io/badge/version-2.1.0_premium-7c5cff?style=for-the-badge" alt="Version"/>
   <img src="https://img.shields.io/badge/platform-Delta-00e682?style=for-the-badge&logo=roblox" alt="Delta"/>
   <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="MIT"/>
@@ -19,16 +19,16 @@
 
 <p align="center">
   <a href="#quick-start">Quick Start</a> •
-  <a href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/">Live Demo</a> •
+  <a href="https://myzakonz-gif.github.io/CatherFI-UI/">Live Demo</a> •
   <a href="#api-lengkap">API</a> •
   <a href="#themes--ganti-realtime">Themes</a>
 </p>
 
 > **Roblox Delta Executor UI Library — Loadstring 1 baris** — Delta Android & PC
 > ```lua
-> loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
+> loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 > ```
-> *Keywords: roblox ui library, delta executor, xsayt ui, roblox script hub*
+> *Keywords: roblox ui library, delta executor, catherfi ui, roblox script hub*
 
 ---
 
@@ -36,15 +36,15 @@
 
 <p align="center">
   <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:32px;color:#7c5cff;border:1px solid #282834;margin:16px 0">
-    <b>XSAYT Preview</b><br/>
-    <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/" style="color:#00dcff">myzakonz-gif.github.io/UI-LIB-XSAYT</a></span>
+    <b>CatherFI Preview</b><br/>
+    <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://myzakonz-gif.github.io/CatherFI-UI/" style="color:#00dcff">myzakonz-gif.github.io/CatherFI-UI</a></span>
   </div>
 </p>
 <p align="center"><i>Spring 60fps • Blur Acrylic • Animated Gradient Border • Touch Gesture</i></p>
 
 ---
 
-### Fitur Premium XSAYT
+### Fitur Premium CatherFI
 
 | Fitur | Detail |
 |-------|--------|
@@ -79,17 +79,17 @@ Hub:SetTheme("Neon") -- ganti kapan aja, smooth tween
 
 **1. Delta Executor (recommended)**
 ```lua
-local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 ```
 
 **2. Raw URL**
 ```
-https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua
+https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua
 ```
 
 **3. Legacy (deprecated)**
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 -- API lama: CreateWindow, CreateTab (pindah ke legacy/)
 ```
 
@@ -98,10 +98,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-X
 ### Quick Start — Full Original API
 
 ```lua
-local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
 
-local Hub = XSAYT.New({
-    Title = "XSAYT • Delta Premium",
+local Hub = CatherFI.New({
+    Title = "CatherFI • Delta Premium",
     Subtitle = "Full Original • by myzakonz • v2.1",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
@@ -148,12 +148,12 @@ end})
 local Settings = Hub:AddTab({Name="Settings", Icon="rbxassetid://6031280882"})
 local S2 = Settings:AddSection("CONFIG")
 S2:AddInput({Title="Player Target", Placeholder="Nama player...", Callback=function(t) print(t) end})
-S2:AddLabel("XSAYT v2.1 • Premium Edition")
+S2:AddLabel("CatherFI v2.1 • Premium Edition")
 S2:AddParagraph({Title="Info", Desc="Glassmorphism, spring anim, ringan & premium."})
 S2:AddDivider()
 S2:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 
-Hub:Toast({Title="Premium!", Desc="XSAYT loaded 0.9s", Type="success", Duration=3})
+Hub:Toast({Title="Premium!", Desc="CatherFI loaded 0.9s", Type="success", Duration=3})
 ```
 
 > Contoh lengkap: [`examples/demo.lua`](./examples/demo.lua) • Legacy di [`legacy/`](./legacy/)
@@ -164,7 +164,7 @@ Hub:Toast({Title="Premium!", Desc="XSAYT loaded 0.9s", Type="success", Duration=
 
 #### Core
 ```lua
-XSAYT.New({ Title, Subtitle, Theme, Blur=true, Size=UDim2.new(0,640,0,460) }) -> Hub
+CatherFI.New({ Title, Subtitle, Theme, Blur=true, Size=UDim2.new(0,640,0,460) }) -> Hub
 Hub:AddTab({ Name, Icon="rbxassetid://6031265976" }) -> Tab  -- premium ImageLabel
 Tab:AddSection(Name, { Collapsible=false }) -> Section
 Hub:Toast({ Title, Desc, Type="success|info|warn|error", Duration=3, Sound=true })
@@ -193,7 +193,7 @@ Semua komponen return `{Set, Frame}` untuk update realtime: `toggle:Set(true)`
 
 ### Website Docs — GitHub Pages
 
-Live preview + playground: **https://myzakonz-gif.github.io/UI-LIB-XSAYT/**
+Live preview + playground: **https://myzakonz-gif.github.io/CatherFI-UI/**
 
 Website berisi:
 - Interactive mockup (bisa coba toggle/slider langsung di browser)
@@ -208,8 +208,8 @@ File website ada di [`/docs`](./docs) — auto deploy via GitHub Pages (branch `
 ### Struktur Repo — Rapi, No Duplikat
 
 ```
-UI-LIB-XSAYT/
-├── XSAYT.lua              # Full original v2.1 (1273 lines, utama) — 1 source of truth
+CatherFI-UI/
+├── CatherFI.lua              # Full original v2.1 (1273 lines, utama) — 1 source of truth
 ├── README.md              # Docs ini
 ├── LICENSE                # MIT
 ├── .gitignore
@@ -222,11 +222,11 @@ UI-LIB-XSAYT/
 │   ├── demo.lua           # Contoh premium
 │   └── README.md
 └── legacy/                # Deprecated, biar root tidak berantakan
-    ├── XsaytUI.lua        # v1 lama (976 lines, jangan pakai baru)
+    ├── CatherFIUI.lua        # v1 lama (976 lines, jangan pakai baru)
     ├── example-legacy.lua
     └── README.md
 ```
-> **Clean:** Root cuma 1 lib (`XSAYT.lua`), no duplikat, legacy dipisah.
+> **Clean:** Root cuma 1 lib (`CatherFI.lua`), no duplikat, legacy dipisah.
 
 ### Delta Support
 
@@ -249,14 +249,14 @@ PR welcome! Fork → branch `feat/...` → PR ke `main`.
 
 ### License
 
-MIT © 2026 myzakonz-gif — XSAYT UI. Boleh pakai untuk script Delta kamu, credit appreciated.
+MIT © 2026 myzakonz-gif — CatherFI UI. Boleh pakai untuk script Delta kamu, credit appreciated.
 
 ---
 
 ### SEO — Biar Gampang Ketemu di Google
 
-XSAYT UI adalah **Roblox UI Library untuk Delta Executor** premium original. Cocok untuk `roblox script hub`, `delta executor script`, `roblox lua ui`. Cari di Google: `xsayt ui`, `roblox delta ui library`, `delta executor ui`.
+CatherFI UI adalah **Roblox UI Library untuk Delta Executor** premium original. Cocok untuk `roblox script hub`, `delta executor script`, `roblox lua ui`. Cari di Google: `catherfi ui`, `roblox delta ui library`, `delta executor ui`.
 
-Cek live demo: https://myzakonz-gif.github.io/UI-LIB-XSAYT/ — terindeks Google via sitemap & robots.txt.
+Cek live demo: https://myzakonz-gif.github.io/CatherFI-UI/ — terindeks Google via sitemap & robots.txt.
 
-<p align="center"><b>⭐ Star repo kalau suka!</b> • <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT/issues">Report Issue</a></p>
+<p align="center"><b>⭐ Star repo kalau suka!</b> • <a href="https://github.com/myzakonz-gif/CatherFI-UI/issues">Report Issue</a></p>
