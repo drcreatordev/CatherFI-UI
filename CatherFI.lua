@@ -533,40 +533,80 @@ function CatherFI.New(a, b)
     CloseBtn.AutoButtonColor=false
     CreateIcon(CloseBtn, CatherFI.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
 
-    -- Body - clean layout (mobile sidebar lebih ramping)
-    local sidebarW = isMobile and 120 or 150
-    local Sidebar=Instance.new("Frame", Main)
-    Sidebar.Size=UDim2.new(0,sidebarW,1,-48)
-    Sidebar.Position=UDim2.new(0,0,0,48)
-    Sidebar.BackgroundColor3=theme.Sidebar
-    Corner(Sidebar,10)
-    local sFix=Instance.new("Frame", Sidebar)
-    sFix.Size=UDim2.new(1,0,0,10)
-    sFix.Position=UDim2.new(0,0,0,0)
-    sFix.BackgroundColor3=theme.Sidebar
-    sFix.BorderSizePixel=0
-    local sFix2=Instance.new("Frame", Sidebar)
-    sFix2.Size=UDim2.new(0,10,1,0)
-    sFix2.Position=UDim2.new(1,-10,0,0)
-    sFix2.BackgroundColor3=theme.Sidebar
-    sFix2.BorderSizePixel=0
+    -- Body - clean layout (mobile: horizontal tabs di atas, portrait tidak jelek)
+    local Sidebar, Nav, NavLayout, Content
+    local sidebarW = 150
+    if isMobile then
+        -- Mobile portrait: tabs horizontal di atas (Rayfield 44px, CatherFI 42px lebih ramping)
+        Sidebar=Instance.new("Frame", Main)
+        Sidebar.Size=UDim2.new(1,0,0,42)
+        Sidebar.Position=UDim2.new(0,0,0,48)
+        Sidebar.BackgroundColor3=theme.Sidebar
+        Sidebar.ClipsDescendants=true
+        Corner(Sidebar,0)
+        local sFix=Instance.new("Frame", Sidebar)
+        sFix.Size=UDim2.new(1,0,0,1)
+        sFix.Position=UDim2.new(0,0,1,-1)
+        sFix.BackgroundColor3=theme.Stroke
+        sFix.BorderSizePixel=0
+        sFix.BackgroundTransparency=0.7
 
-    local Nav=Instance.new("ScrollingFrame", Sidebar)
-    Nav.Size=UDim2.new(1,0,1,-16)
-    Nav.Position=UDim2.new(0,0,0,8)
-    Nav.BackgroundTransparency=1
-    Nav.ScrollBarThickness=0
-    Nav.CanvasSize=UDim2.new(0,0,0,0)
-    Nav.AutomaticCanvasSize=Enum.AutomaticSize.Y
-    local NavLayout=Instance.new("UIListLayout", Nav)
-    NavLayout.Padding=UDim.new(0,4)
-    NavLayout.SortOrder=Enum.SortOrder.LayoutOrder
-    Padding(Nav,6,0,6,0)
+        Nav=Instance.new("ScrollingFrame", Sidebar)
+        Nav.Size=UDim2.new(1,-12,1,-8)
+        Nav.Position=UDim2.new(0,6,0,4)
+        Nav.BackgroundTransparency=1
+        Nav.ScrollBarThickness=0
+        Nav.CanvasSize=UDim2.new(0,0,0,0)
+        Nav.AutomaticCanvasSize=Enum.AutomaticSize.X
+        Nav.ScrollingDirection=Enum.ScrollingDirection.X
+        Nav.ElasticBehavior=Enum.ElasticBehavior.WhenScrollable
+        NavLayout=Instance.new("UIListLayout", Nav)
+        NavLayout.FillDirection=Enum.FillDirection.Horizontal
+        NavLayout.Padding=UDim.new(0,6)
+        NavLayout.SortOrder=Enum.SortOrder.LayoutOrder
+        NavLayout.VerticalAlignment=Enum.VerticalAlignment.Center
+        Padding(Nav,0,0,0,0)
 
-    local Content=Instance.new("Frame", Main)
-    Content.Size=UDim2.new(1,-sidebarW,1,-48)
-    Content.Position=UDim2.new(0,sidebarW,0,48)
-    Content.BackgroundTransparency=1
+        Content=Instance.new("Frame", Main)
+        Content.Size=UDim2.new(1,0,1,-90)
+        Content.Position=UDim2.new(0,0,0,90)
+        Content.BackgroundTransparency=1
+    else
+        -- PC: sidebar vertical kiri (clean)
+        sidebarW = 150
+        Sidebar=Instance.new("Frame", Main)
+        Sidebar.Size=UDim2.new(0,sidebarW,1,-48)
+        Sidebar.Position=UDim2.new(0,0,0,48)
+        Sidebar.BackgroundColor3=theme.Sidebar
+        Corner(Sidebar,10)
+        local sFix=Instance.new("Frame", Sidebar)
+        sFix.Size=UDim2.new(1,0,0,10)
+        sFix.Position=UDim2.new(0,0,0,0)
+        sFix.BackgroundColor3=theme.Sidebar
+        sFix.BorderSizePixel=0
+        local sFix2=Instance.new("Frame", Sidebar)
+        sFix2.Size=UDim2.new(0,10,1,0)
+        sFix2.Position=UDim2.new(1,-10,0,0)
+        sFix2.BackgroundColor3=theme.Sidebar
+        sFix2.BorderSizePixel=0
+
+        Nav=Instance.new("ScrollingFrame", Sidebar)
+        Nav.Size=UDim2.new(1,0,1,-16)
+        Nav.Position=UDim2.new(0,0,0,8)
+        Nav.BackgroundTransparency=1
+        Nav.ScrollBarThickness=0
+        Nav.CanvasSize=UDim2.new(0,0,0,0)
+        Nav.AutomaticCanvasSize=Enum.AutomaticSize.Y
+        NavLayout=Instance.new("UIListLayout", Nav)
+        NavLayout.Padding=UDim.new(0,4)
+        NavLayout.SortOrder=Enum.SortOrder.LayoutOrder
+        Padding(Nav,6,0,6,0)
+
+        Content=Instance.new("Frame", Main)
+        Content.Size=UDim2.new(1,-sidebarW,1,-48)
+        Content.Position=UDim2.new(0,sidebarW,0,48)
+        Content.BackgroundTransparency=1
+    end
 
     -- Hub object
     local Hub={}
@@ -672,19 +712,30 @@ function CatherFI.New(a, b)
         end
 
         local Btn=Instance.new("TextButton", Nav)
-        Btn.Size=UDim2.new(1,0,0,36)
-        Btn.BackgroundColor3=theme.Card
-        Btn.BackgroundTransparency=1
-        Btn.Text=""
-        Btn.AutoButtonColor=false
-        Corner(Btn,6)
+        if isMobile then
+            Btn.Size=UDim2.new(0,0,0,32)
+            Btn.AutomaticSize=Enum.AutomaticSize.X
+            Btn.BackgroundColor3=theme.Card
+            Btn.BackgroundTransparency=1
+            Btn.Text=""
+            Btn.AutoButtonColor=false
+            Corner(Btn,6)
+            Padding(Btn,8,0,8,0)
+        else
+            Btn.Size=UDim2.new(1,0,0,36)
+            Btn.BackgroundColor3=theme.Card
+            Btn.BackgroundTransparency=1
+            Btn.Text=""
+            Btn.AutoButtonColor=false
+            Corner(Btn,6)
+        end
 
         local Ico=Instance.new("ImageLabel", Btn)
         Ico.Image=iconAsset
         Ico.ImageColor3=theme.Sub
         Ico.BackgroundTransparency=1
         Ico.Size=UDim2.new(0,16,0,16)
-        Ico.Position=UDim2.new(0,10,0.5,-8)
+        Ico.Position=isMobile and UDim2.new(0,0,0.5,-8) or UDim2.new(0,10,0.5,-8)
         Ico.ScaleType = Enum.ScaleType.Fit
 
         local Lb=Instance.new("TextLabel", Btn)
@@ -693,15 +744,28 @@ function CatherFI.New(a, b)
         Lb.TextSize=12
         Lb.TextColor3=theme.Sub
         Lb.BackgroundTransparency=1
-        Lb.Size=UDim2.new(1,-36,1,0)
-        Lb.Position=UDim2.new(0,30,0,0)
+        if isMobile then
+            Lb.Size=UDim2.new(0,0,1,0)
+            Lb.AutomaticSize=Enum.AutomaticSize.X
+            Lb.Position=UDim2.new(0,20,0,0)
+        else
+            Lb.Size=UDim2.new(1,-36,1,0)
+            Lb.Position=UDim2.new(0,30,0,0)
+        end
         Lb.TextXAlignment=Enum.TextXAlignment.Left
 
         local Indicator=Instance.new("Frame", Btn)
-        Indicator.Size=UDim2.new(0,2,0,16)
-        Indicator.Position=UDim2.new(0,0,0.5,-8)
-        Indicator.BackgroundColor3=theme.Accent
-        Corner(Indicator,99)
+        if isMobile then
+            Indicator.Size=UDim2.new(1,0,0,2)
+            Indicator.Position=UDim2.new(0,0,1,-2)
+            Indicator.BackgroundColor3=theme.Accent
+            Corner(Indicator,99)
+        else
+            Indicator.Size=UDim2.new(0,2,0,16)
+            Indicator.Position=UDim2.new(0,0,0.5,-8)
+            Indicator.BackgroundColor3=theme.Accent
+            Corner(Indicator,99)
+        end
 
         local Page=Instance.new("ScrollingFrame", Content)
         Page.Size=UDim2.new(1,0,1,0)
