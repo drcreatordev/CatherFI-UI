@@ -1,18 +1,18 @@
--- XSAYT v2 Full Ori - Example Gacor untuk Delta
+-- XSAYT v2 Full Ori - Example Premium untuk Delta
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 
 local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 
 local Hub = XSAYT.New({
-    Title = "XSAYT • Delta GACOR 🔥",
-    Subtitle = "Full Ori • Lebih keren dari Rayfield",
+    Title = "XSAYT • Delta Premium",
+    Subtitle = "Full Ori • Premium Icons",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
     Size = UDim2.new(0,640,0,460)
 })
 
--- TAB 1 COMBAT
-local Combat = Hub:AddTab({Name="Combat", Icon="⚔️"})
+-- TAB 1 COMBAT (premium ImageLabel icons, bukan emoji)
+local Combat = Hub:AddTab({Name="Combat", Icon="rbxassetid://6031265976"})
 local MainSec = Combat:AddSection("COMBAT MAIN", {Collapsible=false})
 
 MainSec:AddToggle({
@@ -50,7 +50,7 @@ MainSec:AddSlider({
 
 MainSec:AddDropdown({
     Title="Weapon Select",
-    Desc="Searchable gacor",
+    Desc="Searchable premium",
     Options={"Katana","Gun","Sword","Blox Fruit","Dragon","Yoru"},
     Default="Katana",
     Search=true,
@@ -65,7 +65,7 @@ MainSec:AddButton({
 })
 
 -- TAB 2 VISUAL
-local Visual = Hub:AddTab({Name="Visual", Icon="👁️"})
+local Visual = Hub:AddTab({Name="Visual", Icon="rbxassetid://6031075938"})
 local EspSec = Visual:AddSection("ESP & VISUAL", {Collapsible=true})
 
 EspSec:AddToggle({Title="ESP Box", Desc="Lihat musuh lewat tembok", Default=false, Callback=function(v) print("ESP",v) end})
@@ -80,7 +80,7 @@ EspSec:AddDropdown({
 EspSec:AddSlider({Title="ESP Distance", Min=100, Max=5000, Default=1000, Step=100, Suffix="studs"})
 
 -- TAB 3 SETTINGS
-local Settings = Hub:AddTab({Name="Settings", Icon="⚙️"})
+local Settings = Hub:AddTab({Name="Settings", Icon="rbxassetid://6031280882"})
 local CfgSec = Settings:AddSection("CONFIGURATION")
 
 CfgSec:AddInput({Title="Player Target", Placeholder="Masukkan nama...", Callback=function(t) print(t) end})
@@ -91,12 +91,12 @@ CfgSec:AddDropdown({
     Default="Cyber",
     Callback=function(v) Hub:SetTheme(v) end
 })
-CfgSec:AddLabel("XSAYT v2.0 • Delta Gacor Edition")
-CfgSec:AddParagraph({Title="Tentang XSAYT", Desc="Full ori UI, bukan tiru Rayfield. Glassmorphism, spring animation, 40% lebih ringan & lebih keren. Buatan myzakonz-gif."})
+CfgSec:AddLabel("XSAYT v2.0 • Delta Premium Edition")
+CfgSec:AddParagraph({Title="Tentang XSAYT", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan myzakonz-gif."})
 CfgSec:AddDivider()
 CfgSec:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 
 -- Toast demo
-Hub:Toast({Title="XSAYT GACOR", Desc="Delta ready • 0.9s load", Type="success", Duration=4})
+Hub:Toast({Title="XSAYT Premium", Desc="Delta ready • 0.9s load", Type="success", Duration=4})
 task.wait(1)
-Hub:Toast({Title="Tips", Desc="Tekan K untuk toggle UI • ⌕ untuk search", Type="info"})
+Hub:Toast({Title="Tips", Desc="Tekan K untuk toggle UI • search di header", Type="info"})

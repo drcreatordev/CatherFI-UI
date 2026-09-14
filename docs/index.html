@@ -75,7 +75,7 @@ tailwind.config={
     </p>
     <div class="mt-6 flex flex-wrap gap-3">
       <button onclick="copyLoadstring()" class="group px-5 py-2.5 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition">
-        <span id="copyText">Copy Loadstring</span> <span class="group-active:scale-90 transition">→</span>
+        <span id="copyText">Copy Loadstring</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-active:translate-x-0.5 transition"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </button>
       <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT" target="_blank" class="px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition">★ GitHub</a>
       <a href="#preview" class="px-5 py-2.5 rounded-xl bg-card border border-stroke font-medium text-sm hover:bg-card2 transition">Live Preview</a>
@@ -117,22 +117,22 @@ local Hub = XSAYT.New({
           </div>
         </div>
         <div class="flex items-center gap-1.5">
-          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 text-xs">⌕</button>
-          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400">—</button>
-          <button class="w-7 h-7 rounded-lg bg-[#ff465a] text-white">×</button>
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          <button class="w-7 h-7 rounded-lg bg-card border border-stroke text-zinc-400 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
+          <button class="w-7 h-7 rounded-lg bg-[#ff465a] text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
         </div>
       </div>
       <div class="flex h-[380px]">
         <!-- sidebar -->
         <div class="w-[150px] bg-[#0d0d12] border-r border-stroke/50 p-2 flex flex-col gap-1.5">
           <button data-tab="combat" class="tab-btn active w-full h-9 rounded-xl bg-card border border-stroke flex items-center gap-2.5 px-2.5 text-sm font-medium text-white">
-            <span>⚔️</span> Combat <span class="ml-auto w-1 h-5 rounded-full bg-gradient-to-b from-accent to-accent2"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/></svg> Combat <span class="ml-auto w-1 h-5 rounded-full bg-gradient-to-b from-accent to-accent2"></span>
           </button>
           <button data-tab="visual" class="tab-btn w-full h-9 rounded-xl flex items-center gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50">
-            <span>👁️</span> Visual
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Visual
           </button>
           <button data-tab="settings" class="tab-btn w-full h-9 rounded-xl flex items-center gap-2.5 px-2.5 text-sm font-medium text-zinc-500 hover:bg-card/50">
-            <span>⚙️</span> Settings
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg> Settings
           </button>
           <div class="mt-auto p-2 rounded-xl bg-card border border-stroke">
             <div class="text-[11px] font-bold text-zinc-500">THEME</div>
@@ -178,16 +178,16 @@ local Hub = XSAYT.New({
                 <div class="text-sm font-medium">Weapon</div>
                 <div class="text-xs text-zinc-500">Searchable gacor</div>
                 <button onclick="toggleDropdown()" class="mt-2 w-full h-8 rounded-lg bg-card border border-stroke flex items-center justify-between px-3 text-sm">
-                  <span id="dropdownVal" class="text-zinc-400">Katana</span><span id="dropdownArrow" class="text-zinc-500 transition">▾</span>
+                  <span id="dropdownVal" class="text-zinc-400">Katana</span><span id="dropdownArrow" class="text-zinc-500 transition flex items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
                 </button>
                 <div id="dropdownList" class="hidden mt-2 space-y-1">
-                  <button onclick="pickDropdown('Katana')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-accent hover:text-white text-sm transition">Katana ✓</button>
+                  <button onclick="pickDropdown('Katana')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-accent hover:text-white text-sm transition flex items-center justify-between">Katana <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></button>
                   <button onclick="pickDropdown('Gun')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Gun</button>
                   <button onclick="pickDropdown('Blox Fruit')" class="w-full text-left px-3 py-2 rounded-lg bg-card hover:bg-card2 text-sm transition">Blox Fruit</button>
                 </div>
               </div>
             </div>
-            <button class="w-full h-11 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-bold text-sm flex items-center justify-center gap-2">Execute →</button>
+            <button class="w-full h-11 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-bold text-sm flex items-center justify-center gap-2">Execute <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
           </div>
           <!-- visual tab -->
           <div id="tab-visual" class="tab-page hidden space-y-3">
@@ -231,32 +231,32 @@ local Hub = XSAYT.New({
   <h2 class="text-2xl font-bold">Kenapa lebih gacor dari Rayfield?</h2>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center">✨</div>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M15 3h4a2 2 0 0 1 2 2v4"/><path d="M9 21H5a2 2 0 0 1-2-2v-4"/><path d="M15 21h4a2 2 0 0 1-2-2v-4"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></div>
       <div class="font-semibold mt-3">Glassmorphism</div>
       <div class="text-sm text-zinc-500 mt-1">Blur acrylic + neon gradient animated, corner 16px. Bukan flat membosankan.</div>
     </div>
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent2 to-emerald-400 flex items-center justify-center">⚡</div>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent2 to-emerald-400 flex items-center justify-center text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
       <div class="font-semibold mt-3">Spring 60fps</div>
       <div class="text-sm text-zinc-500 mt-1">Back easing smooth, bukan Quad kaku. Terasa premium di Delta.</div>
     </div>
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">📱</div>
-      <div class="font-semibold mt-3">Mobile Gacor</div>
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+      <div class="font-semibold mt-3">Mobile Premium</div>
       <div class="text-sm text-zinc-500 mt-1">Touch, swipe minimize, haptic. Rayfield buggy di Android, XSAYT lancar.</div>
     </div>
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🔔</div>
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7-6 5-6 9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
       <div class="font-semibold mt-3">Toast + Sound</div>
       <div class="text-sm text-zinc-500 mt-1">Success/warn/error dengan sound & accent bar. Lebih keren dari Notify.</div>
     </div>
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🎚️</div>
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="21" y2="21"/><line x1="4" x2="20" y1="7" y2="7"/><g><line x1="9" x2="15" y1="14" y2="14"/><circle cx="15" cy="14" r="2"/></g><g><line x1="9" x2="15" y1="7" y2="7"/><circle cx="9" cy="7" r="2"/></g></svg></div>
       <div class="font-semibold mt-3">Slider + Input</div>
       <div class="text-sm text-zinc-500 mt-1">Bisa drag + ketik angka langsung. Rayfield cuma drag.</div>
     </div>
     <div class="rounded-2xl bg-card border border-stroke p-5 hover:border-accent/30 transition">
-      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center">🔍</div>
+      <div class="w-10 h-10 rounded-xl bg-card border border-stroke flex items-center justify-center text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/><path d="M11 8v6"/></svg></div>
       <div class="font-semibold mt-3">Searchable Dropdown</div>
       <div class="text-sm text-zinc-500 mt-1">Multi + search + check anim. Lengkap buat hub besar.</div>
     </div>
@@ -309,14 +309,14 @@ local Hub = XSAYT.New({
   Title="XSAYT • GACOR",
   Theme="Cyber"
 })
-local Tab = Hub:AddTab({Name="Combat", Icon="⚔️"})
+local Tab = Hub:AddTab({Name="Combat", Icon="rbxassetid://6031265976"})
 local Sec = Tab:AddSection("MAIN")
 
 Sec:AddToggle({Title="Godmode", Desc="...", Callback=function(v) end})
 Sec:AddSlider({Title="Speed", Min=16, Max=500, Callback=function(v) end})
 Sec:AddDropdown({Title="Weapon", Options={"Katana","Gun"}, Search=true})
 Hub:Toast({Title="GACOR!", Type="success"})</code></pre>
-      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT#--api-lengkap" class="mt-3 inline-block text-sm text-accent hover:text-accent2">Lihat API lengkap →</a>
+      <a href="https://github.com/myzakonz-gif/UI-LIB-XSAYT#--api-lengkap" class="mt-3 inline-block text-sm text-accent hover:text-accent2 flex items-center gap-1">Lihat API lengkap <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>

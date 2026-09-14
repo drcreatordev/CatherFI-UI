@@ -31,11 +31,11 @@
 
 ---
 
-### ✨ Preview — Glassmorphism + Neon Gradient
+### Preview — Glassmorphism + Neon Gradient
 
 <p align="center">
   <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:32px;color:#7c5cff;border:1px solid #282834;margin:16px 0">
-    <b>⚡ XSAYT Preview</b><br/>
+    <b>XSAYT Preview</b><br/>
     <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://myzakonz-gif.github.io/UI-LIB-XSAYT/" style="color:#00dcff">myzakonz-gif.github.io/UI-LIB-XSAYT</a></span>
   </div>
 </p>
@@ -43,7 +43,7 @@
 
 ---
 
-### 🚀 Kenapa XSAYT Lebih Gacor Dari Rayfield?
+### Kenapa XSAYT Lebih Gacor Dari Rayfield?
 
 | Fitur | XSAYT v2 (Ori) | Rayfield |
 |-------|:--------------:|:--------:|
@@ -57,9 +57,9 @@
 | **Color** | HSV + preview | Random cycle |
 | **Section** | Collapsible + anim | Static |
 | **Theme** | 4 tema realtime switch (`SetTheme`) | 1 tema doang |
-| **Palette** | Command palette `⌕` | Gak ada |
+| **Palette** | Command palette (Search) | Gak ada |
 
-### 🎨 Themes — Ganti Realtime
+### Themes — Ganti Realtime
 
 | Cyber (default) | Midnight | Glass | Neon |
 |-----------------|----------|-------|------|
@@ -73,7 +73,7 @@ Hub:SetTheme("Neon") -- ganti kapan aja, smooth tween
 
 ---
 
-### 📦 Install
+### Install
 
 **1. Delta Executor (recommended)**
 ```lua
@@ -93,21 +93,21 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-X
 
 ---
 
-### ⚡ Quick Start — Full Ori API
+### Quick Start — Full Ori API
 
 ```lua
 local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 
 local Hub = XSAYT.New({
-    Title = "XSAYT • Delta GACOR 🔥",
+    Title = "XSAYT • Delta Premium",
     Subtitle = "Full Ori • by myzakonz • v2.0",
     Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
     Blur = true,
     Size = UDim2.new(0,640,0,460)
 })
 
--- Tab
-local Combat = Hub:AddTab({Name="Combat", Icon="⚔️"})
+-- Tab (premium icon pakai rbxassetid, bukan emoji)
+local Combat = Hub:AddTab({Name="Combat", Icon="rbxassetid://6031265976"})
 local Main = Combat:AddSection("COMBAT MAIN", {Collapsible=true})
 
 Main:AddToggle({
@@ -143,7 +143,7 @@ Main:AddButton({Title="Infinite Yield", Callback=function()
 end})
 
 -- Settings
-local Settings = Hub:AddTab({Name="Settings", Icon="⚙️"})
+local Settings = Hub:AddTab({Name="Settings", Icon="rbxassetid://6031280882"})
 local S2 = Settings:AddSection("CONFIG")
 S2:AddInput({Title="Player Target", Placeholder="Nama player...", Callback=function(t) print(t) end})
 S2:AddLabel("XSAYT v2 • Lebih gacor dari Rayfield 😎")
@@ -158,12 +158,12 @@ Hub:Toast({Title="GACOR!", Desc="XSAYT loaded 0.9s", Type="success", Duration=3}
 
 ---
 
-### 📚 API Lengkap
+### API Lengkap
 
 #### Core
 ```lua
 XSAYT.New({ Title, Subtitle, Theme, Blur=true, Size=UDim2.new(0,640,0,460) }) -> Hub
-Hub:AddTab({ Name, Icon="⚔️" }) -> Tab
+Hub:AddTab({ Name, Icon="rbxassetid://6031265976" }) -> Tab  -- premium ImageLabel, bukan emoji
 Tab:AddSection(Name, { Collapsible=false }) -> Section
 Hub:Toast({ Title, Desc, Type="success|info|warn|error", Duration=3, Sound=true })
 Hub:SetTheme("Cyber") -- realtime
@@ -189,7 +189,7 @@ Semua komponen return `{Set, Frame}` untuk update realtime: `toggle:Set(true)`
 
 ---
 
-### 🌐 Website Docs — GitHub Pages
+### Website Docs — GitHub Pages
 
 Live preview + playground: **https://myzakonz-gif.github.io/UI-LIB-XSAYT/**
 
@@ -203,7 +203,7 @@ File website ada di [`/docs`](./docs) — auto deploy via GitHub Pages (branch `
 
 ---
 
-### 📁 Struktur Repo — Rapi, No Duplikat
+### Struktur Repo — Rapi, No Duplikat
 
 ```
 UI-LIB-XSAYT/
@@ -224,14 +224,14 @@ UI-LIB-XSAYT/
 ```
 > **Clean:** Root cuma 1 lib (`XSAYT.lua`), no duplikat `index.html`, legacy dipisah.
 
-### 🔧 Delta Support
+### Delta Support
 
 - Auto parent: `gethui() > get_hidden_gui() > CoreGui > PlayerGui` — anti kick
 - `syn.protect_gui` jika ada
 - Touch + Mouse, drag, swipe, haptic
 - No `writefile` dependency, optional config
 
-### 🗺️ Roadmap
+### Roadmap
 
 - [x] v2.0 Full ori, glassmorphism, spring
 - [x] Website docs + GitHub Pages
@@ -239,11 +239,11 @@ UI-LIB-XSAYT/
 - [ ] v2.2 Plugin system + cloud config sync
 - [ ] v2.3 Graph/Chart + Console component
 
-### 🤝 Kontribusi
+### Kontribusi
 
 PR welcome! Fork → branch `feat/...` → PR ke `main`.
 
-### 📄 License
+### License
 
 MIT © 2026 myzakonz-gif — XSAYT UI. Boleh pakai untuk script Delta kamu, credit appreciated.
 

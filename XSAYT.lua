@@ -73,10 +73,34 @@ XSAYT.Themes = {
     }
 }
 
+-- Premium Icon Assets (no cheap emoji, all ImageLabel)
+XSAYT.Icons = {
+    Search      = "rbxassetid://6031158108", -- magnify
+    Minimize    = "rbxassetid://6031091003", -- minus
+    Close       = "rbxassetid://6031090997", -- x
+    ChevronDown = "rbxassetid://6031090997", -- chevron (rotated)
+    ChevronRight= "rbxassetid://6031090997",
+    ArrowRight  = "rbxassetid://6031090997",
+    Combat      = "rbxassetid://6031265976", -- swords
+    Visual      = "rbxassetid://6031075938", -- eye
+    Settings    = "rbxassetid://6031280882", -- settings
+    DefaultTab  = "rbxassetid://4483345998",
+}
+
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+
+local function CreateIcon(parent, assetId, size, color)
+    local img = Instance.new("ImageLabel", parent)
+    img.BackgroundTransparency = 1
+    img.Image = assetId
+    img.ImageColor3 = color or Color3.fromRGB(255,255,255)
+    img.Size = size or UDim2.new(0,16,0,16)
+    img.ScaleType = Enum.ScaleType.Fit
+    return img
+end
 
 local function Tween(o, props, t, s, d)
     local info = TweenInfo.new(t or 0.22, s or Enum.EasingStyle.Quad, d or Enum.EasingDirection.Out)
@@ -359,39 +383,33 @@ function XSAYT.New(cfg)
     SubLb.Position=UDim2.new(0,56,0,28)
     SubLb.TextXAlignment=Enum.TextXAlignment.Left
 
-    -- Header Actions
+    -- Header Actions (premium icons, no emoji)
     local SearchBtn=Instance.new("TextButton", Header)
     SearchBtn.Size=UDim2.new(0,32,0,32)
     SearchBtn.Position=UDim2.new(1,-120,0,12)
     SearchBtn.BackgroundColor3=theme.Card
-    SearchBtn.Text="⌕"
-    SearchBtn.Font=Enum.Font.GothamBold
-    SearchBtn.TextSize=14
-    SearchBtn.TextColor3=theme.Sub
+    SearchBtn.Text=""
     Corner(SearchBtn,8); Stroke(SearchBtn, theme.Stroke,1)
     SearchBtn.AutoButtonColor=false
+    CreateIcon(SearchBtn, XSAYT.Icons.Search, UDim2.new(0,16,0,16), theme.Sub).Position = UDim2.new(0.5,-8,0.5,-8)
 
     local MinBtn=Instance.new("TextButton", Header)
     MinBtn.Size=UDim2.new(0,32,0,32)
     MinBtn.Position=UDim2.new(1,-82,0,12)
     MinBtn.BackgroundColor3=theme.Card
-    MinBtn.Text="—"
-    MinBtn.Font=Enum.Font.GothamBold
-    MinBtn.TextSize=14
-    MinBtn.TextColor3=theme.Text
+    MinBtn.Text=""
     Corner(MinBtn,8); Stroke(MinBtn, theme.Stroke,1)
     MinBtn.AutoButtonColor=false
+    CreateIcon(MinBtn, XSAYT.Icons.Minimize, UDim2.new(0,14,0,14), theme.Text).Position = UDim2.new(0.5,-7,0.5,-7)
 
     local CloseBtn=Instance.new("TextButton", Header)
     CloseBtn.Size=UDim2.new(0,32,0,32)
     CloseBtn.Position=UDim2.new(1,-44,0,12)
     CloseBtn.BackgroundColor3=Color3.fromRGB(255,70,90)
-    CloseBtn.Text="×"
-    CloseBtn.Font=Enum.Font.GothamBold
-    CloseBtn.TextSize=18
-    CloseBtn.TextColor3=Color3.new(1,1,1)
+    CloseBtn.Text=""
     Corner(CloseBtn,8)
     CloseBtn.AutoButtonColor=false
+    CreateIcon(CloseBtn, XSAYT.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
 
     -- Body
     local Sidebar=Instance.new("Frame", Main)
@@ -472,7 +490,7 @@ function XSAYT.New(cfg)
         XSAYT:Toast({Title="XSAYT GACOR", Desc="Loaded in 0.9s • Delta Ready", Type="success", Duration=3})
     end)
 
-    -- Controls
+    -- Controls (premium, no text symbols)
     local minimized=false
     MinBtn.MouseButton1Click:Connect(function()
         minimized=not minimized
@@ -481,7 +499,8 @@ function XSAYT.New(cfg)
         Tween(Sidebar,{BackgroundTransparency=minimized and 1 or 0},0.2)
         for _,v in ipairs(Nav:GetChildren()) do if v:IsA("GuiObject") then v.Visible = not minimized end end
         Tween(Main,{Size=minimized and UDim2.new(0,640,0,56) or size},0.3)
-        MinBtn.Text = minimized and "+" or "—"
+        local icon = MinBtn:FindFirstChildOfClass("ImageLabel")
+        if icon then Tween(icon,{Rotation = minimized and 180 or 0},0.2) end
     end)
     CloseBtn.MouseButton1Click:Connect(function() Gui:Destroy() end)
     SearchBtn.MouseButton1Click:Connect(function()
@@ -506,7 +525,21 @@ function XSAYT.New(cfg)
     function Hub:AddTab(cfg2)
         cfg2=cfg2 or {}
         local name=cfg2.Name or "Tab"
-        local icon=cfg2.Icon or "◈"
+        local icon=cfg2.Icon or XSAYT.Icons.DefaultTab
+        -- normalize icon to rbxassetid
+        local iconAsset = icon
+        if typeof(icon)=="number" then iconAsset = "rbxassetid://"..tostring(icon) end
+        if typeof(icon)=="string" and not string.find(icon, "rbxassetid://") then
+            -- map friendly names to premium assets (no emoji)
+            local map = {combat=XSAYT.Icons.Combat, visual=XSAYT.Icons.Visual, settings=XSAYT.Icons.Settings}
+            local lower = string.lower(icon)
+            if map[lower] then iconAsset = map[lower]
+            elseif string.len(icon) <= 4 then -- emoji fallback, replace with default premium
+                iconAsset = XSAYT.Icons.DefaultTab
+            else
+                iconAsset = icon
+            end
+        end
 
         local Btn=Instance.new("TextButton", Nav)
         Btn.Size=UDim2.new(1,0,0,40)
@@ -516,14 +549,13 @@ function XSAYT.New(cfg)
         Btn.AutoButtonColor=false
         Corner(Btn,10)
 
-        local Ico=Instance.new("TextLabel", Btn)
-        Ico.Text=icon
-        Ico.Font=Enum.Font.GothamBold
-        Ico.TextSize=16
-        Ico.TextColor3=theme.Sub
+        local Ico=Instance.new("ImageLabel", Btn)
+        Ico.Image=iconAsset
+        Ico.ImageColor3=theme.Sub
         Ico.BackgroundTransparency=1
-        Ico.Size=UDim2.new(0,28,1,0)
-        Ico.Position=UDim2.new(0,6,0,0)
+        Ico.Size=UDim2.new(0,18,0,18)
+        Ico.Position=UDim2.new(0,10,0.5,-9)
+        Ico.ScaleType = Enum.ScaleType.Fit
 
         local Lb=Instance.new("TextLabel", Btn)
         Lb.Text=name
@@ -564,14 +596,14 @@ function XSAYT.New(cfg)
                 t.Btn.BackgroundTransparency=1
                 t.Btn.BackgroundColor3=theme.Card
                 t.Label.TextColor3=theme.Sub
-                t.Icon.TextColor3=theme.Sub
+                t.Icon.ImageColor3=theme.Sub
                 t.Indicator.Visible=false
             end
             Page.Visible=true
             Btn.BackgroundTransparency=0
             Btn.BackgroundColor3=theme.Card
             Lb.TextColor3=theme.Text
-            Ico.TextColor3=theme.Accent
+            Ico.ImageColor3=theme.Accent
             Indicator.Visible=true
             Hub.Current=Page
             Spring(Btn,{BackgroundTransparency=0})
@@ -619,10 +651,10 @@ function XSAYT.New(cfg)
                 CollapseBtn.Size=UDim2.new(0,24,0,24)
                 CollapseBtn.Position=UDim2.new(1,-24,0,0)
                 CollapseBtn.BackgroundTransparency=1
-                CollapseBtn.Text="▾"
-                CollapseBtn.Font=Enum.Font.GothamBold
-                CollapseBtn.TextSize=14
-                CollapseBtn.TextColor3=theme.Sub
+                CollapseBtn.Text=""
+                local colIcon = CreateIcon(CollapseBtn, XSAYT.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
+                colIcon.Position = UDim2.new(0.5,-8,0.5,-8)
+                colIcon.Name = "Icon"
             end
 
             local Body=Instance.new("Frame", SecFrame)
@@ -642,7 +674,8 @@ function XSAYT.New(cfg)
                 CollapseBtn.MouseButton1Click:Connect(function()
                     collapsed=not collapsed
                     Body.Visible=not collapsed
-                    Tween(CollapseBtn,{Rotation=collapsed and -90 or 0},0.2)
+                    local icon = CollapseBtn:FindFirstChild("Icon")
+                    if icon then Tween(icon,{Rotation=collapsed and -90 or 0},0.2) end
                     Spring(SecFrame,{Size=UDim2.new(1,0,0,0)})
                 end)
             end
@@ -732,16 +765,10 @@ function XSAYT.New(cfg)
                 Lb.Size=UDim2.new(1,-40,1,0)
                 Lb.Position=UDim2.new(0,14,0,0)
                 Lb.TextXAlignment=Enum.TextXAlignment.Left
-                local Ico2=Instance.new("TextLabel", F)
-                Ico2.Text="→"
-                Ico2.Font=Enum.Font.GothamBold
-                Ico2.TextSize=16
-                Ico2.TextColor3=Color3.new(1,1,1)
-                Ico2.BackgroundTransparency=1
-                Ico2.Size=UDim2.new(0,30,1,0)
-                Ico2.Position=UDim2.new(1,-34,0,0)
-                F.MouseEnter:Connect(function() Tween(F,{BackgroundTransparency=0.1},0.15) Spring(Ico2,{Position=UDim2.new(1,-30,0,0)}) end)
-                F.MouseLeave:Connect(function() Tween(F,{BackgroundTransparency=0},0.15) Tween(Ico2,{Position=UDim2.new(1,-34,0,0)},0.15) end)
+                local Ico2=CreateIcon(F, XSAYT.Icons.ArrowRight, UDim2.new(0,18,0,18), Color3.new(1,1,1))
+                Ico2.Position=UDim2.new(1,-28,0.5,-9)
+                F.MouseEnter:Connect(function() Tween(F,{BackgroundTransparency=0.1},0.15) Spring(Ico2,{Position=UDim2.new(1,-24,0.5,-9)}) end)
+                F.MouseLeave:Connect(function() Tween(F,{BackgroundTransparency=0},0.15) Tween(Ico2,{Position=UDim2.new(1,-28,0.5,-9)},0.15) end)
                 F.MouseButton1Click:Connect(function()
                     Tween(F,{Size=UDim2.new(1,0,0,42)},0.08)
                     task.wait(0.08); Spring(F,{Size=UDim2.new(1,0,0,44)})
@@ -869,14 +896,9 @@ function XSAYT.New(cfg)
                 Disp.Position=UDim2.new(0,12,0, cfg3.Desc and 38 or 24)
                 Disp.TextXAlignment=Enum.TextXAlignment.Left
                 Disp.TextTruncate=Enum.TextTruncate.AtEnd
-                local Arrow=Instance.new("TextLabel", F)
-                Arrow.Text="▾"
-                Arrow.Font=Enum.Font.GothamBold
-                Arrow.TextSize=14
-                Arrow.TextColor3=theme.Sub
-                Arrow.BackgroundTransparency=1
-                Arrow.Size=UDim2.new(0,24,0,24)
-                Arrow.Position=UDim2.new(1,-30,0,14)
+                local Arrow=CreateIcon(F, XSAYT.Icons.ChevronDown, UDim2.new(0,16,0,16), theme.Sub)
+                Arrow.Position=UDim2.new(1,-28,0.5,-8)
+                Arrow.Name="ArrowIcon"
                 local Hit=Instance.new("TextButton", F)
                 Hit.Size=UDim2.new(1,0,0,46)
                 Hit.BackgroundTransparency=1
@@ -909,6 +931,8 @@ function XSAYT.New(cfg)
                     local h = 52 + (#opts*32) + ((#opts-1)*6) + (cfg3.Search and 38 or 0) + 10
                     Tween(F,{Size= open and UDim2.new(1,0,0,h) or UDim2.new(1,0,0,50)},0.28)
                 end
+                -- keep old name alias for compatibility
+                local ArrowIcon = Arrow
                 Hit.MouseButton1Click:Connect(Toggle)
                 local buttons={}
                 for _,opt in ipairs(opts) do
