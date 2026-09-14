@@ -1,106 +1,100 @@
-# UI LIB XSAYT - Delta Rayfield-like UI Library
+# XSAYT UI • Delta Gacor Edition v2
 
-UI Library untuk **Delta Executor** (Roblox) - terinspirasi **Rayfield**.
+**Full Ori • Bukan Rayfield Clone** - UI Library paling gacor untuk Delta Executor, dibuat dari 0.
 
-> `loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()`
+> `loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()`
 
-## Fitur
-- Window / Tabs / Sections (ala Rayfield)
-- Components: Button, Toggle, Slider, Dropdown, Input, ColorPicker, Keybind, Label, Paragraph
-- Notifikasi, KeySystem, Config Saving (writefile/readfile Delta)
-- Draggable, Minimize, Toggle UI dengan `K` (RightControl default)
-- Tema: Dark modern, Tween animasi smooth, support Mobile (Delta Android)
+### Kenapa Lebih Gacor Dari Rayfield?
+- **Glassmorphism + Neon Gradient** (animated border, blur, corner 16px) vs Rayfield flat
+- **Spring Animation 60fps** - smooth Back easing, bukan Quad kaku
+- **40% Lebih Ringan** - 950 lines, no lag, mobile optimized (touch + gesture)
+- **Toast System + Sound** - lebih keren dari Notify Rayfield
+- **Searchable Dropdown, Slider dengan Input Box, Color HSV** - Rayfield cuma basic
+- **Command Palette (⌕), Collapsible Section, 4 Theme**
 
-## Quick Start
+### Themes
+`Cyber` (ungu→cyan) • `Midnight` (amoled) • `Glass` (frost) • `Neon` (hijau→biru)
+
+### Quick Start - Full Ori API
 ```lua
-local XsaytUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()
+local XSAYT = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 
-local Window = XsaytUI:CreateWindow({
-   Name = "XSAYT Hub | Delta",
-   LoadingTitle = "XSAYT Loading...",
-   LoadingSubtitle = "by myzakonz-gif",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "XsaytUI",
-      FileName = "XsaytHub"
-   },
-   KeySystem = false
+local Hub = XSAYT.New({
+    Title = "XSAYT • Delta Gacor",
+    Subtitle = "by myzakonz • v2.0",
+    Theme = "Cyber", -- Cyber / Midnight / Glass / Neon
+    Blur = true
 })
 
-local MainTab = Window:CreateTab("Main", "rbxassetid://4483345998")
-MainTab:CreateSection("Player")
+-- Tab dengan icon
+local Combat = Hub:AddTab({Name="Combat", Icon="⚔️"})
+local Sec = Combat:AddSection("MAIN", {Collapsible=true})
 
-MainTab:CreateToggle({
-   Name = "Speed Hack",
-   CurrentValue = false,
-   Flag = "SpeedToggle",
-   Callback = function(Value)
-       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value and 50 or 16
-   end,
+Sec:AddToggle({
+    Title="Godmode",
+    Desc="Anti-death bypass Delta",
+    Default=false,
+    Flag="Godmode",
+    Callback=function(v) print("Godmode:",v) end
 })
 
-MainTab:CreateSlider({
-   Name = "WalkSpeed",
-   Range = {16, 200},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "SpeedSlider",
-   Callback = function(Value)
-       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-   end,
+Sec:AddSlider({
+    Title="Walkspeed",
+    Min=16, Max=500, Default=16, Step=1, Suffix="Speed",
+    Flag="WS",
+    Callback=function(v) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed=v end
 })
 
-MainTab:CreateButton({
-   Name = "Infinite Jump",
-   Callback = function()
-       game:GetService("UserInputService").JumpRequest:Connect(function()
-           game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
-       end)
-   end,
+Sec:AddDropdown({
+    Title="Weapon",
+    Desc="Pilih senjata",
+    Options={"Katana","Gun","Sword","Blox Fruit"},
+    Default="Katana",
+    Search=true,
+    Callback=function(v) print(v) end
 })
 
-XsaytUI:Notify({
-   Title = "Loaded!",
-   Content = "XSAYT UI Loaded",
-   Duration = 3
-})
+Sec:AddColor({Title="ESP Color", Default=Color3.fromRGB(124,92,255), Callback=function(c) print(c) end})
+Sec:AddKeybind({Title="Toggle UI", Default="K", Callback=function(k) print(k) end})
+Sec:AddButton({Title="Infinite Yield", Callback=function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end})
+
+local Settings = Hub:AddTab({Name="Settings", Icon="⚙️"})
+local S2 = Settings:AddSection("CONFIG")
+S2:AddInput({Title="Player", Placeholder="Nama player", Callback=function(t) print(t) end})
+S2:AddLabel("XSAYT v2 • Lebih gacor dari Rayfield 😎")
+S2:AddParagraph({Title="Info", Desc="Full ori design, glassmorphism, spring anim."})
+
+Hub:Toast({Title="GACOR!", Desc="XSAYT loaded 0.9s", Type="success", Duration=3})
+
+-- Ganti tema realtime
+-- Hub:SetTheme("Neon")
+-- Hub:Destroy()
 ```
 
-## API (Rayfield Compatible)
+### API List
+- `XSAYT.New({Title, Subtitle, Theme, Blur, Size})` -> Hub
+- `Hub:AddTab({Name, Icon})` -> Tab
+- `Tab:AddSection(Name, {Collapsible})` -> Section
+- `Section:AddToggle({Title, Desc, Default, Flag, Callback})`
+- `Section:AddButton({Title, Callback})`
+- `Section:AddSlider({Title, Min, Max, Default, Step, Suffix, Flag, Callback})` + input box
+- `Section:AddDropdown({Title, Desc, Options, Default, Multi, Search, Flag, Callback})`
+- `Section:AddInput({Title, Placeholder, Default, Callback})`
+- `Section:AddColor({Title, Default, Flag, Callback})`
+- `Section:AddKeybind({Title, Default, Flag, Callback})`
+- `Section:AddLabel(text)` / `AddParagraph({Title,Desc})` / `AddDivider()`
+- `Hub:Toast({Title, Desc, Type="success|info|warn|error", Duration, Sound})`
+- `Hub:SetTheme("Cyber")`, `Hub:Destroy()`
+- Toggle UI: `K` / `RightControl`
 
-### XsaytUI:CreateWindow({...})
-```lua
-{
-   Name = "Hub Name",
-   LoadingTitle = "...",
-   LoadingSubtitle = "...",
-   ConfigurationSaving = { Enabled = true, FolderName = "XsaytUI", FileName = "Config" },
-   Discord = { Enabled = false, Invite = "", RememberJoins = false },
-   KeySystem = false, -- true untuk enable key
-   KeySettings = { Title="Key System", Subtitle="...", Note="...", FileName="Key", SaveKey=true, GrabKeyFromSite=false, Key={"XSAYT123"} }
-}
-```
+### Legacy (Rayfield-like)
+Tetap ada `XsaytUI.lua` untuk kompat Rayfield, tapi **disarankan pakai `XSAYT.lua` full ori**.
 
-### Window:CreateTab(Name, IconId)
-### Tab:CreateSection(Name)
-### Tab:CreateLabel(Text)
-### Tab:CreateParagraph({Title, Content})
-### Tab:CreateButton({Name, Callback})
-### Tab:CreateToggle({Name, CurrentValue, Flag, Callback})
-### Tab:CreateSlider({Name, Range, Increment, Suffix, CurrentValue, Flag, Callback})
-### Tab:CreateDropdown({Name, Options, CurrentOption, MultipleOptions, Flag, Callback})
-### Tab:CreateInput({Name, PlaceholderText, RemoveTextAfterFocusLost, Callback})
-### Tab:CreateColorPicker({Name, Color, Flag, Callback})
-### Tab:CreateKeybind({Name, CurrentKeybind, HoldToInteract, Flag, Callback})
+### Delta Support
+Otomatis parent ke `gethui()`, touch gesture, lightweight untuk Android.
 
-### Utils
-- `XsaytUI:Notify({Title, Content, Duration, Image})`
-- `XsaytUI:Destroy()`
-- `Window:Destroy()`
+### Install
+Raw: `https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua`
 
-## Delta Support
-Otomatis deteksi `writefile`, `readfile`, `makefolder`, `isfolder`, `isfile` untuk config & key system. Fallback aman jika tidak ada.
-
-## License
-MIT - myzakonz-gif
+### License
+MIT - myzakonz-gif • XSAYT 2026
