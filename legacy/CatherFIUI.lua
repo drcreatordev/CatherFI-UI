@@ -1,6 +1,6 @@
 -- CatherFI UI Library | Roblox Edition | Legacy v1 API
--- Github: https://github.com/myzakonz-gif/CatherFI-UI
--- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
+-- Github: https://github.com/drcreatordev/CatherFI-UI
+-- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 -- Version: 1.0.0 Deprecated
 
 local CatherFIUI = {}

@@ -4,7 +4,7 @@
 
 Load:
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/examples/demo.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/examples/demo.lua"))()
 ```
 
 Copy dan tempel di Roblox.

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://myzakonz-gif.github.io/CatherFI-UI/</loc>
+    <loc>https://drcreatordev.github.io/CatherFI-UI/</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://github.com/myzakonz-gif/CatherFI-UI</loc>
+    <loc>https://github.com/drcreatordev/CatherFI-UI</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua</loc>
+    <loc>https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

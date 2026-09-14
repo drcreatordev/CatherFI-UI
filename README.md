@@ -10,8 +10,8 @@
 <p align="center"><i>Roblox Platform • Roblox UI Library • Roblox Script Hub • Premium Design</i></p>
 
 <p align="center">
-  <a href="https://github.com/myzakonz-gif/CatherFI-UI"><img src="https://img.shields.io/github/stars/myzakonz-gif/CatherFI-UI?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
-  <a href="https://myzakonz-gif.github.io/CatherFI-UI/"><img src="https://img.shields.io/badge/docs-website-00dcff?style=for-the-badge&logo=googlechrome" alt="Docs"/></a>
+  <a href="https://github.com/drcreatordev/CatherFI-UI"><img src="https://img.shields.io/github/stars/drcreatordev/CatherFI-UI?style=for-the-badge&logo=github&color=7c5cff" alt="Stars"/></a>
+  <a href="https://drcreatordev.github.io/CatherFI-UI/"><img src="https://img.shields.io/badge/docs-website-00dcff?style=for-the-badge&logo=googlechrome" alt="Docs"/></a>
   <img src="https://img.shields.io/badge/version-2.1.0_premium-7c5cff?style=for-the-badge" alt="Version"/>
   <img src="https://img.shields.io/badge/platform-Roblox-00e682?style=for-the-badge&logo=roblox" alt="Roblox"/>
   <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="MIT"/>
@@ -19,14 +19,14 @@
 
 <p align="center">
   <a href="#quick-start">Quick Start</a> •
-  <a href="https://myzakonz-gif.github.io/CatherFI-UI/">Live Demo</a> •
+  <a href="https://drcreatordev.github.io/CatherFI-UI/">Live Demo</a> •
   <a href="#api-lengkap">API</a> •
   <a href="#themes--ganti-realtime">Themes</a>
 </p>
 
 > **Roblox Platform UI Library — Loadstring 1 baris** — Roblox Android & PC
 > ```lua
-> loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+> loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 > ```
 > *Keywords: roblox ui library, delta executor, catherfi ui, roblox script hub*
 
@@ -37,7 +37,7 @@
 <p align="center">
   <div style="background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#0f2027 100%);border-radius:16px;padding:32px;color:#7c5cff;border:1px solid #282834;margin:16px 0">
     <b>CatherFI Preview</b><br/>
-    <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://myzakonz-gif.github.io/CatherFI-UI/" style="color:#00dcff">myzakonz-gif.github.io/CatherFI-UI</a></span>
+    <span style="color:#8c8c9b">Glassmorphism • Spring Animation • Cyber Neon<br/>Lihat live demo di website → <a href="https://drcreatordev.github.io/CatherFI-UI/" style="color:#00dcff">drcreatordev.github.io/CatherFI-UI</a></span>
   </div>
 </p>
 <p align="center"><i>Spring 60fps • Blur Acrylic • Animated Gradient Border • Touch Gesture</i></p>
@@ -79,17 +79,17 @@ Hub:SetTheme("Neon") -- ganti kapan aja, smooth tween
 
 **1. Roblox Platform (recommended)**
 ```lua
-local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 ```
 
 **2. Raw URL**
 ```
-https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua
+https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua
 ```
 
 **3. Legacy (deprecated)**
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 -- API lama: CreateWindow, CreateTab (pindah ke legacy/)
 ```
 
@@ -98,7 +98,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI
 ### Quick Start — Full Original API
 
 ```lua
-local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 
 local Hub = CatherFI.New({
     Title = "CatherFI • Roblox Premium",
@@ -193,7 +193,7 @@ Semua komponen return `{Set, Frame}` untuk update realtime: `toggle:Set(true)`
 
 ### Website Docs — GitHub Pages
 
-Live preview + playground: **https://myzakonz-gif.github.io/CatherFI-UI/**
+Live preview + playground: **https://drcreatordev.github.io/CatherFI-UI/**
 
 Website berisi:
 - Interactive mockup (bisa coba toggle/slider langsung di browser)
@@ -249,7 +249,7 @@ PR welcome! Fork → branch `feat/...` → PR ke `main`.
 
 ### License
 
-MIT © 2026 myzakonz-gif — CatherFI UI. Boleh pakai untuk script Roblox kamu, credit appreciated.
+MIT © 2026 drcreatordev — CatherFI UI. Boleh pakai untuk script Roblox kamu, credit appreciated.
 
 ---
 
@@ -257,6 +257,6 @@ MIT © 2026 myzakonz-gif — CatherFI UI. Boleh pakai untuk script Roblox kamu, 
 
 CatherFI UI adalah **Modern UI Framework untuk Roblox** yang ringan, premium, dan open source.
 
-Cek live demo: https://myzakonz-gif.github.io/CatherFI-UI/ — terindeks Google via sitemap & robots.txt.
+Cek live demo: https://drcreatordev.github.io/CatherFI-UI/ — terindeks Google via sitemap & robots.txt.
 
-<p align="center"><b>⭐ Star repo kalau suka!</b> • <a href="https://github.com/myzakonz-gif/CatherFI-UI/issues">Report Issue</a></p>
+<p align="center"><b>⭐ Star repo kalau suka!</b> • <a href="https://github.com/drcreatordev/CatherFI-UI/issues">Report Issue</a></p>

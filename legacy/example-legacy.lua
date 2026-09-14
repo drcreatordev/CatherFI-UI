@@ -1,7 +1,7 @@
 -- CatherFI UI - Example Legacy untuk Roblox Platform
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
-local CatherFIUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
+local CatherFIUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/legacy/CatherFIUI.lua"))()
 
 local Window = CatherFIUI:CreateWindow({
    Name = "CatherFI Hub | Roblox 🔥",

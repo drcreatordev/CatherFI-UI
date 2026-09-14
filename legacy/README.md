@@ -9,7 +9,7 @@ Folder ini berisi versi lama **CatherFIUI.lua** (API v1 `CreateWindow`/`CreateTa
 
 **Gunakan yang baru (v2 premium):**
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 -- CatherFI.New({Title, Theme}) -> Hub:AddTab -> Section:AddToggle
 ```
 

@@ -1,7 +1,7 @@
 -- CatherFI v2 Full Ori - Example Premium untuk Roblox
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 
-local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
+local CatherFI = loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
 
 local Hub = CatherFI.New({
     Title = "CatherFI • Roblox Premium",
@@ -92,7 +92,7 @@ CfgSec:AddDropdown({
     Callback=function(v) Hub:SetTheme(v) end
 })
 CfgSec:AddLabel("CatherFI v2.0 • Roblox Premium Edition")
-CfgSec:AddParagraph({Title="Tentang CatherFI", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan myzakonz-gif."})
+CfgSec:AddParagraph({Title="Tentang CatherFI", Desc="Full ori premium, ImageLabel icons, glassmorphism, spring animation, 40% lebih ringan. Buatan drcreatordev."})
 CfgSec:AddDivider()
 CfgSec:AddButton({Title="Destroy UI", Callback=function() Hub:Destroy() end})
 

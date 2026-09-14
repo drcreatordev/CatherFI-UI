@@ -1,8 +1,8 @@
 -- CatherFI UI v2 | Full Original | Roblox Premium Edition
--- Original Design by myzakonz-gif - Professional UI Library
+-- Original Design by drcreatordev - Professional UI Library
 -- Cyber Neon + Glassmorphism + Spring Animations
--- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/CatherFI-UI/main/CatherFI.lua"))()
--- Docs: https://github.com/myzakonz-gif/CatherFI-UI
+-- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/drcreatordev/CatherFI-UI/main/CatherFI.lua"))()
+-- Docs: https://github.com/drcreatordev/CatherFI-UI
 -- Size: ~1273 lines, 60fps, Roblox Android Optimized
 
 local CatherFI = {}

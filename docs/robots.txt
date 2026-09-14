@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://myzakonz-gif.github.io/CatherFI-UI/sitemap.xml
+Sitemap: https://drcreatordev.github.io/CatherFI-UI/sitemap.xml
