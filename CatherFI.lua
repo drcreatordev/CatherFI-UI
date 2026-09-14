@@ -79,14 +79,14 @@ CatherFI.Themes = {
     }
 }
 
--- Premium Icon Assets (no cheap emoji, all ImageLabel)
+-- Premium Icon Assets - clean, distinct (tidak duplikat)
 CatherFI.Icons = {
     Search      = "rbxassetid://6031158108", -- magnify
     Minimize    = "rbxassetid://6031091003", -- minus
     Close       = "rbxassetid://6031090997", -- x
-    ChevronDown = "rbxassetid://6031090997", -- chevron (rotated)
-    ChevronRight= "rbxassetid://6031090997",
-    ArrowRight  = "rbxassetid://6031090997",
+    ChevronDown = "rbxassetid://6031090998", -- chevron down
+    ChevronRight= "rbxassetid://6031091005", -- chevron right
+    ArrowRight  = "rbxassetid://6031091002", -- arrow right
     Combat      = "rbxassetid://6031265976", -- swords
     Visual      = "rbxassetid://6031075938", -- eye
     Settings    = "rbxassetid://6031280882", -- settings
@@ -334,7 +334,11 @@ function CatherFI.New(a, b)
     local themeName=cfg.Theme or "Cyber"
     local theme=CatherFI.Themes[themeName] or CatherFI.Themes.Cyber
     local blurEnabled=cfg.Blur ~= false
-    local size=cfg.Size or UDim2.new(0,640,0,460)
+    -- Responsive: auto kecil di mobile (Rayfield 475x400, CatherFI lebih optimal)
+    local isMobile = false
+    pcall(function() isMobile = UserInputService.TouchEnabled or (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize.X < 700) end)
+    local defaultSize = isMobile and UDim2.new(0,360,0,420) or UDim2.new(0,640,0,460)
+    local size=cfg.Size or defaultSize
 
     -- Parent (Gen2-grade: cloneref + protect_gui + customAsset) - robust untuk Roblox
     local parent
@@ -434,12 +438,13 @@ function CatherFI.New(a, b)
     -- Main Hub - clean (Rayfield 620x440, CatherFI lebih rapi 640x460 dengan spacing 8)
     local Main=Instance.new("Frame", Gui)
     Main.Name="Main"
-    Main.Size=UDim2.new(0,640,0,460)
-    Main.Position=UDim2.new(0.5,-320,0.5,-230)
+    Main.Size=size
+    Main.Position=UDim2.new(0.5,-size.X.Offset/2,0.5,-size.Y.Offset/2)
     Main.BackgroundColor3=theme.Bg
     Main.Visible=false
     Corner(Main,10); Stroke(Main, theme.Stroke,1)
     MakeDraggable(Main)
+    Main.ClipsDescendants = false
 
     -- Top accent - clean, tanpa animasi berlebihan (lebih profesional dari Rayfield)
     local TopLine=Instance.new("Frame", Main)
@@ -528,9 +533,10 @@ function CatherFI.New(a, b)
     CloseBtn.AutoButtonColor=false
     CreateIcon(CloseBtn, CatherFI.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
 
-    -- Body - clean layout
+    -- Body - clean layout (mobile sidebar lebih ramping)
+    local sidebarW = isMobile and 120 or 150
     local Sidebar=Instance.new("Frame", Main)
-    Sidebar.Size=UDim2.new(0,150,1,-48)
+    Sidebar.Size=UDim2.new(0,sidebarW,1,-48)
     Sidebar.Position=UDim2.new(0,0,0,48)
     Sidebar.BackgroundColor3=theme.Sidebar
     Corner(Sidebar,10)
@@ -558,8 +564,8 @@ function CatherFI.New(a, b)
     Padding(Nav,6,0,6,0)
 
     local Content=Instance.new("Frame", Main)
-    Content.Size=UDim2.new(1,-150,1,-48)
-    Content.Position=UDim2.new(0,150,0,48)
+    Content.Size=UDim2.new(1,-sidebarW,1,-48)
+    Content.Position=UDim2.new(0,sidebarW,0,48)
     Content.BackgroundTransparency=1
 
     -- Hub object
@@ -609,15 +615,20 @@ function CatherFI.New(a, b)
 
     -- Controls (premium, no text symbols)
     local minimized=false
+    local minimizedSize = UDim2.new(0,size.X.Offset,0,48) -- hanya header, rapi
     MinBtn.MouseButton1Click:Connect(function()
         minimized=not minimized
-        Tween(Content,{BackgroundTransparency=minimized and 1 or 1},0.2)
-        for _,v in ipairs(Content:GetChildren()) do v.Visible = not minimized end
-        Tween(Sidebar,{BackgroundTransparency=minimized and 1 or 0},0.2)
-        for _,v in ipairs(Nav:GetChildren()) do if v:IsA("GuiObject") then v.Visible = not minimized end end
-        Tween(Main,{Size=minimized and UDim2.new(0,640,0,56) or size},0.3)
+        -- Fix: sidebar/content benar-benar hide, tidak melebihi header
+        Content.Visible = not minimized
+        Sidebar.Visible = not minimized
+        Tween(Main,{Size=minimized and minimizedSize or size},0.22)
         local icon = MinBtn:FindFirstChildOfClass("ImageLabel")
-        if icon then Tween(icon,{Rotation = minimized and 180 or 0},0.2) end
+        if icon then Tween(icon,{Rotation = minimized and 180 or 0},0.18) end
+        if minimized then
+            Main.ClipsDescendants = true
+        else
+            task.delay(0.22, function() Main.ClipsDescendants = false end)
+        end
     end)
     CloseBtn.MouseButton1Click:Connect(function() Gui:Destroy() end)
     SearchBtn.MouseButton1Click:Connect(function()
