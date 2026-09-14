@@ -8,6 +8,12 @@
 local XSAYT = {}
 XSAYT.Version = "2.1.0-gacor-secure"
 XSAYT.Flags = {}
+-- Fallback untuk executor yang tidak punya typeof/table.find
+local typeof = typeof or type
+local tableFind = (rawget(table, "find")) or function(t, v)
+    for i,x in ipairs(t) do if x==v then return i end end
+    return nil
+end
 
 -- Themes - Original XSAYT Premium
 XSAYT.Themes = {
@@ -126,7 +132,7 @@ local function loadWithTimeout(url, timeout)
         if not done then warn("[XSAYT] Timeout "..url); task.cancel(th); res="Timeout"; done=true end
     end)
     while not done do task.wait() end
-    if coroutine.status(to) ~= "dead" then task.cancel(to) end
+    if to and coroutine.status(to) ~= "dead" then pcall(function() task.cancel(to) end) end
     if ok then return res else return nil end
 end
 
@@ -136,7 +142,24 @@ local Players = getService("Players")
 local CoreGui = getService("CoreGui")
 local HttpService = getService("HttpService")
 local RunService = getService("RunService")
-local LocalPlayer = Players.LocalPlayer
+local function GetLocalPlayer()
+    local lp = Players.LocalPlayer
+    if lp then return lp end
+    local ok, plr = pcall(function() return game.Players.LocalPlayer end)
+    if ok and plr then return plr end
+    -- tunggu jika belum load
+    pcall(function()
+        if Players.GetPropertyChangedSignal then
+            repeat
+                task.wait(0.1)
+                lp = Players.LocalPlayer
+            until lp
+            return lp
+        end
+    end)
+    return lp or Players.LocalPlayer
+end
+local LocalPlayer = GetLocalPlayer()
 
 local function CreateIcon(parent, assetId, size, color)
     local img = Instance.new("ImageLabel", parent)
@@ -300,16 +323,20 @@ function XSAYT:SaveConfiguration(folder, file, flags)
     SaveConfig(folder or "XSAYT", file or "config", flags or XSAYT.Flags)
 end
 
-function XSAYT.New(cfg)
+function XSAYT.New(a, b)
+    -- support both XSAYT.New(cfg) and XSAYT:New(cfg)
+    local cfg = b or a
+    if a == XSAYT and b then cfg = b end
+    if typeof(cfg) ~= "table" then cfg = {} end
     cfg=cfg or {}
-    local title=cfg.Title or "XSAYT • GACOR"
-    local subtitle=cfg.Subtitle or "Delta Edition • v2.0"
+    local title=cfg.Title or "XSAYT • Premium"
+    local subtitle=cfg.Subtitle or "Delta Edition • v2.1"
     local themeName=cfg.Theme or "Cyber"
     local theme=XSAYT.Themes[themeName] or XSAYT.Themes.Cyber
     local blurEnabled=cfg.Blur ~= false
     local size=cfg.Size or UDim2.new(0,640,0,460)
 
-    -- Parent (Gen2-grade: cloneref + protect_gui + customAsset)
+    -- Parent (Gen2-grade: cloneref + protect_gui + customAsset) - robust untuk Delta
     local parent
     pcall(function()
         if gethui then parent=gethui()
@@ -317,8 +344,23 @@ function XSAYT.New(cfg)
         elseif CoreGui then parent=CoreGui
         elseif game.CoreGui then parent=game.CoreGui end
     end)
-    if not parent then parent=LocalPlayer:WaitForChild("PlayerGui") end
+    if not parent then
+        local lp = GetLocalPlayer()
+        if lp then
+            local ok, pg = pcall(function() return lp:WaitForChild("PlayerGui") end)
+            if ok and pg then parent = pg else parent = lp:FindFirstChild("PlayerGui") or lp end
+        end
+    end
+    if not parent then
+        -- fallback terakhir: coba game.CoreGui
+        pcall(function() parent = game:GetService("CoreGui") end)
+    end
     if parent and cloneref then pcall(function() parent = cloneref(parent) end) end
+    if not parent then
+        warn("[XSAYT] Parent tidak ditemukan, fallback ke PlayerGui")
+        local lp2 = GetLocalPlayer()
+        if lp2 then parent = lp2:FindFirstChildOfClass("PlayerGui") or lp2 end
+    end
 
     local Gui=Instance.new("ScreenGui")
     Gui.Name="XSAYT_"..tostring(math.random(10000,99999))
@@ -624,9 +666,11 @@ function XSAYT.New(cfg)
         local iconAsset = icon
         if typeof(icon)=="number" then iconAsset = "rbxassetid://"..tostring(icon) end
         if typeof(icon)=="string" and not string.find(icon, "rbxassetid://") then
-            -- map friendly names to premium assets (no emoji)
+            -- map friendly names to premium assets (no emoji) - robust
             local map = {combat=XSAYT.Icons.Combat, visual=XSAYT.Icons.Visual, settings=XSAYT.Icons.Settings}
-            local lower = string.lower(icon)
+            local lower = ""
+            local ok, res = pcall(function() return string.lower(icon) end)
+            if ok and typeof(res)=="string" then lower = res end
             if map[lower] then iconAsset = map[lower]
             elseif string.len(icon) <= 4 then -- emoji fallback, replace with default premium
                 iconAsset = XSAYT.Icons.DefaultTab
@@ -1048,21 +1092,21 @@ function XSAYT.New(cfg)
                     Check.Size=UDim2.new(0,18,0,18)
                     Check.Position=UDim2.new(1,-26,0.5,-9)
                     Check.BackgroundColor3=theme.Card
-                    Check.Visible= table.find(cur, opt) ~= nil
+                    Check.Visible= tableFind(cur, opt) ~= nil
                     Corner(Check,5); Stroke(Check, theme.Accent,1)
                     local CheckInner=Instance.new("Frame", Check)
                     CheckInner.Size=UDim2.new(0,10,0,10)
                     CheckInner.Position=UDim2.new(0.5,-5,0.5,-5)
                     CheckInner.BackgroundColor3=theme.Accent
                     Corner(CheckInner,3)
-                    if table.find(cur, opt) then
+                    if tableFind(cur, opt) then
                         O.BackgroundColor3=theme.CardHover
                         Check.BackgroundColor3=theme.Accent
                     end
                     table.insert(buttons, {Btn=O, Txt=OTxt, Check=Check, Opt=opt})
                     O.MouseButton1Click:Connect(function()
                         if multi then
-                            local idx=table.find(cur, opt)
+                            local idx=tableFind(cur, opt)
                             if idx then table.remove(cur, idx) else table.insert(cur, opt) end
                         else
                             cur={opt}; open=false; Tween(F,{Size=UDim2.new(1,0,0,50)},0.22); Tween(Arrow,{Rotation=0},0.2)
@@ -1071,7 +1115,7 @@ function XSAYT.New(cfg)
                         if flag then XSAYT.Flags[flag]= multi and cur or cur[1] end
                         pcall(function() cfg3.Callback(multi and cur or cur[1], cur) end)
                         for _,b in ipairs(buttons) do
-                            local sel=table.find(cur, b.Opt) ~= nil
+                            local sel=tableFind(cur, b.Opt) ~= nil
                             Tween(b.Btn,{BackgroundColor3= sel and theme.CardHover or theme.Card},0.15)
                             b.Check.Visible=sel
                             if sel then b.Check.BackgroundColor3=theme.Accent else b.Check.BackgroundColor3=theme.Card end
