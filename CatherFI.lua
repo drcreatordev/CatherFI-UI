@@ -15,19 +15,19 @@ local tableFind = (rawget(table, "find")) or function(t, v)
     return nil
 end
 
--- Themes - Original CatherFI Premium
+-- Themes - CatherFI Clean Professional (mengungguli Rayfield)
 CatherFI.Themes = {
     Cyber = {
-        Bg = Color3.fromRGB(10,10,15),
-        Bg2 = Color3.fromRGB(16,16,22),
-        Sidebar = Color3.fromRGB(13,13,18),
-        Card = Color3.fromRGB(22,22,28),
-        CardHover = Color3.fromRGB(28,28,36),
-        Stroke = Color3.fromRGB(40,40,52),
-        Text = Color3.fromRGB(245,245,250),
-        Sub = Color3.fromRGB(140,140,155),
+        Bg = Color3.fromRGB(14,14,16),
+        Bg2 = Color3.fromRGB(20,20,22),
+        Sidebar = Color3.fromRGB(16,16,18),
+        Card = Color3.fromRGB(24,24,26),
+        CardHover = Color3.fromRGB(30,30,32),
+        Stroke = Color3.fromRGB(38,38,42),
+        Text = Color3.fromRGB(242,242,245),
+        Sub = Color3.fromRGB(150,150,160),
         Accent = Color3.fromRGB(124,92,255),
-        Accent2 = Color3.fromRGB(0,220,255),
+        Accent2 = Color3.fromRGB(124,92,255),
         Success = Color3.fromRGB(0,230,130),
         Warn = Color3.fromRGB(255,180,0),
         Error = Color3.fromRGB(255,70,90),
@@ -48,31 +48,31 @@ CatherFI.Themes = {
         Error = Color3.fromRGB(255,50,50),
     },
     Glass = {
-        Bg = Color3.fromRGB(18,20,28),
-        Bg2 = Color3.fromRGB(22,24,34),
-        Sidebar = Color3.fromRGB(16,18,26),
-        Card = Color3.fromRGB(30,32,42),
-        CardHover = Color3.fromRGB(36,38,50),
-        Stroke = Color3.fromRGB(50,52,70),
-        Text = Color3.fromRGB(240,242,255),
-        Sub = Color3.fromRGB(150,155,180),
-        Accent = Color3.fromRGB(90,140,255),
-        Accent2 = Color3.fromRGB(140,90,255),
+        Bg = Color3.fromRGB(16,16,18),
+        Bg2 = Color3.fromRGB(22,22,24),
+        Sidebar = Color3.fromRGB(18,18,20),
+        Card = Color3.fromRGB(26,26,28),
+        CardHover = Color3.fromRGB(32,32,34),
+        Stroke = Color3.fromRGB(42,42,46),
+        Text = Color3.fromRGB(240,240,243),
+        Sub = Color3.fromRGB(148,148,158),
+        Accent = Color3.fromRGB(124,92,255),
+        Accent2 = Color3.fromRGB(124,92,255),
         Success = Color3.fromRGB(60,220,150),
         Warn = Color3.fromRGB(255,190,60),
         Error = Color3.fromRGB(255,90,110),
     },
     Neon = {
-        Bg = Color3.fromRGB(8,12,16),
-        Bg2 = Color3.fromRGB(12,18,24),
-        Sidebar = Color3.fromRGB(10,15,20),
-        Card = Color3.fromRGB(18,26,32),
-        CardHover = Color3.fromRGB(24,34,42),
-        Stroke = Color3.fromRGB(35,50,65),
-        Text = Color3.fromRGB(220,255,245),
-        Sub = Color3.fromRGB(110,160,150),
-        Accent = Color3.fromRGB(0,255,170),
-        Accent2 = Color3.fromRGB(0,200,255),
+        Bg = Color3.fromRGB(12,12,14),
+        Bg2 = Color3.fromRGB(18,18,20),
+        Sidebar = Color3.fromRGB(14,14,16),
+        Card = Color3.fromRGB(22,22,24),
+        CardHover = Color3.fromRGB(28,28,30),
+        Stroke = Color3.fromRGB(36,36,40),
+        Text = Color3.fromRGB(235,235,240),
+        Sub = Color3.fromRGB(145,145,155),
+        Accent = Color3.fromRGB(124,92,255),
+        Accent2 = Color3.fromRGB(124,92,255),
         Success = Color3.fromRGB(0,255,150),
         Warn = Color3.fromRGB(255,230,0),
         Error = Color3.fromRGB(255,60,120),
@@ -177,10 +177,10 @@ local function Tween(o, props, t, s, d)
     tw:Play()
     return tw
 end
-local function Spring(o, props) -- gacor spring
-    Tween(o, props, 0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+local function Spring(o, props) -- clean spring (Rayfield 0.3s, CatherFI lebih halus 0.28s)
+    Tween(o, props, 0.28, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 end
-local function Corner(p, r) local c=Instance.new("UICorner") c.CornerRadius=UDim.new(0,r or 12) c.Parent=p return c end
+local function Corner(p, r) local c=Instance.new("UICorner") c.CornerRadius=UDim.new(0,r or 8) c.Parent=p return c end
 local function Stroke(p, col, th) local s=Instance.new("UIStroke") s.Color=col s.Thickness=th or 1 s.ApplyStrokeMode=Enum.ApplyStrokeMode.Border s.Parent=p return s end
 local function Padding(p, l,t,r,b) local pad=Instance.new("UIPadding") pad.PaddingLeft=UDim.new(0,l or 0) pad.PaddingTop=UDim.new(0,t or 0) pad.PaddingRight=UDim.new(0,r or 0) pad.PaddingBottom=UDim.new(0,b or 0) pad.Parent=p return pad end
 
@@ -378,16 +378,12 @@ function CatherFI.New(a, b)
     if syn and syn.protect_gui then pcall(function() syn.protect_gui(Gui) end) end
     if gethui then pcall(function() Gui.Parent = cloneref and cloneref(gethui()) or gethui() end) end
 
-    -- Loading (gacor)
+    -- Loading - clean (no neon berlebihan, mengungguli Rayfield)
     local Loading=Instance.new("Frame", Gui)
-    Loading.Size=UDim2.new(0,380,0,180)
-    Loading.Position=UDim2.new(0.5,-190,0.5,-90)
+    Loading.Size=UDim2.new(0,360,0,160)
+    Loading.Position=UDim2.new(0.5,-180,0.5,-80)
     Loading.BackgroundColor3=theme.Bg
-    Corner(Loading,16); Stroke(Loading, theme.Stroke,1)
-    local loadGrad=Instance.new("UIGradient", Loading)
-    loadGrad.Color=ColorSequence.new{ColorSequenceKeypoint.new(0,theme.Accent), ColorSequenceKeypoint.new(1,theme.Accent2)}
-    loadGrad.Rotation=35; loadGrad.Transparency=NumberSequence.new{NumberSequenceKeypoint.new(0,0.85), NumberSequenceKeypoint.new(1,0.95)}
-    -- keep subtle
+    Corner(Loading,10); Stroke(Loading, theme.Stroke,1)
 
     local loadTitle=Instance.new("TextLabel", Loading)
     loadTitle.Text=title
@@ -435,66 +431,51 @@ function CatherFI.New(a, b)
         loadInfo.TextColor3=theme.Success
     end)
 
-    -- Main Hub
+    -- Main Hub - clean (Rayfield 620x440, CatherFI lebih rapi 640x460 dengan spacing 8)
     local Main=Instance.new("Frame", Gui)
     Main.Name="Main"
-    Main.Size=UDim2.new(0,620,0,440)
-    Main.Position=UDim2.new(0.5,-320,0.5,-220)
+    Main.Size=UDim2.new(0,640,0,460)
+    Main.Position=UDim2.new(0.5,-320,0.5,-230)
     Main.BackgroundColor3=theme.Bg
     Main.Visible=false
-    Corner(Main,16); Stroke(Main, theme.Stroke,1)
+    Corner(Main,10); Stroke(Main, theme.Stroke,1)
     MakeDraggable(Main)
 
-    -- Top gradient border
+    -- Top accent - clean, tanpa animasi berlebihan (lebih profesional dari Rayfield)
     local TopLine=Instance.new("Frame", Main)
-    TopLine.Size=UDim2.new(1,0,0,2)
+    TopLine.Size=UDim2.new(1,0,0,1)
     TopLine.Position=UDim2.new(0,0,0,0)
-    TopLine.BackgroundColor3=theme.Accent
-    Corner(TopLine,99)
-    local topGrad=Instance.new("UIGradient", TopLine)
-    topGrad.Color=ColorSequence.new(theme.Accent, theme.Accent2)
-    topGrad.Rotation=0
-    -- animate gradient
-    task.spawn(function()
-        while Main.Parent do
-            Tween(topGrad,{Rotation=180},2, Enum.EasingStyle.Linear)
-            task.wait(2)
-            Tween(topGrad,{Rotation=360},2, Enum.EasingStyle.Linear)
-            task.wait(2)
-            topGrad.Rotation=0
-        end
-    end)
+    TopLine.BackgroundColor3=theme.Stroke
+    TopLine.BorderSizePixel=0
+    TopLine.BackgroundTransparency=0.5
 
-    -- Blur background if enabled (fake blur with transparency)
+    -- Blur background if enabled (subtle)
     if blurEnabled then
-        Main.BackgroundTransparency=0.05
+        Main.BackgroundTransparency=0.02
     end
 
-    -- Header
+    -- Header - clean 48px (Rayfield 45px)
     local Header=Instance.new("Frame", Main)
-    Header.Size=UDim2.new(1,0,0,56)
+    Header.Size=UDim2.new(1,0,0,48)
     Header.BackgroundColor3=theme.Bg2
-    Corner(Header,16)
+    Corner(Header,10)
     local hFix=Instance.new("Frame", Header)
-    hFix.Size=UDim2.new(1,0,0,16)
-    hFix.Position=UDim2.new(0,0,1,-16)
+    hFix.Size=UDim2.new(1,0,0,10)
+    hFix.Position=UDim2.new(0,0,1,-10)
     hFix.BackgroundColor3=theme.Bg2
     hFix.BorderSizePixel=0
     hFix.ZIndex=0
 
-    -- Logo Icon (XS)
+    -- Logo Icon - CatherFI C (clean)
     local Logo=Instance.new("Frame", Header)
-    Logo.Size=UDim2.new(0,36,0,36)
-    Logo.Position=UDim2.new(0,12,0,10)
+    Logo.Size=UDim2.new(0,32,0,32)
+    Logo.Position=UDim2.new(0,12,0,8)
     Logo.BackgroundColor3=theme.Accent
-    Corner(Logo,10)
-    local logoGrad=Instance.new("UIGradient", Logo)
-    logoGrad.Color=ColorSequence.new(theme.Accent, theme.Accent2)
-    logoGrad.Rotation=45
+    Corner(Logo,8)
     local logoTxt=Instance.new("TextLabel", Logo)
-    logoTxt.Text="X"
-    logoTxt.Font=Enum.Font.GothamBlack
-    logoTxt.TextSize=18
+    logoTxt.Text="C"
+    logoTxt.Font=Enum.Font.GothamBold
+    logoTxt.TextSize=16
     logoTxt.TextColor3=Color3.new(1,1,1)
     logoTxt.BackgroundTransparency=1
     logoTxt.Size=UDim2.new(1,0,1,0)
@@ -502,83 +483,83 @@ function CatherFI.New(a, b)
     local TitleLb=Instance.new("TextLabel", Header)
     TitleLb.Text=title
     TitleLb.Font=Enum.Font.GothamBold
-    TitleLb.TextSize=15
+    TitleLb.TextSize=14
     TitleLb.TextColor3=theme.Text
     TitleLb.BackgroundTransparency=1
-    TitleLb.Size=UDim2.new(0,260,0,20)
-    TitleLb.Position=UDim2.new(0,56,0,10)
+    TitleLb.Size=UDim2.new(0,260,0,16)
+    TitleLb.Position=UDim2.new(0,52,0,8)
     TitleLb.TextXAlignment=Enum.TextXAlignment.Left
 
     local SubLb=Instance.new("TextLabel", Header)
     SubLb.Text=subtitle
     SubLb.Font=Enum.Font.Gotham
-    SubLb.TextSize=11
+    SubLb.TextSize=10
     SubLb.TextColor3=theme.Sub
     SubLb.BackgroundTransparency=1
-    SubLb.Size=UDim2.new(0,260,0,14)
-    SubLb.Position=UDim2.new(0,56,0,28)
+    SubLb.Size=UDim2.new(0,260,0,12)
+    SubLb.Position=UDim2.new(0,52,0,24)
     SubLb.TextXAlignment=Enum.TextXAlignment.Left
 
-    -- Header Actions (premium icons, no emoji)
+    -- Header Actions - clean 28px (Rayfield 30px, CatherFI lebih compact)
     local SearchBtn=Instance.new("TextButton", Header)
-    SearchBtn.Size=UDim2.new(0,32,0,32)
-    SearchBtn.Position=UDim2.new(1,-120,0,12)
+    SearchBtn.Size=UDim2.new(0,28,0,28)
+    SearchBtn.Position=UDim2.new(1,-108,0,10)
     SearchBtn.BackgroundColor3=theme.Card
     SearchBtn.Text=""
-    Corner(SearchBtn,8); Stroke(SearchBtn, theme.Stroke,1)
+    Corner(SearchBtn,6); Stroke(SearchBtn, theme.Stroke,1)
     SearchBtn.AutoButtonColor=false
-    CreateIcon(SearchBtn, CatherFI.Icons.Search, UDim2.new(0,16,0,16), theme.Sub).Position = UDim2.new(0.5,-8,0.5,-8)
+    CreateIcon(SearchBtn, CatherFI.Icons.Search, UDim2.new(0,14,0,14), theme.Sub).Position = UDim2.new(0.5,-7,0.5,-7)
 
     local MinBtn=Instance.new("TextButton", Header)
-    MinBtn.Size=UDim2.new(0,32,0,32)
-    MinBtn.Position=UDim2.new(1,-82,0,12)
+    MinBtn.Size=UDim2.new(0,28,0,28)
+    MinBtn.Position=UDim2.new(1,-74,0,10)
     MinBtn.BackgroundColor3=theme.Card
     MinBtn.Text=""
-    Corner(MinBtn,8); Stroke(MinBtn, theme.Stroke,1)
+    Corner(MinBtn,6); Stroke(MinBtn, theme.Stroke,1)
     MinBtn.AutoButtonColor=false
     CreateIcon(MinBtn, CatherFI.Icons.Minimize, UDim2.new(0,14,0,14), theme.Text).Position = UDim2.new(0.5,-7,0.5,-7)
 
     local CloseBtn=Instance.new("TextButton", Header)
-    CloseBtn.Size=UDim2.new(0,32,0,32)
-    CloseBtn.Position=UDim2.new(1,-44,0,12)
+    CloseBtn.Size=UDim2.new(0,28,0,28)
+    CloseBtn.Position=UDim2.new(1,-40,0,10)
     CloseBtn.BackgroundColor3=Color3.fromRGB(255,70,90)
     CloseBtn.Text=""
-    Corner(CloseBtn,8)
+    Corner(CloseBtn,6)
     CloseBtn.AutoButtonColor=false
     CreateIcon(CloseBtn, CatherFI.Icons.Close, UDim2.new(0,14,0,14), Color3.new(1,1,1)).Position = UDim2.new(0.5,-7,0.5,-7)
 
-    -- Body
+    -- Body - clean layout
     local Sidebar=Instance.new("Frame", Main)
-    Sidebar.Size=UDim2.new(0,160,1,-56)
-    Sidebar.Position=UDim2.new(0,0,0,56)
+    Sidebar.Size=UDim2.new(0,150,1,-48)
+    Sidebar.Position=UDim2.new(0,0,0,48)
     Sidebar.BackgroundColor3=theme.Sidebar
-    Corner(Sidebar,16)
+    Corner(Sidebar,10)
     local sFix=Instance.new("Frame", Sidebar)
-    sFix.Size=UDim2.new(1,0,0,16)
+    sFix.Size=UDim2.new(1,0,0,10)
     sFix.Position=UDim2.new(0,0,0,0)
     sFix.BackgroundColor3=theme.Sidebar
     sFix.BorderSizePixel=0
     local sFix2=Instance.new("Frame", Sidebar)
-    sFix2.Size=UDim2.new(0,16,1,0)
-    sFix2.Position=UDim2.new(1,-16,0,0)
+    sFix2.Size=UDim2.new(0,10,1,0)
+    sFix2.Position=UDim2.new(1,-10,0,0)
     sFix2.BackgroundColor3=theme.Sidebar
     sFix2.BorderSizePixel=0
 
     local Nav=Instance.new("ScrollingFrame", Sidebar)
-    Nav.Size=UDim2.new(1,0,1,-20)
-    Nav.Position=UDim2.new(0,0,0,10)
+    Nav.Size=UDim2.new(1,0,1,-16)
+    Nav.Position=UDim2.new(0,0,0,8)
     Nav.BackgroundTransparency=1
     Nav.ScrollBarThickness=0
     Nav.CanvasSize=UDim2.new(0,0,0,0)
     Nav.AutomaticCanvasSize=Enum.AutomaticSize.Y
     local NavLayout=Instance.new("UIListLayout", Nav)
-    NavLayout.Padding=UDim.new(0,6)
+    NavLayout.Padding=UDim.new(0,4)
     NavLayout.SortOrder=Enum.SortOrder.LayoutOrder
-    Padding(Nav,8,0,8,0)
+    Padding(Nav,6,0,6,0)
 
     local Content=Instance.new("Frame", Main)
-    Content.Size=UDim2.new(1,-160,1,-56)
-    Content.Position=UDim2.new(0,160,0,56)
+    Content.Size=UDim2.new(1,-150,1,-48)
+    Content.Position=UDim2.new(0,150,0,48)
     Content.BackgroundTransparency=1
 
     -- Hub object
@@ -680,53 +661,49 @@ function CatherFI.New(a, b)
         end
 
         local Btn=Instance.new("TextButton", Nav)
-        Btn.Size=UDim2.new(1,0,0,40)
+        Btn.Size=UDim2.new(1,0,0,36)
         Btn.BackgroundColor3=theme.Card
         Btn.BackgroundTransparency=1
         Btn.Text=""
         Btn.AutoButtonColor=false
-        Corner(Btn,10)
+        Corner(Btn,6)
 
         local Ico=Instance.new("ImageLabel", Btn)
         Ico.Image=iconAsset
         Ico.ImageColor3=theme.Sub
         Ico.BackgroundTransparency=1
-        Ico.Size=UDim2.new(0,18,0,18)
-        Ico.Position=UDim2.new(0,10,0.5,-9)
+        Ico.Size=UDim2.new(0,16,0,16)
+        Ico.Position=UDim2.new(0,10,0.5,-8)
         Ico.ScaleType = Enum.ScaleType.Fit
 
         local Lb=Instance.new("TextLabel", Btn)
         Lb.Text=name
-        Lb.Font=Enum.Font.GothamMedium
-        Lb.TextSize=13
+        Lb.Font=Enum.Font.Gotham
+        Lb.TextSize=12
         Lb.TextColor3=theme.Sub
         Lb.BackgroundTransparency=1
-        Lb.Size=UDim2.new(1,-40,1,0)
-        Lb.Position=UDim2.new(0,34,0,0)
+        Lb.Size=UDim2.new(1,-36,1,0)
+        Lb.Position=UDim2.new(0,30,0,0)
         Lb.TextXAlignment=Enum.TextXAlignment.Left
 
         local Indicator=Instance.new("Frame", Btn)
-        Indicator.Size=UDim2.new(0,3,0,20)
-        Indicator.Position=UDim2.new(0,0,0.5,-10)
+        Indicator.Size=UDim2.new(0,2,0,16)
+        Indicator.Position=UDim2.new(0,0,0.5,-8)
         Indicator.BackgroundColor3=theme.Accent
         Corner(Indicator,99)
-        Indicator.Visible=false
-        local indGrad=Instance.new("UIGradient", Indicator)
-        indGrad.Color=ColorSequence.new(theme.Accent, theme.Accent2)
-        indGrad.Rotation=90
 
         local Page=Instance.new("ScrollingFrame", Content)
         Page.Size=UDim2.new(1,0,1,0)
         Page.BackgroundTransparency=1
-        Page.ScrollBarThickness=3
-        Page.ScrollBarImageColor3=theme.Accent
+        Page.ScrollBarThickness=2
+        Page.ScrollBarImageColor3=theme.Stroke
         Page.CanvasSize=UDim2.new(0,0,0,0)
         Page.AutomaticCanvasSize=Enum.AutomaticSize.Y
         Page.Visible=false
         local PLayout=Instance.new("UIListLayout", Page)
-        PLayout.Padding=UDim.new(0,10)
+        PLayout.Padding=UDim.new(0,8)
         PLayout.SortOrder=Enum.SortOrder.LayoutOrder
-        Padding(Page,12,12,12,12)
+        Padding(Page,10,10,10,10)
 
         local function Select()
             for _,t in ipairs(Hub.Tabs) do
@@ -762,16 +739,16 @@ function CatherFI.New(a, b)
             SecFrame.Size=UDim2.new(1,0,0,0)
             SecFrame.AutomaticSize=Enum.AutomaticSize.Y
             SecFrame.BackgroundColor3=theme.Card
-            Corner(SecFrame,12); Stroke(SecFrame, theme.Stroke,1)
-            Padding(SecFrame,12,12,12,12)
+            Corner(SecFrame,8); Stroke(SecFrame, theme.Stroke,1)
+            Padding(SecFrame,10,10,10,10)
 
             local Head=Instance.new("Frame", SecFrame)
-            Head.Size=UDim2.new(1,0,0,24)
+            Head.Size=UDim2.new(1,0,0,20)
             Head.BackgroundTransparency=1
             local HeadLb=Instance.new("TextLabel", Head)
             HeadLb.Text=string.upper(secName or "SECTION")
             HeadLb.Font=Enum.Font.GothamBold
-            HeadLb.TextSize=11
+            HeadLb.TextSize=10
             HeadLb.TextColor3=theme.Sub
             HeadLb.BackgroundTransparency=1
             HeadLb.Size=UDim2.new(1,-30,1,0)
@@ -780,7 +757,7 @@ function CatherFI.New(a, b)
             HeadLine.Size=UDim2.new(1,0,0,1)
             HeadLine.Position=UDim2.new(0,0,1,-1)
             HeadLine.BackgroundColor3=theme.Stroke
-            HeadLine.BackgroundTransparency=0.6
+            HeadLine.BackgroundTransparency=0.7
             HeadLine.BorderSizePixel=0
 
             local CollapseBtn
@@ -799,9 +776,9 @@ function CatherFI.New(a, b)
             Body.Size=UDim2.new(1,0,0,0)
             Body.AutomaticSize=Enum.AutomaticSize.Y
             Body.BackgroundTransparency=1
-            Body.Position=UDim2.new(0,0,0,32)
+            Body.Position=UDim2.new(0,0,0,28)
             local BLayout=Instance.new("UIListLayout", Body)
-            BLayout.Padding=UDim.new(0,8)
+            BLayout.Padding=UDim.new(0,6)
             BLayout.SortOrder=Enum.SortOrder.LayoutOrder
             -- auto resize section
             local function UpdateSecSize()
@@ -820,12 +797,12 @@ function CatherFI.New(a, b)
 
             local Section={Frame=SecFrame, Body=Body, Elements={}}
 
-            -- HELPER: create card base
+            -- HELPER: create card base - clean 8px
             local function Card(h)
                 local F=Instance.new("Frame", Body)
-                F.Size=UDim2.new(1,0,0,h or 48)
+                F.Size=UDim2.new(1,0,0,h or 44)
                 F.BackgroundColor3=theme.Bg2
-                Corner(F,10); Stroke(F, theme.Stroke,1)
+                Corner(F,8); Stroke(F, theme.Stroke,1)
                 table.insert(Section.Elements, {Frame=F, Type="card"})
                 return F
             end
@@ -835,34 +812,34 @@ function CatherFI.New(a, b)
                 local flag=cfg3.Flag
                 local val=cfg3.Default or cfg3.Enabled or false
                 if flag then CatherFI.Flags[flag]=val end
-                local F=Card(52)
+                local F=Card(48)
                 local T=Instance.new("TextLabel", F)
                 T.Text=cfg3.Title or "Toggle"
                 T.Font=Enum.Font.GothamMedium
-                T.TextSize=13
+                T.TextSize=12
                 T.TextColor3=theme.Text
                 T.BackgroundTransparency=1
-                T.Size=UDim2.new(1,-70,0,18)
-                T.Position=UDim2.new(0,12,0,8)
+                T.Size=UDim2.new(1,-66,0,16)
+                T.Position=UDim2.new(0,10,0,6)
                 T.TextXAlignment=Enum.TextXAlignment.Left
                 local D=Instance.new("TextLabel", F)
                 D.Text=cfg3.Desc or cfg3.Description or ""
                 D.Font=Enum.Font.Gotham
-                D.TextSize=11
+                D.TextSize=10
                 D.TextColor3=theme.Sub
                 D.BackgroundTransparency=1
-                D.Size=UDim2.new(1,-70,0,14)
-                D.Position=UDim2.new(0,12,0,26)
+                D.Size=UDim2.new(1,-66,0,12)
+                D.Position=UDim2.new(0,10,0,22)
                 D.TextXAlignment=Enum.TextXAlignment.Left
                 D.Visible = D.Text~=""
                 local BG=Instance.new("Frame", F)
-                BG.Size=UDim2.new(0,46,0,26)
-                BG.Position=UDim2.new(1,-58,0.5,-13)
-                BG.BackgroundColor3= val and theme.Accent or Color3.fromRGB(45,45,55)
+                BG.Size=UDim2.new(0,44,0,24)
+                BG.Position=UDim2.new(1,-54,0.5,-12)
+                BG.BackgroundColor3= val and theme.Accent or Color3.fromRGB(42,42,44)
                 Corner(BG,99)
                 local Dot=Instance.new("Frame", BG)
-                Dot.Size=UDim2.new(0,20,0,20)
-                Dot.Position= val and UDim2.new(1,-22,0.5,-10) or UDim2.new(0,3,0.5,-10)
+                Dot.Size=UDim2.new(0,18,0,18)
+                Dot.Position= val and UDim2.new(1,-21,0.5,-9) or UDim2.new(0,3,0.5,-9)
                 Dot.BackgroundColor3=Color3.new(1,1,1)
                 Corner(Dot,99)
                 local Hit=Instance.new("TextButton", F)
@@ -871,8 +848,8 @@ function CatherFI.New(a, b)
                 Hit.Text=""
                 local function Set(v, silent)
                     val=v; if flag then CatherFI.Flags[flag]=v end
-                    Tween(BG,{BackgroundColor3= v and theme.Accent or Color3.fromRGB(45,45,55)},0.22)
-                    Spring(Dot,{Position= v and UDim2.new(1,-22,0.5,-10) or UDim2.new(0,3,0.5,-10)})
+                    Tween(BG,{BackgroundColor3= v and theme.Accent or Color3.fromRGB(42,42,44)},0.18)
+                    Tween(Dot,{Position= v and UDim2.new(1,-21,0.5,-9) or UDim2.new(0,3,0.5,-9)},0.18)
                     if not silent then pcall(function() cfg3.Callback(v) end) end
                 end
                 Hit.MouseButton1Click:Connect(function() Set(not val) end)
@@ -886,30 +863,27 @@ function CatherFI.New(a, b)
             function Section:AddButton(cfg3)
                 cfg3=cfg3 or {}
                 local F=Instance.new("TextButton", Body)
-                F.Size=UDim2.new(1,0,0,44)
+                F.Size=UDim2.new(1,0,0,40)
                 F.BackgroundColor3=theme.Accent
                 F.Text=""
                 F.AutoButtonColor=false
-                Corner(F,10)
-                local grad=Instance.new("UIGradient", F)
-                grad.Color=ColorSequence.new(theme.Accent, theme.Accent2)
-                grad.Rotation=15
+                Corner(F,8)
                 local Lb=Instance.new("TextLabel", F)
                 Lb.Text=cfg3.Title or cfg3.Text or "Button"
                 Lb.Font=Enum.Font.GothamBold
-                Lb.TextSize=13
+                Lb.TextSize=12
                 Lb.TextColor3=Color3.new(1,1,1)
                 Lb.BackgroundTransparency=1
-                Lb.Size=UDim2.new(1,-40,1,0)
-                Lb.Position=UDim2.new(0,14,0,0)
+                Lb.Size=UDim2.new(1,-36,1,0)
+                Lb.Position=UDim2.new(0,12,0,0)
                 Lb.TextXAlignment=Enum.TextXAlignment.Left
-                local Ico2=CreateIcon(F, CatherFI.Icons.ArrowRight, UDim2.new(0,18,0,18), Color3.new(1,1,1))
-                Ico2.Position=UDim2.new(1,-28,0.5,-9)
-                F.MouseEnter:Connect(function() Tween(F,{BackgroundTransparency=0.1},0.15) Spring(Ico2,{Position=UDim2.new(1,-24,0.5,-9)}) end)
-                F.MouseLeave:Connect(function() Tween(F,{BackgroundTransparency=0},0.15) Tween(Ico2,{Position=UDim2.new(1,-28,0.5,-9)},0.15) end)
+                local Ico2=CreateIcon(F, CatherFI.Icons.ArrowRight, UDim2.new(0,16,0,16), Color3.new(1,1,1))
+                Ico2.Position=UDim2.new(1,-26,0.5,-8)
+                F.MouseEnter:Connect(function() Tween(F,{BackgroundTransparency=0.08},0.12) Tween(Ico2,{Position=UDim2.new(1,-22,0.5,-8)},0.12) end)
+                F.MouseLeave:Connect(function() Tween(F,{BackgroundTransparency=0},0.12) Tween(Ico2,{Position=UDim2.new(1,-26,0.5,-8)},0.12) end)
                 F.MouseButton1Click:Connect(function()
-                    Tween(F,{Size=UDim2.new(1,0,0,42)},0.08)
-                    task.wait(0.08); Spring(F,{Size=UDim2.new(1,0,0,44)})
+                    Tween(F,{Size=UDim2.new(1,0,0,38)},0.06)
+                    task.wait(0.06); Tween(F,{Size=UDim2.new(1,0,0,40)},0.12)
                     pcall(cfg3.Callback)
                 end)
                 table.insert(Section.Elements,{Frame=F, Type="button"})
@@ -934,30 +908,28 @@ function CatherFI.New(a, b)
                 T.Position=UDim2.new(0,12,0,10)
                 T.TextXAlignment=Enum.TextXAlignment.Left
                 local VBox=Instance.new("TextBox", F)
-                VBox.Size=UDim2.new(0,64,0,22)
-                VBox.Position=UDim2.new(1,-76,0,8)
+                VBox.Size=UDim2.new(0,56,0,20)
+                VBox.Position=UDim2.new(1,-66,0,8)
                 VBox.BackgroundColor3=theme.Card
                 VBox.Text=tostring(val)
                 VBox.Font=Enum.Font.GothamBold
-                VBox.TextSize=11
+                VBox.TextSize=10
                 VBox.TextColor3=theme.Text
                 Corner(VBox,6); Stroke(VBox, theme.Stroke,1)
                 VBox.ClearTextOnFocus=false
                 local suffix=cfg3.Suffix or ""
                 local Track=Instance.new("Frame", F)
-                Track.Size=UDim2.new(1,-24,0,6)
-                Track.Position=UDim2.new(0,12,0,38)
-                Track.BackgroundColor3=theme.Card
+                Track.Size=UDim2.new(1,-20,0,4)
+                Track.Position=UDim2.new(0,10,0,36)
+                Track.BackgroundColor3=theme.Stroke
                 Corner(Track,99)
                 local Fill=Instance.new("Frame", Track)
                 Fill.Size=UDim2.new((val-min)/(max-min),0,1,0)
                 Fill.BackgroundColor3=theme.Accent
                 Corner(Fill,99)
-                local FillGrad=Instance.new("UIGradient", Fill)
-                FillGrad.Color=ColorSequence.new(theme.Accent, theme.Accent2)
                 local Knob=Instance.new("Frame", Track)
-                Knob.Size=UDim2.new(0,14,0,14)
-                Knob.Position=UDim2.new((val-min)/(max-min),-7,0.5,-7)
+                Knob.Size=UDim2.new(0,12,0,12)
+                Knob.Position=UDim2.new((val-min)/(max-min),-6,0.5,-6)
                 Knob.BackgroundColor3=Color3.new(1,1,1)
                 Corner(Knob,99); Stroke(Knob, theme.Accent,2)
                 local dragging=false
@@ -965,8 +937,8 @@ function CatherFI.New(a, b)
                     v=math.clamp(math.floor(v/step+0.5)*step, min, max)
                     val=v; if flag then CatherFI.Flags[flag]=v end
                     VBox.Text=tostring(v)..(suffix~="" and " "..suffix or "")
-                    Tween(Fill,{Size=UDim2.new((v-min)/(max-min),0,1,0)},0.12)
-                    Tween(Knob,{Position=UDim2.new((v-min)/(max-min),-7,0.5,-7)},0.12)
+                    Tween(Fill,{Size=UDim2.new((v-min)/(max-min),0,1,0)},0.1)
+                    Tween(Knob,{Position=UDim2.new((v-min)/(max-min),-6,0.5,-6)},0.1)
                     if not silent then pcall(function() cfg3.Callback(v) end) end
                 end
                 VBox.FocusLost:Connect(function(enter)
