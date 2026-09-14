@@ -1,15 +1,15 @@
--- XSAYT UI v2 | Full Ori | Delta Gacor Edition
--- Bukan Rayfield Clone - Original Design by myzakonz-gif
+-- XSAYT UI v2 | Full Original | Delta Premium Edition
+-- Original Design by myzakonz-gif - Professional UI Library
 -- Cyber Neon + Glassmorphism + Spring Animations
 -- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XSAYT.lua"))()
 -- Docs: https://github.com/myzakonz-gif/UI-LIB-XSAYT
--- Size: ~950 lines, 60fps, Delta Android Optimized
+-- Size: ~1273 lines, 60fps, Delta Android Optimized
 
 local XSAYT = {}
-XSAYT.Version = "2.0.0-gacor"
+XSAYT.Version = "2.1.0-gacor-secure"
 XSAYT.Flags = {}
 
--- Themes - Ori XSAYT, lebih keren dari Rayfield
+-- Themes - Original XSAYT Premium
 XSAYT.Themes = {
     Cyber = {
         Bg = Color3.fromRGB(10,10,15),
@@ -87,9 +87,55 @@ XSAYT.Icons = {
     DefaultTab  = "rbxassetid://4483345998",
 }
 
-local TweenService = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
+-- Professional hardening (cloneref, secure, asset, request) - undetectable & robust
+local requestsDisabled = false
+local customAssetId = nil
+local secureMode = false
+if getgenv then
+    local ok, v = pcall(function() return getgenv().DISABLE_XSAYT_REQUESTS end)
+    if ok and v then requestsDisabled = true end
+    local ok2, v2 = pcall(function() return getgenv().XSAYT_ASSET_ID end)
+    if ok2 and typeof(v2)=="number" then customAssetId = v2 end
+    local ok3, v3 = pcall(function() return getgenv().XSAYT_SECURE end)
+    if ok3 and v3 then secureMode = true end
+    local ok4, v4 = pcall(function() return getgenv().XSAYT_SECURE_LEGACY end)
+    if ok4 and v4 then secureMode = true end
+end
+if secureMode then
+    local _err, _assert = error, assert
+    warn = function() end
+    print = function() end
+    error = function(_, lvl) _err("", lvl) end
+    assert = function(v, ...) return _assert(v) end
+end
+
+local function getService(name)
+    local svc = game:GetService(name)
+    return (cloneref and cloneref(svc)) or svc
+end
+local function loadWithTimeout(url, timeout)
+    timeout = timeout or 5
+    local done, ok, res = false, false, nil
+    local th = task.spawn(function()
+        local s, r = pcall(game.HttpGet, game, url)
+        if not s or #r==0 then ok,res = false, r or "Empty response"; done=true; return end
+        local s2, r2 = pcall(function() return loadstring(r)() end)
+        ok,res = s2,r2; done=true
+    end)
+    local to = task.delay(timeout, function()
+        if not done then warn("[XSAYT] Timeout "..url); task.cancel(th); res="Timeout"; done=true end
+    end)
+    while not done do task.wait() end
+    if coroutine.status(to) ~= "dead" then task.cancel(to) end
+    if ok then return res else return nil end
+end
+
+local TweenService = getService("TweenService")
+local UserInputService = getService("UserInputService")
+local Players = getService("Players")
+local CoreGui = getService("CoreGui")
+local HttpService = getService("HttpService")
+local RunService = getService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
 local function CreateIcon(parent, assetId, size, color)
@@ -135,22 +181,30 @@ local function MakeDraggable(frame, handle)
     end)
 end
 
--- Toast System (lebih gacor dari Rayfield Notify)
+-- Toast System - Professional Notification, undetectable CoreGui via cloneref
 local ToastGui
 local function GetToastGui()
-    if ToastGui then return ToastGui end
+    if ToastGui and ToastGui.Parent then return ToastGui end
     local pg
     pcall(function()
         if gethui then pg=gethui()
         elseif get_hidden_gui then pg=get_hidden_gui()
+        elseif CoreGui then pg=CoreGui
         elseif game.CoreGui then pg=game.CoreGui end
     end)
     if not pg then pg=LocalPlayer:WaitForChild("PlayerGui") end
+    if pg and cloneref then pcall(function() pg = cloneref(pg) end) end
     ToastGui=Instance.new("ScreenGui")
     ToastGui.Name="XSAYT_Toast"
     ToastGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
     ToastGui.ResetOnSpawn=false
+    ToastGui.IgnoreGuiInset = true
+    ToastGui.DisplayOrder = 999
+    pcall(function()
+        if customAssetId and ToastGui then ToastGui.Name = "XSAYT_"..tostring(customAssetId) end
+    end)
     ToastGui.Parent=pg
+    if syn and syn.protect_gui then pcall(function() syn.protect_gui(ToastGui) end) end
     return ToastGui
 end
 
@@ -217,6 +271,35 @@ end
 -- Compatibility alias
 XSAYT.Notify = XSAYT.Toast
 
+-- Config helpers (robust, with HttpService, timeout, cloneref safe)
+local function SaveConfig(folder, file, flags)
+    if requestsDisabled then return end
+    if not (writefile and makefolder and isfolder) then return end
+    pcall(function()
+        if not isfolder(folder) then makefolder(folder) end
+        local json = HttpService:JSONEncode(flags)
+        writefile(folder.."/"..file..".json", json)
+    end)
+end
+local function LoadConfig(folder, file)
+    if requestsDisabled then return nil end
+    if not (readfile and isfile) then return nil end
+    local ok, data = pcall(function()
+        if isfile(folder.."/"..file..".json") then
+            return HttpService:JSONDecode(readfile(folder.."/"..file..".json"))
+        end
+    end)
+    if ok then return data end
+    return nil
+end
+function XSAYT:LoadConfiguration(folder, file)
+    if not folder then return nil end
+    return LoadConfig(folder, file or "config")
+end
+function XSAYT:SaveConfiguration(folder, file, flags)
+    SaveConfig(folder or "XSAYT", file or "config", flags or XSAYT.Flags)
+end
+
 function XSAYT.New(cfg)
     cfg=cfg or {}
     local title=cfg.Title or "XSAYT • GACOR"
@@ -226,21 +309,32 @@ function XSAYT.New(cfg)
     local blurEnabled=cfg.Blur ~= false
     local size=cfg.Size or UDim2.new(0,640,0,460)
 
-    -- Parent
+    -- Parent (Gen2-grade: cloneref + protect_gui + customAsset)
     local parent
     pcall(function()
         if gethui then parent=gethui()
         elseif get_hidden_gui then parent=get_hidden_gui()
+        elseif CoreGui then parent=CoreGui
         elseif game.CoreGui then parent=game.CoreGui end
     end)
     if not parent then parent=LocalPlayer:WaitForChild("PlayerGui") end
+    if parent and cloneref then pcall(function() parent = cloneref(parent) end) end
 
     local Gui=Instance.new("ScreenGui")
     Gui.Name="XSAYT_"..tostring(math.random(10000,99999))
+    if customAssetId then Gui.Name = "XSAYT_"..tostring(customAssetId) end
     Gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
     Gui.ResetOnSpawn=false
+    Gui.IgnoreGuiInset = true
+    Gui.DisplayOrder = 10
+    -- handle Disable prompts (professional)
+    if not secureMode then
+        -- keep warn for debugging unless disabled
+        if cfg.DisableBuildWarnings then warn = function() end end
+    end
     Gui.Parent=parent
     if syn and syn.protect_gui then pcall(function() syn.protect_gui(Gui) end) end
+    if gethui then pcall(function() Gui.Parent = cloneref and cloneref(gethui()) or gethui() end) end
 
     -- Loading (gacor)
     local Loading=Instance.new("Frame", Gui)

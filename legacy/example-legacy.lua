@@ -1,7 +1,7 @@
--- XSAYT UI - Example untuk Delta Executor
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()
+-- XSAYT UI - Example Legacy untuk Delta Executor
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
 
-local XsaytUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()
+local XsaytUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
 
 local Window = XsaytUI:CreateWindow({
    Name = "XSAYT Hub | Delta 🔥",
@@ -121,7 +121,7 @@ SettingsTab:CreateKeybind({
 })
 
 SettingsTab:CreateLabel("XSAYT UI v1.0 - Delta Edition")
-SettingsTab:CreateParagraph({Title = "Info", Content = "UI Library ini kompatibel 100% dengan Rayfield API, jadi script lama tinggal ganti loadstring aja."})
+SettingsTab:CreateParagraph({Title = "Info", Content = "UI Library legacy v1, gunakan XSAYT.lua v2 untuk fitur premium."})
 
 SettingsTab:CreateButton({
    Name = "Destroy UI",

@@ -1,7 +1,7 @@
--- XSAYT UI Library | Delta Edition | Rayfield-like API
+-- XSAYT UI Library | Delta Edition | Legacy v1 API
 -- Github: https://github.com/myzakonz-gif/UI-LIB-XSAYT
--- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/XsaytUI.lua"))()
--- Version: 1.0.0 Delta Compatible
+-- Load: loadstring(game:HttpGet("https://raw.githubusercontent.com/myzakonz-gif/UI-LIB-XSAYT/main/legacy/XsaytUI.lua"))()
+-- Version: 1.0.0 Deprecated
 
 local XsaytUI = {}
 XsaytUI.Flags = {}
@@ -154,7 +154,7 @@ function XsaytUI:Notify(cfg)
     end)
 
     if cfg.Actions then
-        -- support Rayfield Actions (ignore for now, placeholder)
+        -- support Actions (placeholder)
     end
 end
 
